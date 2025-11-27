@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "business": "业务领域",
+    "team": "团队成员",
+    "announcements": "公司公告",
+    "links": "相关链接"
+  },
+  "hero": {
+    "title": "刻熵科技",
+    "subtitle": "Ke Entropy Technology",
+    "description": "探索Web3创新边界，构建去中心化未来",
+    "cta": "了解更多"
+  },
+  "about": {
+    "title": "关于我们",
+    "content": "刻熵科技致力于Web3技术创新与应用，通过构建完整的区块链生态系统，为用户提供安全、高效的去中心化解决方案。"
+  },
+  "business": {
+    "title": "业务领域",
+    "lab": {
+      "title": "Matrix Lab",
+      "description": "Web3创新实验室，探索区块链技术前沿"
+    },
+    "exchange": {
+      "title": "MATRIXLAB EXCHANGE",
+      "description": "革命性Web3创新平台，集成钱包、交易、量化分析与风控"
+    },
+    "game": {
+      "title": "瀛州纪",
+      "description": "链上文明的最后史书 - Immortal Ledger"
+    },
+    "community": {
+      "title": "开发者社区",
+      "description": "瀛州纪开发者社区与候补名单"
+    }
+  },
+  "team": {
+    "title": "团队成员",
+    "founder": {
+      "title": "创始人",
+      "name": "查看简历"
+    }
+  },
+  "announcements": {
+    "title": "公司公告",
+    "latest": "最新公告",
+    "noAnnouncements": "暂无公告"
+  },
+  "links": {
+    "title": "相关链接",
+    "lab": "实验室官网",
+    "platform": "旗下平台",
+    "game": "旗下游戏",
+    "community": "游戏社区",
+    "github": "游戏开源地址",
+    "founder": "创始人简历"
+  },
+  "footer": {
+    "copyright": "© 2024 刻熵科技 版权所有",
+    "beian": "京公网安备11010802046489号"
+  }
+}

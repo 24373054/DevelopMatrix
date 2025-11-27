@@ -1,0 +1,6 @@
+<p class="beian-info">
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010802046489" rel="noreferrer" target="_blank" class="beian-link">
+                    <img src="图片/备案图标.png" alt="备案图标" class="beian-icon">
+                    京公网安备11010802046489号
+                </a>
+            </p>

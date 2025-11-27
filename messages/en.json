@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "business": "Business",
+    "team": "Team",
+    "announcements": "Announcements",
+    "links": "Links"
+  },
+  "hero": {
+    "title": "Ke Entropy Technology",
+    "subtitle": "刻熵科技",
+    "description": "Exploring Web3 Innovation Boundaries, Building a Decentralized Future",
+    "cta": "Learn More"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "Ke Entropy Technology is dedicated to Web3 technology innovation and application. By building a complete blockchain ecosystem, we provide users with secure and efficient decentralized solutions."
+  },
+  "business": {
+    "title": "Business Areas",
+    "lab": {
+      "title": "Matrix Lab",
+      "description": "Web3 Innovation Laboratory, Exploring Blockchain Technology Frontiers"
+    },
+    "exchange": {
+      "title": "MATRIXLAB EXCHANGE",
+      "description": "Revolutionary Web3 Innovation Platform - Integrated Ecosystem: Wallet, Trading, Quantitative Analysis, Risk Control"
+    },
+    "game": {
+      "title": "Immortal Ledger",
+      "description": "The Last Chronicle of On-Chain Civilization - 瀛州纪"
+    },
+    "community": {
+      "title": "Developer Community",
+      "description": "Immortal Ledger Developer Community & Waiting List"
+    }
+  },
+  "team": {
+    "title": "Team Members",
+    "founder": {
+      "title": "Founder",
+      "name": "View Resume"
+    }
+  },
+  "announcements": {
+    "title": "Announcements",
+    "latest": "Latest Announcements",
+    "noAnnouncements": "No announcements yet"
+  },
+  "links": {
+    "title": "Related Links",
+    "lab": "Laboratory Website",
+    "platform": "Platform",
+    "game": "Game",
+    "community": "Game Community",
+    "github": "Game Open Source",
+    "founder": "Founder's Resume"
+  },
+  "footer": {
+    "copyright": "© 2024 Ke Entropy Technology. All rights reserved.",
+    "beian": "京公网安备11010802046489号"
+  }
+}
