@@ -20,8 +20,8 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="glass rounded-2xl p-8 md:p-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">{t('title')}</h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-foreground/90">{t('title')}</h2>
+          <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed">
             {t('content')}
           </p>
         </motion.div>

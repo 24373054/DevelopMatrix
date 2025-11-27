@@ -42,8 +42,8 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'glass shadow-2xl/10' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,38 +51,38 @@ export default function Navigation() {
           <div className="flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-lg font-semibold hover:text-muted-foreground transition-colors"
+              className="text-lg font-medium hover:text-muted-foreground transition-all duration-300 hover:scale-105"
             >
               刻熵科技
             </button>
             <div className="hidden md:flex space-x-6">
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-sm hover:text-muted-foreground transition-colors"
+                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
                 {t('about')}
               </button>
               <button
                 onClick={() => scrollToSection('business')}
-                className="text-sm hover:text-muted-foreground transition-colors"
+                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
                 {t('business')}
               </button>
               <button
                 onClick={() => scrollToSection('team')}
-                className="text-sm hover:text-muted-foreground transition-colors"
+                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
                 {t('team')}
               </button>
               <button
                 onClick={() => scrollToSection('announcements')}
-                className="text-sm hover:text-muted-foreground transition-colors"
+                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
                 {t('announcements')}
               </button>
               <button
                 onClick={() => scrollToSection('links')}
-                className="text-sm hover:text-muted-foreground transition-colors"
+                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
                 {t('links')}
               </button>
@@ -91,17 +91,17 @@ export default function Navigation() {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg hover:bg-muted transition-colors"
+              className="p-2 rounded-lg hover:bg-foreground/5 transition-all duration-300 hover:scale-110"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               onClick={toggleLocale}
-              className="p-2 rounded-lg hover:bg-muted transition-colors flex items-center space-x-1"
+              className="p-2 rounded-lg hover:bg-foreground/5 transition-all duration-300 hover:scale-110 flex items-center space-x-1"
               aria-label="Toggle language"
             >
-              <Globe size={20} />
+              <Globe size={18} />
               <span className="text-sm">{currentLocale === 'zh' ? 'EN' : '中'}</span>
             </button>
           </div>

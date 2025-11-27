@@ -44,15 +44,15 @@ export default function Links() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="glass rounded-xl p-6 hover:scale-105 transition-all duration-300 group flex items-center justify-between"
+                className="glass rounded-xl p-6 hover:scale-[1.01] hover:shadow-xl transition-all duration-500 group flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <Icon size={24} className="text-foreground" />
+                  <div className="w-11 h-11 rounded-lg bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors duration-300">
+                    <Icon size={20} className="text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
                   </div>
-                  <span className="font-medium">{t(link.key)}</span>
+                  <span className="font-medium text-foreground/90">{t(link.key)}</span>
                 </div>
-                <ExternalLink size={18} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                <ExternalLink size={16} className="text-muted-foreground/50 group-hover:text-foreground/70 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </motion.a>
             );
           })}

@@ -29,12 +29,12 @@ export default function Announcements() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="glass rounded-2xl p-8 md:p-12"
         >
-          <div className="flex flex-col items-center justify-center text-center py-12">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6">
-              <Megaphone size={40} className="text-foreground" />
+          <div className="flex flex-col items-center justify-center text-center py-16">
+            <div className="w-16 h-16 rounded-full bg-foreground/5 flex items-center justify-center mb-6">
+              <Megaphone size={32} className="text-foreground/70" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">{t('latest')}</h3>
-            <p className="text-muted-foreground text-lg">{t('noAnnouncements')}</p>
+            <h3 className="text-xl font-semibold mb-4 text-foreground/90">{t('latest')}</h3>
+            <p className="text-muted-foreground/70 text-base">{t('noAnnouncements')}</p>
           </div>
         </motion.div>
       </div>

@@ -31,17 +31,17 @@ export default function Team() {
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300 group max-w-md w-full"
+            className="glass rounded-2xl p-8 hover:scale-[1.02] hover:shadow-2xl transition-all duration-500 group max-w-md w-full"
           >
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mx-auto mb-6">
-              <User size={48} className="text-foreground" />
+            <div className="w-20 h-20 rounded-full bg-foreground/5 flex items-center justify-center mx-auto mb-6 group-hover:bg-foreground/10 transition-colors duration-300">
+              <User size={40} className="text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <h3 className="text-2xl font-bold">{t('founder.title')}</h3>
-                <ExternalLink size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                <h3 className="text-xl font-semibold text-foreground/90">{t('founder.title')}</h3>
+                <ExternalLink size={18} className="text-muted-foreground/50 group-hover:text-foreground/70 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </div>
-              <p className="text-muted-foreground">{t('founder.name')}</p>
+              <p className="text-muted-foreground/80 text-sm">{t('founder.name')}</p>
             </div>
           </motion.a>
         </div>

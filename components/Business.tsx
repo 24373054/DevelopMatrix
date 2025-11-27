@@ -10,26 +10,22 @@ const businessItems = [
   {
     key: 'lab',
     icon: FlaskConical,
-    url: 'https://matrixlab.work/',
-    color: 'from-blue-500/20 to-cyan-500/20'
+    url: 'https://matrixlab.work/'
   },
   {
     key: 'exchange',
     icon: Wallet,
-    url: 'https://exchange.matrixlab.work/',
-    color: 'from-purple-500/20 to-pink-500/20'
+    url: 'https://exchange.matrixlab.work/'
   },
   {
     key: 'game',
     icon: Gamepad2,
-    url: 'https://immortal.matrixlab.work/',
-    color: 'from-green-500/20 to-emerald-500/20'
+    url: 'https://immortal.matrixlab.work/'
   },
   {
     key: 'community',
     icon: Users,
-    url: 'https://open.matrixlab.work/',
-    color: 'from-orange-500/20 to-red-500/20'
+    url: 'https://open.matrixlab.work/'
   }
 ];
 
@@ -62,16 +58,16 @@ export default function Business() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300 group"
+                className="glass rounded-2xl p-8 hover:scale-[1.02] hover:shadow-2xl transition-all duration-500 group"
               >
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4`}>
-                  <Icon size={32} className="text-foreground" />
+                <div className="w-14 h-14 rounded-xl bg-foreground/5 flex items-center justify-center mb-6 group-hover:bg-foreground/10 transition-colors duration-300">
+                  <Icon size={28} className="text-foreground/70 group-hover:text-foreground transition-colors duration-300" />
                 </div>
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-2xl font-bold">{t(`${item.key}.title`)}</h3>
-                  <ExternalLink size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-xl font-semibold text-foreground/90">{t(`${item.key}.title`)}</h3>
+                  <ExternalLink size={18} className="text-muted-foreground/50 group-hover:text-foreground/70 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                 </div>
-                <p className="text-muted-foreground">{t(`${item.key}.description`)}</p>
+                <p className="text-muted-foreground/80 text-sm leading-relaxed">{t(`${item.key}.description`)}</p>
               </motion.a>
             );
           })}
