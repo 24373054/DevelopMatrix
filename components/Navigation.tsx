@@ -69,12 +69,6 @@ export default function Navigation() {
                 {t('business')}
               </button>
               <button
-                onClick={() => scrollToSection('team')}
-                className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
-              >
-                {t('team')}
-              </button>
-              <button
                 onClick={() => scrollToSection('announcements')}
                 className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
               >
