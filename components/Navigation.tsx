@@ -6,6 +6,7 @@ import { Moon, Sun, Globe, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { startTransition } from './PageTransition';
 
 export default function Navigation() {
   const t = useTranslations('nav');
@@ -28,17 +29,33 @@ export default function Navigation() {
   }, []);
 
   const toggleLocale = () => {
+    startTransition(); // 触发语言切换时的过渡
     const newLocale = currentLocale === 'zh' ? 'en' : 'zh';
     const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-    router.push(newPath);
+    // 稍微延迟跳转以展示动画
+    setTimeout(() => {
+      router.push(newPath);
+    }, 300);
   };
 
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    startTransition(); // 触发全屏过渡
+
+    // 延迟滚动，让遮罩先出来
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const headerOffset = 80; // 导航栏高度 + 额外间距
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'auto' // 遮罩下直接跳转
+        });
+      }
+    }, 400);
   };
 
   if (!mounted) return null;
