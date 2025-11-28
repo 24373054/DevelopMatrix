@@ -26,13 +26,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-foreground tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-foreground tracking-tight">
             {t('title')}
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-2">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4">
             {t('subtitle')}
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-2xl mx-auto px-4">
             {t('description')}
           </p>
           <button

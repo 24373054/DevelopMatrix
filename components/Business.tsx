@@ -57,7 +57,7 @@ export default function Business() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-center tracking-tight text-foreground"
+          className="text-3xl md:text-5xl font-bold mb-12 md:mb-16 text-center tracking-tight text-foreground"
         >
           {t('title')}
         </motion.h2>

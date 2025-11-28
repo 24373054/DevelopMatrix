@@ -106,6 +106,18 @@
   @apply bg-background/40 backdrop-blur-xl border border-foreground/5 shadow-sm;
 }
 
+/* 移动端优化 */
+@media (hover: none) {
+  .spotlight-card::before {
+    display: none;
+  }
+  
+  .spotlight-card:active {
+    transform: scale(0.98);
+    background: rgba(var(--foreground), 0.05);
+  }
+}
+
 /* 极简滚动条 */
 ::-webkit-scrollbar {
   width: 6px;
