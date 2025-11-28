@@ -4,25 +4,24 @@
 
 @layer base {
   :root {
-    /* 浅色模式 - 冷色调、低对比度 */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 27%;
-    --muted: 210 20% 92%;
-    --muted-foreground: 215 15% 50%;
-    --border: 215 20% 88%;
-    --accent: 210 25% 88%;
-    --accent-foreground: 215 25% 30%;
+    /* 浅色模式 - 极冷灰调 */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --radius: 1rem;
   }
 
   .dark {
-    /* 深色模式 - 更深的冷色调、极低对比度 */
-    --background: 220 20% 8%;
-    --foreground: 210 20% 92%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 215 12% 60%;
-    --border: 220 15% 18%;
-    --accent: 220 15% 16%;
-    --accent-foreground: 210 20% 88%;
+    /* 深色模式 - 深空灰蓝 */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --border: 217 33% 17%;
+    --card: 222 47% 11%;
   }
 }
 
@@ -31,51 +30,93 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground selection:bg-foreground/10;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* 动态背景光晕 - 冷调 */
+.ambient-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, rgba(var(--foreground), 0.03) 0%, transparent 50%);
 }
 
-/* Custom scrollbar - 极简设计 */
+.ambient-light::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(148, 163, 184, 0.1) 0%, transparent 30%);
+  animation: moveLight 20s linear infinite;
+}
+
+.dark .ambient-light::before {
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 30%);
+}
+
+@keyframes moveLight {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10%, 10%) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* 高级Spotlight卡片效果 */
+.spotlight-card {
+  @apply relative overflow-hidden rounded-3xl border border-border/5 bg-card/30 backdrop-blur-sm transition-all duration-500;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.06),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* 深色模式下的Spotlight更亮一点 */
+.dark .spotlight-card::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.1),
+    transparent 40%
+  );
+}
+
+/* 融合式组件基础类 */
+.fusion-glass {
+  @apply bg-background/40 backdrop-blur-xl border border-foreground/5 shadow-sm;
+}
+
+/* 极简滚动条 */
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  @apply bg-transparent;
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-muted-foreground/20 rounded-full;
-  transition: background-color 0.2s ease;
+  background: rgba(156, 163, 175, 0.2);
+  border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/40;
-}
-
-/* Glassmorphism effect - 融合式无边框设计 */
-.glass {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-}
-
-.dark .glass {
-  background: rgba(15, 20, 30, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Smooth transitions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  background: rgba(156, 163, 175, 0.4);
 }

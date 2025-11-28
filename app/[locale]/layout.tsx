@@ -18,6 +18,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        <div className="ambient-light" />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
