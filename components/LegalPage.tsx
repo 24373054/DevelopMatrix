@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -16,6 +16,7 @@ interface LegalPageProps {
 
 export default function LegalPage({ translationNamespace }: LegalPageProps) {
   const t = useTranslations(translationNamespace);
+  const locale = useLocale();
   
   // 获取 sections 数组
   // 注意：next-intl 的 useTranslations 在处理数组时需要特殊技巧，或者我们直接遍历预定义的索引
@@ -33,7 +34,7 @@ export default function LegalPage({ translationNamespace }: LegalPageProps) {
         transition={{ duration: 0.8 }}
       >
         <Link 
-          href="/"
+          href={`/${locale}`}
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors group"
         >
           <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />

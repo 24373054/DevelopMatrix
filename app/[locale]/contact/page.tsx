@@ -1,12 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Headphones, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
+  const locale = useLocale();
 
   const contactInfo = [
     {
@@ -35,7 +36,7 @@ export default function ContactPage() {
         transition={{ duration: 0.8 }}
       >
         <Link 
-          href="/"
+          href={`/${locale}`}
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors group"
         >
           <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
