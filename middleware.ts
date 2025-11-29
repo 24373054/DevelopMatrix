@@ -6,5 +6,7 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // Match only internationalized pathnames
+  // Explicitly exclude the google verification file
+  matcher: ['/((?!api|_next|_vercel|googleeb35aa150854bf0d\\.html|.*\\..*).*)']
 };
