@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Inter } from 'next/font/google';
 import PageTransition from '@/components/PageTransition';
+import CookieConsent from '@/components/CookieConsent';
 import '@/app/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -29,6 +30,7 @@ export default async function LocaleLayout({
             disableTransitionOnChange
           >
             {children}
+            <CookieConsent />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
