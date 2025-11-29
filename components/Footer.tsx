@@ -1,15 +1,22 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { startTransition } from './PageTransition';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const router = useRouter();
+  const locale = useLocale();
 
-  const handleLinkClick = (text: string) => {
+  const handleLinkClick = (e: React.MouseEvent, path: string, text: string) => {
+    e.preventDefault();
     startTransition(text);
+    // 延迟跳转，给动画展示时间，避免 Segment Mismatch
+    setTimeout(() => {
+      router.push(`/${locale}${path}`);
+    }, 400);
   };
 
   return (
@@ -38,27 +45,27 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm font-medium">
-            <Link 
-              href="/privacy" 
-              onClick={() => handleLinkClick(t('privacy'))}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+            <a 
+              href={`/${locale}/privacy`}
+              onClick={(e) => handleLinkClick(e, '/privacy', t('privacy'))}
+              className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               {t('privacy')}
-            </Link>
-            <Link 
-              href="/terms" 
-              onClick={() => handleLinkClick(t('terms'))}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+            </a>
+            <a 
+              href={`/${locale}/terms`}
+              onClick={(e) => handleLinkClick(e, '/terms', t('terms'))}
+              className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               {t('terms')}
-            </Link>
-            <Link 
-              href="/contact" 
-              onClick={() => handleLinkClick(t('contact'))}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+            </a>
+            <a 
+              href={`/${locale}/contact`}
+              onClick={(e) => handleLinkClick(e, '/contact', t('contact'))}
+              className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               {t('contact')}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
