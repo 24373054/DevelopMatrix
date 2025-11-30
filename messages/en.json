@@ -46,17 +46,21 @@
   "announcements": {
     "title": "Announcements",
     "latest": "Latest Announcements",
-    "noAnnouncements": "No announcements yet",
-    "items": {
-      "0": {
-        "date": "2024.11.30",
-        "title": "Ke Entropy Strategic Ecosystem Launch",
-        "summary": "Ke Entropy announces its 'One Core, Two Wings' strategy. With Matrix Lab as the technological core, we drive the dual development of the MATRIXLAB EXCHANGE financial platform and the 'Immortal Ledger' metaverse game. We aim to break boundaries and build a complete Web3 ecosystem integrating fundamental research, asset management, and immersive experiences."
-      },
-      "1": {
-        "date": "2024.11.29",
-        "title": "Compliance and Security Statement",
-        "summary": "Adhering to 'Technology for Good, Compliance First,' we focus on blockchain R&D, security audits, and decentralized protocol design. We strictly comply with global regulations. All financial-related operations run within compliance frameworks, ensuring secure and transparent standards for the industry."
+    "announcements": {
+      "title": "Announcements",
+      "items": {
+        "0": {
+          "date": "2024.11.30",
+          "title": "Ke Entropy Strategic Ecosystem Launch",
+          "summary": "Ke Entropy announces its 'One Core, Two Wings' strategy. With Matrix Lab as the technological core, we drive the dual development of the MATRIXLAB EXCHANGE financial platform and the 'Immortal Ledger' metaverse game. We aim to break boundaries and build a complete Web3 ecosystem integrating fundamental research, asset management, and immersive experiences.",
+          "content": "Ke Entropy Technology officially announces its 'One Core, Two Wings' panoramic ecosystem strategy, marking a new stage from single technical R&D to diversified ecosystem construction.\n\n1. Strategic Core: Matrix Lab\nAs the technological engine of the ecosystem, Matrix Lab will focus on next-generation blockchain consensus algorithms, cross-chain interoperability protocols, and Zero-Knowledge Proof (ZK) privacy solutions. The lab aims to provide high-performance, high-security infrastructure support for the entire ecosystem and export technical standards to the industry.\n\n2. Financial Wing: MATRIXLAB EXCHANGE\nThis is not just a trading platform, but a next-generation digital asset management center. We will integrate institutional-grade risk control systems, AI-driven quantitative analysis tools, and seamless fiat on/off ramps to provide users with a secure, transparent, and intelligent trading experience. All assets are verifiable on-chain, eliminating black-box operations.\n\n3. Entertainment Wing: Immortal Ledger\nWe are redefining GameFi. 'Immortal Ledger' uses dynamic NFT technology and Autonomous World concepts to build an on-chain civilization evolved by players. Here, asset ownership belongs entirely to players, and the economic system is automatically regulated by smart contracts, realizing true 'Play to Own'.\n\nIn the future, Ke Entropy will continue to break the boundaries between virtual and reality, connecting the real world with the digital future through technological innovation."
+        },
+        "1": {
+          "date": "2024.11.29",
+          "title": "Compliance and Security Statement",
+          "summary": "Adhering to 'Technology for Good, Compliance First,' we focus on blockchain R&D, security audits, and decentralized protocol design. We strictly comply with global regulations. All financial-related operations run within compliance frameworks, ensuring secure and transparent standards for the industry.",
+          "content": "Ke Entropy Technology always regards compliance and security as the lifeline of corporate development. Regarding recent market concerns, we hereby state:\n\n1. Clear Business Boundaries\nOur company engages solely in blockchain underlying technology research, software development, and technical consulting services. We do not participate in, assist, or organize any form of illegal digital currency trading activities. All public-facing products (such as games and tools) comply with the laws and regulations of the operating regions.\n\n2. No Stablecoin Issuance\nRegarding market rumors, we explicitly state: Ke Entropy Technology has no plans to issue stablecoins on its own at present or in the near future. Our stablecoin research is limited to academic and algorithmic model exploration, aiming to provide theoretical references for the industry.\n\n3. Strict Risk Control System\nOur financial-related businesses (such as future compliant trading services) will integrate top-tier international KYC/AML systems and undergo regular security audits by authoritative third-party institutions. We commit to implementing a 100% reserve system for user assets and disclosing on-chain addresses for supervision.\n\nKe Entropy is willing to work with regulators and industry partners to promote the development of the Web3 industry in a more standardized, transparent, and healthy direction."
+        }
       }
     }
   },

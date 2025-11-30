@@ -28,7 +28,8 @@ export default function Announcements() {
           id: i,
           date: t(`items.${i}.date`),
           title: title,
-          summary: t(`items.${i}.summary`)
+          summary: t(`items.${i}.summary`),
+          content: t(`items.${i}.content`)
         });
       } catch (e) {
         break;
@@ -141,9 +142,8 @@ export default function Announcements() {
 
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
                   <p className="text-lg leading-relaxed text-foreground/90 whitespace-pre-wrap">
-                    {selectedItem.summary}
+                    {selectedItem.content || selectedItem.summary}
                   </p>
-                  {/* 这里未来可以添加 content 字段来显示更详细的内容 */}
                 </div>
               </motion.div>
             </div>
