@@ -15,29 +15,29 @@
   },
   "about": {
     "title": "About Us",
-    "content": "Ke Entropy Technology is dedicated to Web3 technology innovation and application. By building a complete blockchain ecosystem, we provide users with secure and efficient decentralized solutions."
+    "content": "Ke Entropy Technology is a comprehensive technology enterprise dedicated to building a panoramic Web3 ecosystem. Powered by Matrix Lab, we delve deep into blockchain protocols and economic models; simultaneously, we expand into the application layer with MATRIXLAB EXCHANGE, an all-in-one platform for wallets, trading, and analytics, and incubate 'Immortal Ledger,' an epic on-chain civilization. From infrastructure to digital entertainment, we prioritize innovation and compliance, aiming to provide sustainable decentralized solutions for the digital economy."
   },
   "business": {
     "title": "Business Areas",
     "lab": {
       "title": "Matrix Lab",
-      "description": "Web3 Innovation Laboratory, Exploring Blockchain Technology Frontiers"
+      "description": "Web3 Innovation Lab exploring the frontier of blockchain technology"
     },
     "exchange": {
       "title": "MATRIXLAB EXCHANGE",
-      "description": "Revolutionary Web3 Innovation Platform - Integrated Ecosystem: Wallet, Trading, Quantitative Analysis, Risk Control"
+      "description": "Revolutionary Web3 platform integrating wallet, trading, analytics, and risk control"
     },
     "game": {
       "title": "Immortal Ledger",
-      "description": "The Last Chronicle of On-Chain Civilization - 瀛州纪"
+      "description": "The last history book of on-chain civilization"
     },
     "community": {
       "title": "Developer Community",
-      "description": "Immortal Ledger Developer Community & Waiting List"
+      "description": "Developer community and waitlist for Immortal Ledger"
     }
   },
   "team": {
-    "title": "Team Members",
+    "title": "Our Team",
     "founder": {
       "title": "Founder",
       "name": "View Resume"
@@ -46,7 +46,19 @@
   "announcements": {
     "title": "Announcements",
     "latest": "Latest Announcements",
-    "noAnnouncements": "No announcements yet"
+    "noAnnouncements": "No announcements yet",
+    "items": {
+      "0": {
+        "date": "2024.11.30",
+        "title": "Ke Entropy Strategic Ecosystem Launch",
+        "summary": "Ke Entropy announces its 'One Core, Two Wings' strategy. With Matrix Lab as the technological core, we drive the dual development of the MATRIXLAB EXCHANGE financial platform and the 'Immortal Ledger' metaverse game. We aim to break boundaries and build a complete Web3 ecosystem integrating fundamental research, asset management, and immersive experiences."
+      },
+      "1": {
+        "date": "2024.11.29",
+        "title": "Compliance and Security Statement",
+        "summary": "Adhering to 'Technology for Good, Compliance First,' we focus on blockchain R&D, security audits, and decentralized protocol design. We strictly comply with global regulations. All financial-related operations run within compliance frameworks, ensuring secure and transparent standards for the industry."
+      }
+    }
   },
   "links": {
     "title": "Related Links",

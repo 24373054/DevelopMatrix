@@ -3,13 +3,52 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Megaphone } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Megaphone, Calendar, ChevronRight } from 'lucide-react';
 
 export default function Announcements() {
   const t = useTranslations('announcements');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [items, setItems] = useState<any[]>([]);
+
+  // 解决 next-intl 数组获取问题
+  useEffect(() => {
+    const loadedItems = [];
+    // 尝试获取前3条公告，如果没有则停止
+    for (let i = 0; i < 3; i++) {
+      try {
+        // 这是一个hack，因为next-intl不直接支持返回数组对象，只能通过key索引
+        const title = t(`items.${i}.title`);
+        if (title === `items.${i}.title`) break; // 如果返回的是key本身，说明没有这个条目
+        
+        loadedItems.push({
+          id: i,
+          date: t(`items.${i}.date`),
+          title: title,
+          summary: t(`items.${i}.summary`)
+        });
+      } catch (e) {
+        break;
+      }
+    }
+    setItems(loadedItems);
+  }, [t]); // 依赖于 t，当语言切换时重新加载
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemAnim = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
 
   return (
     <section id="announcements" className="min-h-screen flex items-center py-24">
@@ -23,19 +62,43 @@ export default function Announcements() {
         >
           {t('title')}
         </motion.h2>
+
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="fusion-glass rounded-3xl p-10 md:p-16 border border-foreground/5"
+          variants={container}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          <div className="flex flex-col items-center justify-center text-center py-20">
-            <div className="w-20 h-20 rounded-3xl bg-foreground/5 flex items-center justify-center mb-8">
-              <Megaphone size={36} className="text-foreground/60" />
-            </div>
-            <h3 className="text-2xl font-semibold mb-4 text-foreground tracking-tight">{t('latest')}</h3>
-            <p className="text-muted-foreground/60 text-lg">{t('noAnnouncements')}</p>
-          </div>
+          {items.map((item) => (
+            <motion.div
+              key={item.id}
+              variants={itemAnim}
+              className="fusion-glass rounded-3xl p-8 border border-foreground/5 group hover:border-foreground/10 transition-colors duration-300"
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground/80 font-medium bg-foreground/5 px-3 py-1 rounded-full">
+                  <Calendar size={14} />
+                  <span>{item.date}</span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-foreground text-foreground group-hover:text-background transition-colors duration-300">
+                  <Megaphone size={16} />
+                </div>
+              </div>
+              
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground tracking-tight group-hover:text-foreground/90 transition-colors">
+                {item.title}
+              </h3>
+              
+              <p className="text-muted-foreground/80 leading-relaxed mb-6 line-clamp-4">
+                {item.summary}
+              </p>
+
+              <div className="flex items-center text-sm font-medium text-foreground/60 group-hover:text-foreground transition-colors mt-auto pt-4 border-t border-foreground/5">
+                <span>Read Detail</span>
+                <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
