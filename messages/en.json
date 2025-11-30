@@ -77,6 +77,77 @@
     "github": "Game Open Source",
     "founder": "Contact Developer"
   },
+  "developers": {
+    "metadata": {
+      "title": "Developer Center | Matrix Lab",
+      "description": "Join the Matrix Lab developer ecosystem to access API docs, SDKs, and open-source resources. Explore the frontier of consensus algorithms, ZK privacy, and cross-chain interoperability."
+    },
+    "hero": {
+      "title": "Build the Decentralized Future",
+      "subtitle": "Matrix Lab Developer Center",
+      "description": "We provide high-performance infrastructure and toolchains to help developers break the boundaries of blockchain technology. From underlying protocols to application interfaces, define Web3 standards with Matrix Lab.",
+      "cta_docs": "Read Documentation",
+      "cta_github": "Visit GitHub"
+    },
+    "features": {
+      "title": "Core Tech Stack",
+      "consensus": {
+        "title": "Next-Gen Consensus",
+        "desc": "DAG-based asynchronous consensus mechanism realizing infinite horizontal scalability and millisecond-level finality."
+      },
+      "privacy": {
+        "title": "ZK Privacy Computation",
+        "desc": "Modular Zero-Knowledge Proof solutions ensuring on-chain verifiability while protecting data privacy."
+      },
+      "interop": {
+        "title": "Omnichain Interoperability",
+        "desc": "Decentralized cross-chain messaging protocol breaking the island effect and enabling free asset flow."
+      }
+    },
+    "resources": {
+      "title": "Developer Resources",
+      "api": {
+        "title": "API Reference",
+        "desc": "Complete RESTful and WebSocket API documentation for easy integration with exchange and on-chain data."
+      },
+      "sdk": {
+        "title": "SDK Toolkits",
+        "desc": "Official SDKs supporting TypeScript, Rust, and Go to rapidly build decentralized applications."
+      },
+      "community": {
+        "title": "Developer Community",
+        "desc": "Join our Discord technical channels to communicate directly with the core development team."
+      }
+    }
+  },
+  "exchange": {
+    "metadata": {
+      "title": "Matrix Lab Exchange | Next-Gen Digital Asset Trading Platform",
+      "description": "Secure, transparent, and compliant institutional-grade digital asset trading platform. Featuring high-performance matching engine, 100% proof of reserves, and AI-assisted risk control."
+    },
+    "hero": {
+      "badge": "Institutional Crypto Finance",
+      "title": "Redefining Asset Trading",
+      "subtitle": "Matrix Lab Exchange",
+      "description": "The next-generation trading terminal built for professional investors. We perfectly blend traditional financial compliance standards with Web3 transparency to provide ultimate liquidity and security.",
+      "cta_start": "Request Early Access",
+      "cta_demo": "View Demo"
+    },
+    "features": {
+      "security": {
+        "title": "Bank-Grade Security",
+        "desc": "Multi-sig cold wallet storage combined with real-time on-chain audit systems ensures zero asset risk."
+      },
+      "performance": {
+        "title": "Microsecond Latency",
+        "desc": "Self-developed L3 matching engine supporting million-level TPS, rejecting slippage and downtime."
+      },
+      "compliance": {
+        "title": "Compliant & Transparent",
+        "desc": "Embracing regulation, supporting seamless fiat on/off ramps, providing complete tax and audit reports."
+      }
+    }
+  },
   "footer": {
     "copyright": "© 2024 Ke Entropy Technology. All rights reserved.",
     "beian": "京公网安备11010802046489号",

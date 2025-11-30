@@ -77,6 +77,77 @@
     "github": "游戏开源地址",
     "founder": "联系开发者"
   },
+  "developers": {
+    "metadata": {
+      "title": "开发者中心 | Matrix Lab",
+      "description": "加入 Matrix Lab 开发者生态，获取 API 文档、SDK 工具包与开源资源。探索共识算法、ZK 隐私与跨链互操作性的技术前沿。"
+    },
+    "hero": {
+      "title": "构建去中心化未来",
+      "subtitle": "Matrix Lab 开发者中心",
+      "description": "我们提供高性能的基础设施与工具链，助力开发者突破区块链技术的边界。从底层协议到应用层接口，Matrix Lab 与您共同定义 Web3 的标准。",
+      "cta_docs": "阅读文档",
+      "cta_github": "访问 GitHub"
+    },
+    "features": {
+      "title": "核心技术栈",
+      "consensus": {
+        "title": "下一代共识",
+        "desc": "基于 DAG 的异步共识机制，实现无限水平扩展与毫秒级确认。"
+      },
+      "privacy": {
+        "title": "ZK 隐私计算",
+        "desc": "模块化零知识证明方案，在保护数据隐私的同时确保链上可验证性。"
+      },
+      "interop": {
+        "title": "全链互操作",
+        "desc": "去中心化跨链消息传递协议，打破链岛效应，实现资产自由流动。"
+      }
+    },
+    "resources": {
+      "title": "开发者资源",
+      "api": {
+        "title": "API 参考",
+        "desc": "完整的 RESTful 与 WebSocket API 文档，轻松接入交易所与链上数据。"
+      },
+      "sdk": {
+        "title": "SDK 工具包",
+        "desc": "支持 TypeScript, Rust, Go 的官方 SDK，快速构建去中心化应用。"
+      },
+      "community": {
+        "title": "开发者社区",
+        "desc": "加入我们的 Discord 技术频道，与核心开发团队直接交流。"
+      }
+    }
+  },
+  "exchange": {
+    "metadata": {
+      "title": "Matrix Lab Exchange | 下一代数字资产交易平台",
+      "description": "安全、透明、合规的机构级数字资产交易平台。提供高性能撮合引擎、100% 准备金证明与 AI 辅助风控。"
+    },
+    "hero": {
+      "badge": "机构级加密金融",
+      "title": "重新定义资产交易",
+      "subtitle": "Matrix Lab Exchange",
+      "description": "为专业投资者打造的下一代交易终端。我们将传统的金融合规标准与 Web3 的透明性完美融合，提供极致的流动性与安全性。",
+      "cta_start": "申请内测",
+      "cta_demo": "查看演示"
+    },
+    "features": {
+      "security": {
+        "title": "银行级安全",
+        "desc": "多重签名冷钱包存储，配合实时链上审计系统，确保资产零风险。"
+      },
+      "performance": {
+        "title": "微秒级延迟",
+        "desc": "自主研发的 L3 撮合引擎，支持百万级 TPS，拒绝插针与宕机。"
+      },
+      "compliance": {
+        "title": "合规透明",
+        "desc": "拥抱监管，支持法币无缝出入金，提供完整的税务与审计报告。"
+      }
+    }
+  },
   "footer": {
     "copyright": "© 2024 刻熵科技 版权所有",
     "beian": "京公网安备11010802046489号",

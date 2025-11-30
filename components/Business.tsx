@@ -1,38 +1,44 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExternalLink, Wallet, Gamepad2, Users, FlaskConical } from 'lucide-react';
-
-const businessItems = [
-  {
-    key: 'lab',
-    icon: FlaskConical,
-    url: 'https://matrixlab.work/'
-  },
-  {
-    key: 'exchange',
-    icon: Wallet,
-    url: 'https://exchange.matrixlab.work/'
-  },
-  {
-    key: 'game',
-    icon: Gamepad2,
-    url: 'https://immortal.matrixlab.work/'
-  },
-  {
-    key: 'community',
-    icon: Users,
-    url: 'https://open.matrixlab.work/'
-  }
-];
+import Link from 'next/link';
 
 export default function Business() {
   const t = useTranslations('business');
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const businessItems = [
+    {
+      key: 'lab',
+      icon: FlaskConical,
+      url: `/${locale}/developers`,
+      internal: true
+    },
+    {
+      key: 'exchange',
+      icon: Wallet,
+      url: `/${locale}/products/exchange`,
+      internal: true
+    },
+    {
+      key: 'game',
+      icon: Gamepad2,
+      url: 'https://immortal.matrixlab.work/',
+      internal: false
+    },
+    {
+      key: 'community',
+      icon: Users,
+      url: 'https://open.matrixlab.work/',
+      internal: false
+    }
+  ];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const cards = document.getElementsByClassName('spotlight-card');
@@ -68,8 +74,8 @@ export default function Business() {
               <motion.a
                 key={item.key}
                 href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={item.internal ? "_self" : "_blank"}
+                rel={item.internal ? "" : "noopener noreferrer"}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
@@ -81,7 +87,7 @@ export default function Business() {
                   </div>
                   <div className="flex items-start justify-between mb-4">
                     <h3 className="text-2xl font-semibold text-foreground/90 group-hover/card:text-foreground transition-colors duration-500">{t(`${item.key}.title`)}</h3>
-                    <ExternalLink size={20} className="text-muted-foreground/40 group-hover/card:text-foreground/70 group-hover/card:translate-x-1 group-hover/card:-translate-y-1 transition-all duration-500" />
+                    <ExternalLink size={20} className={`text-muted-foreground/40 group-hover/card:text-foreground/70 group-hover/card:translate-x-1 group-hover/card:-translate-y-1 transition-all duration-500 ${item.internal ? 'hidden' : ''}`} />
                   </div>
                   <p className="text-muted-foreground/70 text-base leading-relaxed group-hover/card:text-muted-foreground/90 transition-colors duration-500">{t(`${item.key}.description`)}</p>
                 </div>
