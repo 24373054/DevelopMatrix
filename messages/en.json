@@ -1,4 +1,9 @@
 {
+  "metadata": {
+    "title": "Ke Entropy Technology | Building Panoramic Web3 Ecosystem",
+    "description": "Ke Entropy Technology is a comprehensive Web3 enterprise, encompassing Matrix Lab, MATRIXLAB EXCHANGE, and 'Immortal Ledger' metaverse game. We are dedicated to the integration of fundamental technological innovation, compliant financial services, and decentralized applications.",
+    "keywords": "Web3, Blockchain, Ke Entropy, Matrix Lab, Crypto Exchange, Metaverse, Immortal Ledger, GameFi, Decentralized Finance"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -38,9 +43,11 @@
   },
   "team": {
     "title": "Our Team",
+    "intro": "Robust technology supports a robust industry",
     "founder": {
-      "title": "Founder",
-      "name": "View Resume"
+      "name": "Seal Wax",
+      "title": "Founder & Chief Architect",
+      "desc": "Founder of Ke Entropy Technology, dedicated to research and innovation in frontier digital technologies and distributed systems. Focused on the intersection of Blockchain, Web3, and AI, driving exploratory growth in underlying mechanisms and system architecture. Committed to product development driven by scientific thinking, adhering to technical transparency and compliance to build future-oriented digital infrastructure capabilities."
     }
   },
   "announcements": {
