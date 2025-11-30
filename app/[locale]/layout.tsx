@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { Inter } from 'next/font/google';
 import PageTransition from '@/components/PageTransition';
 import CookieConsent from '@/components/CookieConsent';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import '@/app/globals.css';
 import { Metadata } from 'next';
 
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   const messages = await getMessages();
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,6 +68,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        {gaId && <GoogleAnalytics gaId={gaId} />}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
