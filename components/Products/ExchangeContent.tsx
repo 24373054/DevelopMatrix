@@ -49,10 +49,15 @@ export default function ExchangeContent() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <button className="px-8 py-4 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+              <a
+                href="https://exchange.matrixlab.work/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2"
+              >
                 <span>{t('hero.cta_start')}</span>
                 <ArrowRight size={20} />
-              </button>
+              </a>
               <button className="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex items-center gap-2 backdrop-blur-sm">
                 <PlayCircle size={20} />
                 <span>{t('hero.cta_demo')}</span>

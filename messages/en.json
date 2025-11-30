@@ -25,8 +25,8 @@
   "business": {
     "title": "Business Areas",
     "lab": {
-      "title": "Matrix Lab",
-      "description": "Web3 Innovation Lab exploring the frontier of blockchain technology"
+      "title": "Developer Center",
+      "description": "Open docs, SDKs, and APIs to build Web3 applications"
     },
     "exchange": {
       "title": "MATRIXLAB EXCHANGE",
@@ -87,7 +87,8 @@
       "subtitle": "Matrix Lab Developer Center",
       "description": "We provide high-performance infrastructure and toolchains to help developers break the boundaries of blockchain technology. From underlying protocols to application interfaces, define Web3 standards with Matrix Lab.",
       "cta_docs": "Read Documentation",
-      "cta_github": "Visit GitHub"
+      "cta_github": "Visit GitHub",
+      "cta_lab": "Matrix Lab Website"
     },
     "features": {
       "title": "Core Tech Stack",

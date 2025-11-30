@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Code2, Shield, Globe, Terminal, Box, Users, ArrowRight, Github, FileText, Layers } from 'lucide-react';
+import { Code2, Shield, Globe, Terminal, Box, Users, ArrowRight, Github, FileText, Layers, FlaskConical } from 'lucide-react';
 
 export default function DeveloperContent() {
   const t = useTranslations('developers');
@@ -64,6 +64,15 @@ export default function DeveloperContent() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://matrixlab.work/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg shadow-blue-500/20"
+              >
+                <FlaskConical size={20} />
+                <span>{t('hero.cta_lab')}</span>
+              </a>
               <a
                 href="#"
                 className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-gray-100 transition-colors flex items-center gap-2"

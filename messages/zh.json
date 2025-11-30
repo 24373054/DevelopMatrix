@@ -25,8 +25,8 @@
   "business": {
     "title": "业务领域",
     "lab": {
-      "title": "Matrix Lab",
-      "description": "Web3创新实验室，探索区块链技术前沿"
+      "title": "开发者中心",
+      "description": "开放的文档、SDK 与 API，助力构建 Web3 应用"
     },
     "exchange": {
       "title": "MATRIXLAB EXCHANGE",
@@ -87,7 +87,8 @@
       "subtitle": "Matrix Lab 开发者中心",
       "description": "我们提供高性能的基础设施与工具链，助力开发者突破区块链技术的边界。从底层协议到应用层接口，Matrix Lab 与您共同定义 Web3 的标准。",
       "cta_docs": "阅读文档",
-      "cta_github": "访问 GitHub"
+      "cta_github": "访问 GitHub",
+      "cta_lab": "Matrix Lab 官网"
     },
     "features": {
       "title": "核心技术栈",
