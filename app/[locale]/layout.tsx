@@ -48,9 +48,28 @@ export default async function LocaleLayout({
 }) {
   const messages = await getMessages();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ke Entropy Technology",
+    "url": "https://matrixlab.work",
+    "sameAs": [
+      "https://github.com/24373054"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "24373054@buaa.edu.cn",
+      "contactType": "customer support"
+    }
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="ambient-light" />
         <PageTransition />
         <NextIntlClientProvider messages={messages}>
