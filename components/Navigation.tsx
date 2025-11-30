@@ -18,6 +18,7 @@ export default function Navigation() {
   const router = useRouter();
 
   const currentLocale = pathname.split('/')[1] || 'zh';
+  const isHomePage = pathname === `/${currentLocale}` || pathname === '/';
 
   useEffect(() => {
     setMounted(true);
@@ -31,15 +32,38 @@ export default function Navigation() {
   const toggleLocale = () => {
     startTransition(); // 触发语言切换时的过渡
     const newLocale = currentLocale === 'zh' ? 'en' : 'zh';
+    // 如果当前不是首页，切换语言时最好保持在当前页面，或者回首页？
+    // 简单处理：直接替换 locale 前缀
     const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-    // 稍微延迟跳转以展示动画
+    
     setTimeout(() => {
       router.push(newPath);
     }, 300);
   };
 
+  const handleLogoClick = () => {
+    if (isHomePage) {
+      scrollToSection('home');
+    } else {
+      startTransition();
+      setTimeout(() => {
+        router.push(`/${currentLocale}`);
+      }, 300);
+    }
+  };
+
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
+    
+    if (!isHomePage) {
+      // 如果不在首页，点击菜单项跳转回首页
+      startTransition();
+      setTimeout(() => {
+        router.push(`/${currentLocale}`);
+      }, 300);
+      return;
+    }
+
     startTransition(); // 触发全屏过渡
 
     // 延迟滚动，让遮罩先出来
@@ -70,21 +94,28 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={handleLogoClick}
               className="text-lg font-medium hover:text-muted-foreground transition-all duration-300 hover:scale-105 tracking-tight"
             >
               刻熵科技
             </button>
+            {/* 仅在首页显示锚点菜单，或者在非首页显示"返回首页" */}
             <div className="hidden md:flex space-x-6">
-              {['about', 'business', 'announcements', 'links'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
-                >
-                  {t(item)}
-                </button>
-              ))}
+              {isHomePage ? (
+                ['about', 'business', 'announcements', 'links'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
+                  >
+                    {t(item)}
+                  </button>
+                ))
+              ) : (
+                // 非首页时，如果不想要"回到首页"按钮（因为Logo已经有了），可以留空
+                // 或者可以放一个面包屑
+                null
+              )}
             </div>
           </div>
 
@@ -130,15 +161,24 @@ export default function Navigation() {
             className="md:hidden overflow-hidden border-t border-foreground/5 bg-background/80 backdrop-blur-xl"
           >
             <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col">
-              {['about', 'business', 'announcements', 'links'].map((item) => (
+              {isHomePage ? (
+                ['about', 'business', 'announcements', 'links'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className="text-left py-2 px-2 text-base font-medium hover:bg-foreground/5 rounded-lg transition-colors"
+                  >
+                    {t(item)}
+                  </button>
+                ))
+              ) : (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
+                  onClick={handleLogoClick}
                   className="text-left py-2 px-2 text-base font-medium hover:bg-foreground/5 rounded-lg transition-colors"
                 >
-                  {t(item)}
+                  {t('home')}
                 </button>
-              ))}
+              )}
               <div className="flex items-center justify-between pt-4 border-t border-foreground/5 mt-2 px-2">
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
