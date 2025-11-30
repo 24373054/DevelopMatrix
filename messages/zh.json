@@ -52,6 +52,7 @@
   },
   "announcements": {
     "title": "公司动态",
+    "itemsCount": "2",
     "items": {
       "0": {
         "date": "2024.11.30",

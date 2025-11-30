@@ -16,13 +16,32 @@ export default function Announcements() {
   // 解决 next-intl 数组获取问题
   useEffect(() => {
     const loadedItems = [];
-    // 尝试获取前3条公告，如果没有则停止
-    for (let i = 0; i < 3; i++) {
+    
+    // 获取公告总数，默认为0
+    let count = 0;
+    try {
+      const countStr = t('itemsCount');
+      // 检查是否返回了key本身（说明没找到）
+      if (countStr && countStr !== 'announcements.itemsCount') {
+        count = parseInt(countStr, 10);
+      }
+    } catch (e) {
+      console.error('Failed to parse items count', e);
+    }
+
+    // 如果获取失败，尝试手动检测前3条（兼容旧逻辑，但现在主要依靠 itemsCount）
+    const loopLimit = count > 0 ? count : 3;
+
+    for (let i = 0; i < loopLimit; i++) {
       try {
         // 这是一个hack，因为next-intl不直接支持返回数组对象，只能通过key索引
         const title = t(`items.${i}.title`);
         // 更稳健的检查：如果返回的字符串包含 items.i.title，说明没有翻译
-        if (!title || title.includes(`items.${i}.title`)) break;
+        if (!title || title.includes(`items.${i}.title`)) {
+            // 如果依靠 itemsCount 但发现内容缺失，应该停止
+            if (count > 0) console.warn(`Missing translation for item ${i}`);
+            break;
+        }
         
         loadedItems.push({
           id: i,
