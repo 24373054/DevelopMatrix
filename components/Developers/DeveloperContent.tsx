@@ -56,7 +56,7 @@ export default function DeveloperContent() {
             <h2 className="text-sm md:text-base font-bold tracking-[0.2em] text-blue-400 uppercase mb-6">
               {t('hero.subtitle')}
             </h2>
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+            <h1 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/60">
               {t('hero.title')}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
@@ -75,7 +75,7 @@ export default function DeveloperContent() {
               </a>
               <a
                 href="#"
-                className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-gray-100 transition-colors flex items-center gap-2"
+                className="px-8 py-4 rounded-full bg-foreground text-background font-bold hover:bg-foreground/90 transition-colors flex items-center gap-2"
               >
                 <FileText size={20} />
                 <span>{t('hero.cta_docs')}</span>
@@ -84,7 +84,7 @@ export default function DeveloperContent() {
                 href="https://github.com/24373054"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-2"
+                className="px-8 py-4 rounded-full bg-foreground/10 backdrop-blur-md border border-foreground/20 hover:bg-foreground/20 transition-colors flex items-center gap-2"
               >
                 <Github size={20} />
                 <span>{t('hero.cta_github')}</span>
@@ -98,7 +98,7 @@ export default function DeveloperContent() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-20 px-4 bg-black/20">
+      <section className="py-20 px-4 bg-foreground/5">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0 }}
@@ -117,9 +117,9 @@ export default function DeveloperContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="fusion-glass p-8 rounded-3xl border border-white/5 hover:border-white/10 transition-colors"
+                className="fusion-glass p-8 rounded-3xl border border-foreground/10 hover:border-foreground/20 transition-colors"
               >
-                <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit">
+                <div className="mb-6 p-4 rounded-2xl bg-foreground/5 w-fit">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4">{t(`features.${item.key}.title`)}</h3>
@@ -152,14 +152,14 @@ export default function DeveloperContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-3xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all duration-300"
+                className="group relative overflow-hidden rounded-3xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/5 transition-all duration-300"
               >
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-8">
-                    <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors">
+                    <div className="p-3 rounded-xl bg-foreground/5 group-hover:bg-foreground/10 transition-colors">
                       {item.icon}
                     </div>
-                    <ArrowRight className="text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all" />
                   </div>
                   
                   <h3 className="text-xl font-bold mb-2">{t(`resources.${item.key}.title`)}</h3>

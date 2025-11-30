@@ -58,7 +58,7 @@ export default function ExchangeContent() {
                 <span>{t('hero.cta_start')}</span>
                 <ArrowRight size={20} />
               </a>
-              <button className="px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex items-center gap-2 backdrop-blur-sm">
+              <button className="px-8 py-4 rounded-full bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors flex items-center gap-2 backdrop-blur-sm">
                 <PlayCircle size={20} />
                 <span>{t('hero.cta_demo')}</span>
               </button>
@@ -72,7 +72,7 @@ export default function ExchangeContent() {
             transition={{ duration: 1, delay: 0.2 }}
             className="flex-1 w-full max-w-xl"
           >
-             <div className="relative aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/10 shadow-2xl p-4 overflow-hidden group">
+             <div className="relative aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-foreground/10 shadow-2xl p-4 overflow-hidden group">
                 {/* 模拟交易界面 UI */}
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
                 <div className="relative h-full flex flex-col gap-4">
@@ -108,7 +108,7 @@ export default function ExchangeContent() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 bg-white/5 border-y border-white/5">
+      <section className="py-24 bg-foreground/5 border-y border-foreground/5">
          <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                {features.map((feature, index) => (
@@ -120,7 +120,7 @@ export default function ExchangeContent() {
                     transition={{ delay: index * 0.1 }}
                     className="text-center md:text-left"
                   >
-                     <div className="mb-6 inline-flex p-4 rounded-2xl bg-black border border-white/10 shadow-xl">
+                     <div className="mb-6 inline-flex p-4 rounded-2xl bg-zinc-950 dark:bg-black border border-foreground/10 shadow-xl">
                         {feature.icon}
                      </div>
                      <h3 className="text-xl font-bold mb-4">{t(`features.${feature.key}.title`)}</h3>

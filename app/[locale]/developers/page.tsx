@@ -14,9 +14,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default function DevelopersPage() {
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-blue-500/30">
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-      <div className="fixed inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black pointer-events-none" />
+    <main className="min-h-screen bg-background text-foreground selection:bg-blue-500/30 transition-colors duration-300">
+      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 dark:opacity-40 invert dark:invert-0 transition-all duration-300" />
+      <div className="fixed inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background pointer-events-none transition-colors duration-300" />
       
       <Navigation />
       <div className="relative z-10">
