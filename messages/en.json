@@ -32,6 +32,10 @@
       "title": "MATRIXLAB EXCHANGE",
       "description": "Revolutionary Web3 platform integrating wallet, trading, analytics, and risk control"
     },
+    "trace": {
+      "title": "MatrixTrace",
+      "description": "AI-powered blockchain security analysis platform for on-chain fund tracking and risk detection"
+    },
     "game": {
       "title": "Immortal Ledger",
       "description": "The last history book of on-chain civilization"
@@ -44,6 +48,16 @@
   "team": {
     "title": "Our Team",
     "intro": "Robust technology supports a robust industry",
+    "advisor": {
+      "name": "Qinnan Zhang",
+      "title": "Academic Advisor & Assistant Professor",
+      "shortIntro": "Dr. Qinnan Zhang is currently Assistant Professor at School of Artificial Intelligence, Beihang University, and an independent PI of Matrix Lab, collaborating with Prof. Zhiming Zheng (Academician of the Chinese Academy of Sciences), focusing on AI-empowered Blockchain Security and Privacy Computing.",
+      "background": "I pursued my PhD from 2019 to 2023 across three prestigious institutions: Nanyang Technological University (NTU), Singapore University of Technology and Design (SUTD), and Central University of Finance and Economics, studying Computer Science and Technology. At NTU, I had the privilege of working under the guidance of Prof. Dusit (Tao) Niyato. My time at SUTD was spent collaborating with Prof. Zehui Xiong. While at CUFE, I worked closely with Prof. Jianming Zhu and Prof. Sheng Gao.",
+      "research": "My research interests lie in the areas of Web 3.0, blockchain security, stablecoin and Federated multi-modal LLMs.",
+      "lab": "I created Matrix Lab, affiliated with the Beijing Advanced Innovation Center for Future Blockchain and Privacy Computing. Our team focuses on blockchain-centric next generation value Internet (Web 3.0), with the ultimate goal of achieving a trade network that surpasses traditional financial model.",
+      "vision": "Through these integrated research streams, we strive to push the boundaries of AI and blockchain technology, moving closer to the vision of a decentralized, intelligent value network that exceeds conventional financial systems.",
+      "contact": "Please feel free to contact me by email (zhangqnp@gmail.com or zhangqn@buaa.edu.cn), if you are interested in my research."
+    },
     "founder": {
       "name": "Seal Wax",
       "title": "Founder & Chief Architect",
@@ -52,8 +66,14 @@
   },
   "announcements": {
     "title": "Announcements",
-    "itemsCount": "2",
+    "itemsCount": "3",
     "items": [
+      {
+        "date": "2025.12.19",
+        "title": "Team Wins Second Prize at 4th National Blockchain Competition",
+        "summary": "On December 19, 2025, the Ke Entropy Technology team traveled to Shanghai to participate in the 4th CCF National Blockchain Technology and Innovation Application Competition (CCF CBCC 2025). After fierce competition, the team won the second prize in the championship finals. The competition attracted 490 students from over 180 universities nationwide, with 101 works submitted. Our team successfully advanced to the finals representing Beihang University and achieved excellent results.",
+        "content": "On December 19, 2025, the Ke Entropy Technology team represented Beihang University at the 4th CCF National Blockchain Technology and Innovation Application Competition (CCF CBCC 2025) championship finals in Shanghai, winning the national second prize.\n\nCompetition Overview\nThe 4th National Blockchain Technology and Innovation Application Competition officially launched on July 5, 2025. With extensive promotion and organized coordination by the competition committee, it attracted 490 students from over 180 universities nationwide. After rigorous screening, 101 works entered the evaluation phase. Through comprehensive scoring, 24 contestants successfully advanced to the finals.\n\nCompetition Journey\n09:00 Group Stage: Participated in the finals group stage, successfully advancing to the championship round with excellent performance\n14:00 Final Presentation: Faced the championship jury for in-depth project presentation and defense\n17:00 Award Ceremony: Won the national second prize at the 4th National Blockchain Technology and Innovation Application Competition\n\nTechnical Innovation\nOur competition entry fully demonstrated Matrix Lab's research achievements in blockchain underlying technology, AI-empowered blockchain security, and Web3 ecosystem. By combining cutting-edge academic research with practical application scenarios, our solution received high recognition from expert judges.\n\nTeam Message\nThis award is not only recognition of our team's technical capabilities but also affirmation of our continuous innovation and pursuit of excellence. We will continue to deepen our blockchain technology research and contribute to the healthy development of the Web3 industry. Thanks to Beihang University, Matrix Lab, and all the teachers and partners who supported us!"
+      },
       {
         "date": "2024.11.30",
         "title": "Ke Entropy Strategic Ecosystem Launch",
@@ -146,6 +166,34 @@
       "compliance": {
         "title": "Compliant & Transparent",
         "desc": "Embracing regulation, supporting seamless fiat on/off ramps, providing complete tax and audit reports."
+      }
+    }
+  },
+  "trace": {
+    "metadata": {
+      "title": "MatrixTrace | AI-Powered Blockchain Security Analysis Platform",
+      "description": "Professional on-chain fund tracking and risk detection platform developed by Matrix Lab at Beihang University. Leveraging AI technology for intelligent fraud detection, visualized transaction graphs, and address risk scoring."
+    },
+    "hero": {
+      "badge": "Blockchain Security Forensics",
+      "title": "Insight into On-Chain World",
+      "subtitle": "MatrixTrace",
+      "description": "Professional blockchain security analysis tool developed by Matrix Lab at Beihang University. Combining AI technology with on-chain data analysis to provide powerful fund tracking and risk detection capabilities for security researchers, regulators, and compliance teams.",
+      "cta_start": "Request Early Access",
+      "cta_demo": "View Demo"
+    },
+    "features": {
+      "tracking": {
+        "title": "Fund Tracking",
+        "desc": "Visualize cryptocurrency transaction flows and analyze fund sources and destinations. Support major blockchains including Bitcoin and Ethereum, helping trace stolen funds, money laundering paths, and fraud fund flows."
+      },
+      "ai": {
+        "title": "AI-Powered Detection",
+        "desc": "Utilize artificial intelligence algorithms to identify abnormal transaction patterns on-chain, perform risk scoring and intelligent labeling of addresses. Automatically identify entity types such as phishing addresses, mixers, and exchanges."
+      },
+      "visualization": {
+        "title": "Graphical Visualization",
+        "desc": "Transform complex on-chain hashes into intuitive transaction graphs. Clearly display fund chains through node connection diagrams, enabling investigators to quickly understand transaction relationship networks."
       }
     }
   },

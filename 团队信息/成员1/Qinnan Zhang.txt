@@ -1,0 +1,9 @@
+{
+  "name": "Qinnan Zhang",
+  "title": "Assistant Professor",
+  "avatar": "Pandora ",
+  "short_intro": "Dr. Qinnan Zhang is currently Assistant Professor at School of Artificial Intelligence, Beihang University, is an independent PI of Matrix Lab, collaborating with Prof.[Zhiming Zheng](Academician of the Chinese Academy of Sciences), fosuing on AI-enpowered Blockchain Security and Privacy Computing.
+I pursued my PhD from 2019 to 2023 across three prestigious institutions:Nanyang Technological University(NTU), Singapore University of technology and design (SUTD) and Central University of Finance and Economics, studying Computer Science and Technology. At NTU, I had the privilege of working under the guidance of Prof.Dusit (Tao) Niyato. My time at SUTD was spent collaborating with Prof.Zehui Xiong. While at CUFE, I worked closely with Prof.Jianming Zhu and Prof. Sheng Gao. My research interests lie in the areas of Web 3.0, blockchain security, stablecoin and Federated multi-modal LLMs. ",
+  "social_links": "I created Matrix Lab, affiliated with the Beijing Advanced Innovation Center for Future Blockchain and Privacy Computing. Our team focuses on blockchain-centric Next generation value Internet (Web 3.0), with the ultimate goal of achieving a trade network that surpasses traditional financial model.",
+  "tags": "Through these integrated research streams, we strive to push the boundaries of AI and blockchain technology, moving closer to the vision of a decentralized, intelligent value network that exceeds conventional financial systems.  Please feel free to contact me by email (zhangqnp@gmail.com or zhangqn@buaa.edu.cn), if you are interested in my research"
+}
