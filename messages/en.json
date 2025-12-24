@@ -62,6 +62,26 @@
       "name": "Seal Wax",
       "title": "Founder & Chief Architect",
       "desc": "Founder of Ke Entropy Technology, dedicated to research and innovation in frontier digital technologies and distributed systems. Focused on the intersection of Blockchain, Web3, and AI, driving exploratory growth in underlying mechanisms and system architecture. Committed to product development driven by scientific thinking, adhering to technical transparency and compliance to build future-oriented digital infrastructure capabilities."
+    },
+    "veritas": {
+      "name": "Luo Ruixuan / Veritas",
+      "title": "Team Member",
+      "about": "Sophomore undergraduate student at School of Software, Beihang University",
+      "aboutLabel": "About Me",
+      "skills": "Web Development",
+      "skillsLabel": "Skills",
+      "contact": "3389602885@qq.com",
+      "contactLabel": "Contact"
+    },
+    "cassidy": {
+      "name": "Zhu Meiru / Cassidy",
+      "title": "Team Member",
+      "about": "Sophomore undergraduate student at School of Software, Beihang University",
+      "aboutLabel": "About Me",
+      "skills": "Teamwork, Team Organization",
+      "skillsLabel": "Skills",
+      "contact": "zhumeirupai31415@qq.com",
+      "contactLabel": "Contact"
     }
   },
   "announcements": {
@@ -302,5 +322,20 @@
     "text": "We use cookies to improve your experience and analyze site traffic. By continuing to use this site, you agree to our use of cookies.",
     "accept": "Accept All",
     "decline": "Decline"
+  },
+  "developer": {
+    "title": "Contact Developer",
+    "subtitle": "Scan QR code or copy WeChat ID to add friend",
+    "backToHome": "Back to Home",
+    "qrTitle": "WeChat QR Code",
+    "qrDesc": "Scan with WeChat to add friend",
+    "wechatTitle": "WeChat ID",
+    "wechatIdLabel": "WeChat ID",
+    "copyButton": "Copy WeChat ID & Open WeChat",
+    "copied": "Copied {id}",
+    "step1": "① Click button to auto-copy WeChat ID",
+    "step2": "② Auto-attempt to open WeChat App",
+    "step3": "③ Paste and search in WeChat to add friend",
+    "note": "If WeChat doesn't open automatically, please open WeChat manually and search for the WeChat ID above"
   }
 }

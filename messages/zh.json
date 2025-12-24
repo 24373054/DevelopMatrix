@@ -62,6 +62,26 @@
       "name": "Seal Wax",
       "title": "创始人 & 首席架构师",
       "desc": "刻熵科技创始人，长期致力于前沿数字技术与分布式系统的研究与创新。关注区块链、Web3 与智能化技术的交叉融合，推动底层机制与系统架构的探索式增长。坚持以科研思维驱动产品，以技术透明性与合规性作为实践原则，构建面向未来的数字化基础能力。"
+    },
+    "veritas": {
+      "name": "罗睿炫 / Veritas",
+      "title": "团队成员",
+      "about": "北京航空航天大学软件学院大二本科生",
+      "aboutLabel": "关于我",
+      "skills": "Web 开发",
+      "skillsLabel": "技能专长",
+      "contact": "3389602885@qq.com",
+      "contactLabel": "联系方式"
+    },
+    "cassidy": {
+      "name": "朱美茹 / Cassidy",
+      "title": "团队成员",
+      "about": "北京航空航天大学软件学院大二本科生",
+      "aboutLabel": "关于我",
+      "skills": "团队合作、组织成员",
+      "skillsLabel": "技能专长",
+      "contact": "zhumeirupai31415@qq.com",
+      "contactLabel": "联系方式"
     }
   },
   "announcements": {
@@ -302,5 +322,20 @@
     "text": "我们要使用 Cookie 来改善您的体验并分析网站流量。继续使用本网站即表示您同意我们使用 Cookie。",
     "accept": "接受所有",
     "decline": "拒绝"
+  },
+  "developer": {
+    "title": "联系开发者",
+    "subtitle": "扫描二维码或复制微信号添加好友",
+    "backToHome": "返回首页",
+    "qrTitle": "微信二维码",
+    "qrDesc": "使用微信扫一扫添加好友",
+    "wechatTitle": "微信号",
+    "wechatIdLabel": "微信号",
+    "copyButton": "复制微信号并打开微信",
+    "copied": "已复制 {id}",
+    "step1": "① 点击按钮自动复制微信号",
+    "step2": "② 自动尝试打开微信 App",
+    "step3": "③ 在微信中粘贴搜索添加好友",
+    "note": "如果无法自动打开微信，请手动打开微信并搜索上方微信号"
   }
 }
