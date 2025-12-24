@@ -197,6 +197,34 @@
       }
     }
   },
+  "game": {
+    "metadata": {
+      "title": "Immortal Ledger | The Last Chronicle of On-Chain Civilization",
+      "description": "Epic on-chain civilization game created by Matrix Lab. Using dynamic NFT technology and Autonomous World concepts to build a player-driven decentralized gaming ecosystem. True Play to Own with complete player asset ownership."
+    },
+    "hero": {
+      "badge": "On-Chain Autonomous World",
+      "title": "The Last Chronicle of On-Chain Civilization",
+      "subtitle": "Immortal Ledger · 瀛州纪",
+      "description": "We are redefining GameFi. Immortal Ledger uses dynamic NFT technology and Autonomous World concepts to build an on-chain civilization evolved by players. Here, asset ownership belongs entirely to players, and the economic system is automatically regulated by smart contracts, realizing true Play to Own.",
+      "cta_play": "Start Playing",
+      "cta_community": "Join Community"
+    },
+    "features": {
+      "ownership": {
+        "title": "True Asset Ownership",
+        "desc": "All game assets are stored on blockchain as NFTs, giving players complete ownership and control. Freely trade, transfer, or use in other applications, breaking the closed ecosystem of traditional games."
+      },
+      "autonomous": {
+        "title": "Autonomous World Evolution",
+        "desc": "The game world is driven by smart contracts with self-balancing economic systems, requiring no centralized operation intervention. Every player decision influences the world's development direction, collectively writing the epic of on-chain civilization."
+      },
+      "community": {
+        "title": "Community-Driven Development",
+        "desc": "Through DAO governance mechanisms, players can participate in formulating and modifying game rules. Community voting determines major update directions, truly realizing a decentralized gaming ecosystem co-built, co-shared, and co-governed by players."
+      }
+    }
+  },
   "footer": {
     "copyright": "© 2024 Ke Entropy Technology. All rights reserved.",
     "beian": "京公网安备11010802046489号",
