@@ -14,6 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/developer', priority: 0.7, changeFreq: 'monthly' as const },
     { path: '/products/exchange', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/products/trace', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/blog', priority: 0.9, changeFreq: 'daily' as const },
+    { path: '/blog/web3-security-trends-2025', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/blog/smart-contract-audit-guide', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/blog/defi-risk-management', priority: 0.8, changeFreq: 'weekly' as const },
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];

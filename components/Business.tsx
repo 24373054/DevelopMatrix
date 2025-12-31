@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Wallet, Gamepad2, Users, FlaskConical, Search } from 'lucide-react';
+import { ExternalLink, Wallet, Gamepad2, Users, FlaskConical, Search, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Business() {
@@ -33,10 +33,16 @@ export default function Business() {
       internal: true
     },
     {
+      key: 'blog',
+      icon: BookOpen,
+      url: `/${locale}/blog`,
+      internal: true
+    },
+    {
       key: 'game',
       icon: Gamepad2,
-      url: `/${locale}/products/game`,
-      internal: true
+      url: 'https://immortal.matrixlab.work/',
+      internal: false
     },
     {
       key: 'community',
