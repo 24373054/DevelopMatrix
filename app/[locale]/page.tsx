@@ -1,11 +1,22 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Business from '@/components/Business';
-import Team from '@/components/Team';
-import Announcements from '@/components/Announcements';
-import Links from '@/components/Links';
-import Footer from '@/components/Footer';
+import dynamic from 'next/dynamic';
+
+// 动态导入非首屏组件
+const Business = dynamic(() => import('@/components/Business'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const Team = dynamic(() => import('@/components/Team'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const Announcements = dynamic(() => import('@/components/Announcements'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const Links = dynamic(() => import('@/components/Links'), {
+  loading: () => <div className="min-h-screen" />,
+});
+const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   return (

@@ -63,7 +63,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     },
     metadataBase: new URL('https://develop.matrixlab.work'),
     alternates: {
-      canonical: '/',
+      canonical: `/${locale}`,
       languages: {
         'en': '/en',
         'zh': '/zh',
@@ -215,11 +215,17 @@ export default async function LocaleLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="刻熵科技" />
+        
+        {/* DNS 预取和预连接 */}
         <link rel="dns-prefetch" href="https://matrixlab.work" />
         <link rel="dns-prefetch" href="https://exchange.matrixlab.work" />
         <link rel="dns-prefetch" href="https://trace.matrixlab.work" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* 预加载关键资源 */}
+        <link rel="preload" href="/christmas-bg.webp" as="image" type="image/webp" />
       </head>
       <body className={inter.className}>
         {gaId && <GoogleAnalytics gaId={gaId} />}

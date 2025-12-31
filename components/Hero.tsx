@@ -21,10 +21,10 @@ export default function Hero() {
       {/* 背景层 */}
       <div className="absolute inset-0 w-full h-full bg-background" />
       
-      {/* 圣诞背景图 */}
+      {/* 圣诞背景图 - 优化加载 */}
       <div className="absolute inset-0 w-full h-full opacity-35 dark:opacity-25 overflow-hidden">
         <Image
-          src="/christmas-bg.png"
+          src="/christmas-bg.webp"
           alt="Christmas Background"
           fill
           className="object-cover"
@@ -34,9 +34,9 @@ export default function Hero() {
             minWidth: '100vw',
             minHeight: '100vh'
           }}
-          priority
+          loading="eager"
           sizes="100vw"
-          quality={100}
+          quality={75}
         />
       </div>
       
@@ -58,40 +58,16 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* 圣诞节标题装饰 */}
-          <motion.div
-            className="mb-4 text-4xl md:text-5xl"
-            animate={{
-              scale: [1, 1.08, 1],
-              rotate: [-3, 3, -3],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
+          {/* 圣诞节标题装饰 - 简化动画 */}
+          <div className="mb-4 text-4xl md:text-5xl animate-pulse">
             🎄✨
-          </motion.div>
+          </div>
           
-          <motion.div
-            className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-red-500/15 to-green-500/15 border border-red-500/30 dark:border-red-500/20 backdrop-blur-sm"
-            animate={{
-              boxShadow: [
-                '0 0 20px rgba(239, 68, 68, 0.15)',
-                '0 0 30px rgba(34, 197, 94, 0.2)',
-                '0 0 20px rgba(239, 68, 68, 0.15)',
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          >
+          <div className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-red-500/15 to-green-500/15 border border-red-500/30 dark:border-red-500/20 backdrop-blur-sm">
             <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-red-600 to-green-600 dark:from-red-400 dark:to-green-400 bg-clip-text text-transparent">
               🎅 Merry Christmas 2025 🎁
             </span>
-          </motion.div>
+          </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-foreground tracking-tight">
             {t('title')}
@@ -104,20 +80,9 @@ export default function Hero() {
           </p>
           <button
             onClick={scrollToAbout}
+            aria-label={t('cta')}
             className="px-8 py-3 rounded-lg glass hover:shadow-lg hover:scale-105 transition-all duration-500 group relative overflow-hidden"
           >
-            {/* 圣诞节按钮光效 */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-green-500/5 to-red-500/5"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-            />
             <span className="relative inline-flex items-center">
               {t('cta')}
               <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
