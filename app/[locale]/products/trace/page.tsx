@@ -9,6 +9,35 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('title'),
     description: t('description'),
+    keywords: 'blockchain security, crypto tracking, fund tracing, blockchain forensics, AI fraud detection, 区块链安全, 链上追踪, 资金追踪, 区块链取证, AI欺诈检测',
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+      siteName: 'Ke Entropy Technology',
+      url: `https://develop.matrixlab.work/${locale}/products/trace`,
+      images: [
+        {
+          url: 'https://develop.matrixlab.work/og-trace.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'MatrixTrace - Blockchain Security Analysis',
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+    },
+    alternates: {
+      canonical: `/${locale}/products/trace`,
+      languages: {
+        'en': '/en/products/trace',
+        'zh': '/zh/products/trace',
+      },
+    },
   };
 }
 

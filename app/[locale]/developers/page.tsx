@@ -9,6 +9,27 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('title'),
     description: t('description'),
+    keywords: 'Web3 development, blockchain API, SDK, developer tools, smart contracts, DApp development, Web3开发, 区块链API, 开发者工具, 智能合约',
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+      siteName: 'Ke Entropy Technology',
+      url: `https://develop.matrixlab.work/${locale}/developers`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+    },
+    alternates: {
+      canonical: `/${locale}/developers`,
+      languages: {
+        'en': '/en/developers',
+        'zh': '/zh/developers',
+      },
+    },
   };
 }
 

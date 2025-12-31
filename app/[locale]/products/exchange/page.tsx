@@ -9,6 +9,35 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     title: t('title'),
     description: t('description'),
+    keywords: 'cryptocurrency exchange, digital asset trading, crypto trading platform, blockchain exchange, Bitcoin trading, Ethereum trading, 加密货币交易所, 数字资产交易, 区块链交易平台',
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+      siteName: 'Ke Entropy Technology',
+      url: `https://develop.matrixlab.work/${locale}/products/exchange`,
+      images: [
+        {
+          url: 'https://develop.matrixlab.work/og-exchange.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Matrix Lab Exchange',
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+    },
+    alternates: {
+      canonical: `/${locale}/products/exchange`,
+      languages: {
+        'en': '/en/products/exchange',
+        'zh': '/zh/products/exchange',
+      },
+    },
   };
 }
 

@@ -1,27 +1,31 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://matrixlab.work';
+  const baseUrl = 'https://develop.matrixlab.work';
   
   // 定义所有支持的语言和路径
   const languages = ['zh', 'en'];
   const routes = [
-    '',
-    '/contact',
-    '/privacy',
-    '/terms',
+    { path: '', priority: 1.0, changeFreq: 'daily' as const },
+    { path: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
+    { path: '/privacy', priority: 0.5, changeFreq: 'yearly' as const },
+    { path: '/terms', priority: 0.5, changeFreq: 'yearly' as const },
+    { path: '/developers', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/developer', priority: 0.7, changeFreq: 'monthly' as const },
+    { path: '/products/exchange', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/products/trace', priority: 0.9, changeFreq: 'weekly' as const },
   ];
 
-  const sitemapEntries = [];
+  const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // 为每个语言生成条目
   for (const lang of languages) {
     for (const route of routes) {
       sitemapEntries.push({
-        url: `${baseUrl}/${lang}${route}`,
+        url: `${baseUrl}/${lang}${route.path}`,
         lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : 0.8,
+        changeFrequency: route.changeFreq,
+        priority: route.priority,
       });
     }
   }
