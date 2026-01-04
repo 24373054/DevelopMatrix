@@ -12,6 +12,12 @@ export default function BlogList() {
   // 示例文章数据
   const articles = [
     {
+      id: 'benign-arbitrage-theory',
+      category: 'research',
+      readTime: 15,
+      date: '2026-01-04',
+    },
+    {
       id: 'web3-security-trends-2025',
       category: 'security',
       readTime: 8,
@@ -33,6 +39,7 @@ export default function BlogList() {
 
   const categories = [
     { key: 'all', color: 'bg-blue-500' },
+    { key: 'research', color: 'bg-cyan-500' },
     { key: 'security', color: 'bg-red-500' },
     { key: 'tutorial', color: 'bg-green-500' },
     { key: 'analysis', color: 'bg-purple-500' },

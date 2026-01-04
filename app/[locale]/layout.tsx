@@ -97,8 +97,8 @@ export default async function LocaleLayout({
     "url": "https://develop.matrixlab.work",
     "logo": "https://develop.matrixlab.work/logo.png",
     "description": locale === 'zh' 
-      ? "刻熵科技是一家致力于构建全景式 Web3 生态的综合性科技企业，涵盖 Matrix Lab 实验室、MATRIXLAB EXCHANGE 金融平台及《瀛州纪》元宇宙游戏。"
-      : "Ke Entropy Technology is a comprehensive Web3 enterprise, encompassing Matrix Lab, MATRIXLAB EXCHANGE, and Immortal Ledger metaverse game.",
+      ? "刻熵科技是一家致力于构建全景式 Web3 生态的综合性科技企业，涵盖 Matrix Lab 实验室、MATRIXLAB EXCHANGE 金融平台、MatrixTrace 区块链安全分析平台及《瀛州纪》元宇宙游戏。"
+      : "Ke Entropy Technology is a comprehensive Web3 enterprise, encompassing Matrix Lab, MATRIXLAB EXCHANGE, MatrixTrace blockchain security platform, and Immortal Ledger metaverse game.",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",

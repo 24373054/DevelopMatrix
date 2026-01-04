@@ -39,8 +39,42 @@ export default async function BlogArticlePage({
   const t = await getTranslations({ locale, namespace: `blog.articles.${slug}` });
   const common = await getTranslations({ locale, namespace: 'blog' });
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": t('title'),
+    "description": t('excerpt'),
+    "image": `https://develop.matrixlab.work/og-blog-${slug}.jpg`,
+    "datePublished": t('date'),
+    "dateModified": t('date'),
+    "author": {
+      "@type": "Person",
+      "name": t('author'),
+      "url": t('author') === 'Seal Wax' ? 'https://yz.matrixlab.work' : undefined
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "刻熵科技",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://develop.matrixlab.work/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://develop.matrixlab.work/${locale}/blog/${slug}`
+    },
+    "keywords": t('keywords'),
+    "articleSection": t('category'),
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US'
+  };
+
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-emerald-500/30 transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 dark:opacity-40 invert dark:invert-0 transition-all duration-300" />
       <div className="fixed inset-0 bg-gradient-to-b from-background/0 via-background/0 to-background pointer-events-none transition-colors duration-300" />
       

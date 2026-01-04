@@ -99,18 +99,29 @@ export default function Navigation() {
             >
               刻熵科技
             </button>
-            {/* 仅在首页显示锚点菜单，非首页显示其他页面链接 */}
+            {/* 桌面端菜单 */}
             <div className="hidden md:flex space-x-6">
               {isHomePage ? (
-                ['about', 'business', 'announcements', 'links'].map((item) => (
+                <>
+                  {['about', 'business', 'announcements', 'links'].map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(item)}
+                      className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
+                    >
+                      {t(item)}
+                    </button>
+                  ))}
                   <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
+                    onClick={() => {
+                      startTransition();
+                      setTimeout(() => router.push(`/${currentLocale}/blog`), 300);
+                    }}
                     className="text-sm hover:text-foreground/80 transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 hover:after:w-full after:transition-all after:duration-300"
                   >
-                    {t(item)}
+                    {t('blog')}
                   </button>
-                ))
+                </>
               ) : (
                 <>
                   <button
@@ -176,15 +187,27 @@ export default function Navigation() {
           >
             <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col">
               {isHomePage ? (
-                ['about', 'business', 'announcements', 'links'].map((item) => (
+                <>
+                  {['about', 'business', 'announcements', 'links'].map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(item)}
+                      className="text-left py-2 px-2 text-base font-medium hover:bg-foreground/5 rounded-lg transition-colors"
+                    >
+                      {t(item)}
+                    </button>
+                  ))}
                   <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      startTransition();
+                      setTimeout(() => router.push(`/${currentLocale}/blog`), 300);
+                    }}
                     className="text-left py-2 px-2 text-base font-medium hover:bg-foreground/5 rounded-lg transition-colors"
                   >
-                    {t(item)}
+                    {t('blog')}
                   </button>
-                ))
+                </>
               ) : (
                 <>
                   <button

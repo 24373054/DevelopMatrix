@@ -41,8 +41,8 @@ export default function Business() {
     {
       key: 'game',
       icon: Gamepad2,
-      url: 'https://immortal.matrixlab.work/',
-      internal: false
+      url: `/${locale}/products/game`,
+      internal: true
     },
     {
       key: 'community',
