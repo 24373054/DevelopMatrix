@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogList() {
   const t = useTranslations('blog');
@@ -90,10 +91,17 @@ export default function BlogList() {
               transition={{ duration: 0.6, delay: 0.1 * index }}
             >
               <Link href={`/${locale}/blog/${article.id}`}>
-                <div className="fusion-glass rounded-2xl overflow-hidden border border-foreground/5 hover:border-foreground/10 transition-all duration-300 group h-full flex flex-col">
+                <div className="fusion-glass rounded-2xl overflow-hidden border border-foreground/5 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 group h-full flex flex-col hover:-translate-y-1">
                   {/* Featured Image Placeholder */}
-                  <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-6xl opacity-20">📝</div>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={`/blog-images/${article.id}-hero.png`}
+                      alt={t(`articles.${article.id}.title`)}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* 装饰性渐变遮罩 */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col">

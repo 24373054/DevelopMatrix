@@ -5,6 +5,7 @@ import ArticleContent from '@/components/Blog/ArticleContent';
 import { Metadata } from 'next';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export async function generateMetadata({ 
   params: { locale, slug } 
@@ -127,8 +128,16 @@ export default async function BlogArticlePage({
             </header>
 
             {/* Featured Image */}
-            <div className="relative h-96 rounded-2xl overflow-hidden mb-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-              <div className="text-9xl opacity-20">📝</div>
+            <div className="relative h-96 rounded-2xl overflow-hidden mb-12 group">
+              <Image
+                src={`/blog-images/${slug}-hero.png`}
+                alt={t('title')}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              {/* 底部渐变遮罩 */}
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent" />
             </div>
           </div>
 
@@ -137,11 +146,12 @@ export default async function BlogArticlePage({
 
           <div className="max-w-4xl">
             {/* Author Bio */}
-            <div className="mt-12 fusion-glass rounded-2xl p-8 border border-foreground/5">
-              <h3 className="text-xl font-bold text-foreground mb-4">{common('aboutAuthor')}</h3>
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center shrink-0">
-                  <User size={32} className="text-foreground/30" />
+            <div className="mt-12 fusion-glass rounded-2xl p-8 border border-foreground/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
+              <h3 className="text-xl font-bold text-foreground mb-4 relative">{common('aboutAuthor')}</h3>
+              <div className="flex items-start gap-4 relative">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center shrink-0 ring-2 ring-blue-500/20">
+                  <User size={32} className="text-blue-500/50" />
                 </div>
                 <div>
                   <p className="font-semibold text-foreground mb-2">{t('author')}</p>
@@ -151,19 +161,24 @@ export default async function BlogArticlePage({
             </div>
 
             {/* CTA */}
-            <div className="mt-12 fusion-glass rounded-2xl p-8 md:p-12 border border-foreground/5 text-center">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                {common('cta.title')}
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                {common('cta.description')}
-              </p>
-              <Link
-                href={`/${locale}/contact`}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20"
-              >
-                {common('cta.button')}
-              </Link>
+            <div className="mt-12 fusion-glass rounded-2xl p-8 md:p-12 border border-foreground/5 text-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+              <div className="relative">
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  {common('cta.title')}
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  {common('cta.description')}
+                </p>
+                <Link
+                  href={`/${locale}/contact`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700 hover:scale-105 transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
+                >
+                  {common('cta.button')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
