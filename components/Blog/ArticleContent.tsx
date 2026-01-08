@@ -18,19 +18,22 @@ export default function ArticleContent({ content }: ArticleContentProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const [tocOpen, setTocOpen] = useState(false);
+  const [processedContent, setProcessedContent] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const isScrollingRef = useRef(false);
 
+  // 第一步：处理内容，在 HTML 中添加 ID
   useEffect(() => {
-    if (!contentRef.current) return;
-
-    // 解析标题并添加 ID
-    const headingElements = contentRef.current.querySelectorAll('h2, h3, h4');
+    // 创建临时 DOM 来解析和修改 HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+    const headingElements = doc.querySelectorAll('h2, h3, h4');
     const headingData: Heading[] = [];
 
     headingElements.forEach((heading, index) => {
       const id = `heading-${index}`;
       heading.id = id;
+      heading.setAttribute('data-heading-id', id);
       headingData.push({
         id,
         text: heading.textContent || '',
@@ -38,79 +41,98 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       });
     });
 
+    // 获取修改后的 HTML
+    const modifiedContent = doc.body.innerHTML;
+    setProcessedContent(modifiedContent);
     setHeadings(headingData);
 
     // 设置第一个标题为默认激活
     if (headingData.length > 0) {
       setActiveId(headingData[0].id);
     }
+  }, [content]);
 
-    // 创建 IntersectionObserver 监听标题
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        // 找到所有正在显示的标题
-        const visibleEntries = entries.filter(entry => entry.isIntersecting);
-        
-        if (visibleEntries.length > 0) {
-          // 选择最上面的可见标题
-          const topEntry = visibleEntries.reduce((top, entry) => {
-            return entry.boundingClientRect.top < top.boundingClientRect.top ? entry : top;
-          });
-          setActiveId(topEntry.target.id);
-        }
-      },
-      {
-        rootMargin: '-80px 0px -80% 0px',
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
+  // 第二步：设置滚动监听来更新激活状态
+  useEffect(() => {
+    if (headings.length === 0) return;
 
-    // 观察所有标题
-    headingElements.forEach((heading) => {
-      observerRef.current?.observe(heading);
-    });
+    let ticking = false;
 
-    return () => {
-      if (observerRef.current) {
-        headingElements.forEach((heading) => {
-          observerRef.current?.unobserve(heading);
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+      
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveHeading();
+          ticking = false;
         });
-        observerRef.current.disconnect();
+        ticking = true;
       }
     };
-  }, [content]);
+
+    const updateActiveHeading = () => {
+      // 获取当前视窗顶部位置（考虑导航栏）
+      const viewportTop = window.scrollY + 150; // 导航栏 + 一些缓冲
+      
+      // 从下往上找，找到第一个已经滚动过视窗顶部的标题
+      let currentId = headings[0].id;
+      
+      for (let i = headings.length - 1; i >= 0; i--) {
+        const element = document.getElementById(headings[i].id);
+        if (element) {
+          // 获取元素相对于页面顶部的位置
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          
+          // 只有当标题已经滚动到视窗顶部以上时才高亮
+          if (elementTop <= viewportTop) {
+            currentId = headings[i].id;
+            break;
+          }
+        }
+      }
+
+      setActiveId(currentId);
+    };
+
+    // 初始调用
+    updateActiveHeading();
+
+    // 监听滚动，使用节流
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [headings]);
 
   const scrollToHeading = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      // 暂时禁用 observer 避免冲突
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+    
+    if (!element) return;
 
-      const headerOffset = 120; // 导航栏高度 + 额外间距
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    // 标记正在手动滚动
+    isScrollingRef.current = true;
+    
+    // 立即更新激活状态
+    setActiveId(id);
+    setTocOpen(false);
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-      
-      // 立即更新激活状态
-      setActiveId(id);
-      setTocOpen(false);
+    // 计算滚动位置
+    const headerOffset = 120;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      // 重新启用 observer
-      setTimeout(() => {
-        if (observerRef.current && contentRef.current) {
-          const headingElements = contentRef.current.querySelectorAll('h2, h3, h4');
-          headingElements.forEach((heading) => {
-            observerRef.current?.observe(heading);
-          });
-        }
-      }, 1000);
-    }
+    // 执行滚动
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+
+    // 滚动完成后重新启用自动高亮
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
   };
 
   return (
@@ -186,7 +208,7 @@ export default function ArticleContent({ content }: ArticleContentProps) {
             <div
               ref={contentRef}
               className="article-content max-w-4xl"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ __html: processedContent }}
             />
           </div>
         </div>
