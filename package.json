@@ -8,7 +8,8 @@
     "start": "next start -p 3108",
     "lint": "next lint",
     "seo:check": "echo '检查 SEO 配置...' && curl -I https://develop.matrixlab.work/sitemap.xml && curl -I https://develop.matrixlab.work/robots.txt",
-    "seo:submit-baidu": "node scripts/submit-to-baidu.js"
+    "seo:submit-baidu": "node scripts/submit-to-baidu.js",
+    "geo:validate-terminology": "node scripts/validate-terminology.js"
   },
   "dependencies": {
     "next": "14.0.4",
