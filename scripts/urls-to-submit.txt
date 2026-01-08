@@ -1,0 +1,48 @@
+# 需要提交到搜索引擎的重要 URL 列表
+# 使用方法：在 Google Search Console 或百度站长平台手动提交这些 URL
+
+## 首页
+https://develop.matrixlab.work/zh
+https://develop.matrixlab.work/en
+
+## 博客
+https://develop.matrixlab.work/zh/blog
+https://develop.matrixlab.work/en/blog
+
+## 博客文章（中文）
+https://develop.matrixlab.work/zh/blog/benign-arbitrage-theory
+https://develop.matrixlab.work/zh/blog/web3-security-trends-2025
+https://develop.matrixlab.work/zh/blog/smart-contract-audit-guide
+https://develop.matrixlab.work/zh/blog/defi-risk-management
+
+## 博客文章（英文）
+https://develop.matrixlab.work/en/blog/benign-arbitrage-theory
+https://develop.matrixlab.work/en/blog/web3-security-trends-2025
+https://develop.matrixlab.work/en/blog/smart-contract-audit-guide
+https://develop.matrixlab.work/en/blog/defi-risk-management
+
+## 产品页面（中文）
+https://develop.matrixlab.work/zh/products/trace
+https://develop.matrixlab.work/zh/products/exchange
+https://develop.matrixlab.work/zh/products/game
+https://develop.matrixlab.work/zh/developers
+https://develop.matrixlab.work/zh/developer
+
+## 产品页面（英文）
+https://develop.matrixlab.work/en/products/trace
+https://develop.matrixlab.work/en/products/exchange
+https://develop.matrixlab.work/en/products/game
+https://develop.matrixlab.work/en/developers
+https://develop.matrixlab.work/en/developer
+
+## 其他重要页面
+https://develop.matrixlab.work/zh/contact
+https://develop.matrixlab.work/en/contact
+https://develop.matrixlab.work/zh/privacy
+https://develop.matrixlab.work/en/privacy
+https://develop.matrixlab.work/zh/terms
+https://develop.matrixlab.work/en/terms
+
+## Sitemap 和 Robots
+https://develop.matrixlab.work/sitemap.xml
+https://develop.matrixlab.work/robots.txt

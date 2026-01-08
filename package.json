@@ -6,7 +6,9 @@
     "dev": "next dev -p 3108",
     "build": "next build",
     "start": "next start -p 3108",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seo:check": "echo '检查 SEO 配置...' && curl -I https://develop.matrixlab.work/sitemap.xml && curl -I https://develop.matrixlab.work/robots.txt",
+    "seo:submit-baidu": "node scripts/submit-to-baidu.js"
   },
   "dependencies": {
     "next": "14.0.4",

@@ -223,9 +223,6 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* 预加载关键资源 */}
-        <link rel="preload" href="/christmas-bg.webp" as="image" type="image/webp" />
       </head>
       <body className={inter.className}>
         {gaId && <GoogleAnalytics gaId={gaId} />}
