@@ -73,6 +73,9 @@ export default async function BlogArticlePage({
 
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-emerald-500/30 transition-colors duration-300">
+      {/* Preload hero image */}
+      <link rel="preload" as="image" href={`/blog-images/${slug}-hero.webp`} type="image/webp" />
+      
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -128,13 +131,15 @@ export default async function BlogArticlePage({
             </header>
 
             {/* Featured Image */}
-            <div className="relative h-96 rounded-2xl overflow-hidden mb-12 group">
+            <div className="relative h-96 rounded-2xl overflow-hidden mb-12 group bg-gradient-to-br from-blue-500/5 to-purple-500/5">
               <Image
-                src={`/blog-images/${slug}-hero.png`}
+                src={`/blog-images/${slug}-hero.webp`}
                 alt={t('title')}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 priority
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
               />
               {/* 底部渐变遮罩 */}
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent" />
