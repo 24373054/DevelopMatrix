@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ArticleContent from '@/components/Blog/ArticleContent';
 import AISummary from '@/components/Blog/AISummary';
+import QASection from '@/components/Blog/QASection';
 import { Metadata } from 'next';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
@@ -163,6 +164,13 @@ export default async function BlogArticlePage({
           <ArticleContent content={t.raw('content')} />
 
           <div className="max-w-4xl">
+            {/* Q&A Section - Placed after Article Content, before Author Bio */}
+            <QASection 
+              qaPairs={t.raw('qaPairs')} 
+              title={locale === 'zh' ? '常见问题解答' : 'Frequently Asked Questions'}
+              subtitle={locale === 'zh' ? '深入解答核心问题' : 'In-depth answers to key questions'}
+            />
+
             {/* Author Bio */}
             <div className="mt-12 fusion-glass rounded-2xl p-8 border border-foreground/5 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />

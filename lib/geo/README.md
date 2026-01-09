@@ -4,125 +4,229 @@ This library provides tools for Generative Engine Optimization (GEO) - optimizin
 
 ## Components
 
-### Knowledge Block Parser
-
-The Knowledge Block Parser analyzes HTML content and extracts structured knowledge blocks that are optimized for LLM consumption.
-
-#### Features
-
-- **Definition Extraction**: Identifies clear definition sentences using patterns like "X 是指", "X 指的是", "X is defined as"
-- **Conclusion Extraction**: Finds conclusion markers like "因此", "结论是", "therefore", "in conclusion"
-- **Comparison Extraction**: Detects tables and comparison keywords
-- **Example Extraction**: Identifies code blocks and example markers
-- **Explanation Extraction**: Captures explanatory paragraphs
-- **Extractability Scoring**: Calculates how easily an LLM can extract and use each block (0-1 scale)
-
-#### Usage
+### 1. Terminology Manager (`terminology.ts`)
+Manages a centralized terminology dictionary to ensure consistent use of technical terms across all content.
 
 ```typescript
-import { KnowledgeBlockParser, parseKnowledgeBlocks } from '@/lib/geo';
+import { TerminologyManager, loadTerminologyDictionary } from '@/lib/geo';
 
-// Using the class
+const dictionary = await loadTerminologyDictionary();
+const manager = new TerminologyManager(dictionary);
+
+// Check if a term is defined
+const hasTerm = manager.hasTerm('Web3');
+
+// Get canonical name
+const canonical = manager.getCanonicalName('web3'); // Returns 'Web3'
+
+// Validate term usage
+const isValid = manager.validateTermUsage('Web3', 'Some context');
+```
+
+### 2. Knowledge Block Parser (`knowledgeBlockParser.ts`)
+Parses HTML content into structured knowledge blocks that are easily extractable by LLMs.
+
+```typescript
+import { KnowledgeBlockParser } from '@/lib/geo';
+
 const parser = new KnowledgeBlockParser();
 const blocks = parser.parse(htmlContent);
 
-// Using the convenience function
-const blocks = parseKnowledgeBlocks(htmlContent);
+// Blocks are categorized as:
+// - definition: Contains "X 是什么", "X 指的是"
+// - explanation: Contains "因此", "结论是"
+// - comparison: Contains tables or comparison structures
+// - example: Contains examples
+// - conclusion: Contains conclusion markers
+```
 
-// Analyze the results
-blocks.forEach(block => {
-  console.log(`Type: ${block.type}`);
-  console.log(`Title: ${block.title}`);
-  console.log(`Extractability: ${block.extractability}`);
+### 3. Content Validator (`contentValidator.ts`)
+Validates content quality for GEO optimization.
+
+```typescript
+import { ContentValidator } from '@/lib/geo';
+
+const validator = new ContentValidator();
+const report = validator.validate({
+  id: 'article-1',
+  title: 'Article Title',
+  content: htmlContent,
+  aiSummary: { /* ... */ },
 });
+
+// Check specific issues
+console.log(report.metrics.paragraphLengthOk); // true/false
+console.log(report.issues); // Array of quality issues
 ```
 
-#### Example
+### 4. Q&A Generator (`qaGenerator.ts`)
+Automatically generates Q&A pairs from article content to improve LLM understanding.
 
 ```typescript
-const htmlContent = `
-  <div>
-    <p>智能合约是指运行在区块链上的自动执行程序。</p>
-    <p>智能合约可以自动执行预定义的规则和条件。</p>
-    <ul>
-      <li>自动执行</li>
-      <li>去中心化</li>
-    </ul>
-    <p>因此，智能合约是Web3技术的核心组件。</p>
-  </div>
-`;
+import { QAGenerator, generateQA } from '@/lib/geo';
 
-const blocks = parseKnowledgeBlocks(htmlContent);
+// Using the class
+const generator = new QAGenerator({
+  maxQAPairs: 10,
+  includeDefinition: true,
+  includeComparison: true,
+  includeApplication: true,
+  includeLimitation: true,
+});
 
-// Results:
-// - 1 definition block: "智能合约是指..."
-// - 1 explanation block: "智能合约可以自动执行..."
-// - 1 conclusion block: "因此，智能合约是..."
+const qaCoverage = generator.generateFromArticle({
+  id: 'web3-security',
+  title: 'Web3 安全',
+  content: htmlContent,
+  aiSummary: {
+    whatIs: 'Web3 安全是指...',
+    whyImportant: '因为...',
+    useCases: ['场景1', '场景2'],
+    keyTakeaways: ['要点1', '要点2'],
+  },
+  keywords: ['Web3', '安全', '区块链'],
+});
+
+// Or using the convenience function
+const qaCoverage = generateQA(article, { maxQAPairs: 5 });
+
+// Access generated Q&A pairs
+console.log(qaCoverage.qaPairs);
+// [
+//   {
+//     question: '什么是Web3 安全？',
+//     answer: 'Web3 安全是指...',
+//     category: 'definition',
+//     relatedConcepts: ['Web3', '安全']
+//   },
+//   // ...
+// ]
+
+// Check coverage
+console.log(qaCoverage.coverage);
+// {
+//   hasDefinition: true,
+//   hasComparison: true,
+//   hasApplication: true,
+//   hasLimitation: true
+// }
 ```
 
-### Terminology Manager
+## Q&A Generator Features
 
-The Terminology Manager ensures consistent use of technical terms across all content.
+The Q&A Generator automatically creates four types of questions:
 
-#### Features
+### 1. Definition Questions
+- "什么是X？" (What is X?)
+- "为什么X很重要？" (Why is X important?)
 
-- **Term Lookup**: Find canonical names for terms and their aliases
-- **Consistency Validation**: Check if content uses canonical names
-- **Definition Conflict Detection**: Identify conflicting definitions
-- **Category Filtering**: Get terms by category (web3, defi, security, blockchain)
-- **Related Terms**: Find related concepts
+Generated from the `aiSummary.whatIs` and `aiSummary.whyImportant` fields.
 
-#### Usage
+### 2. Comparison Questions
+- "X和Y有什么区别？" (What's the difference between X and Y?)
+
+Automatically extracted from content patterns like:
+- "X 和 Y 的区别"
+- "X vs Y"
+- "X 对比 Y"
+
+### 3. Application Questions
+- "X适用于哪些场景？" (What are the use cases for X?)
+- "什么时候应该使用X？" (When should I use X?)
+
+Generated from the `aiSummary.useCases` array.
+
+### 4. Limitation Questions
+- "X有哪些局限性？" (What are the limitations of X?)
+- "使用X时需要注意什么？" (What should I be careful about when using X?)
+
+Automatically extracted from content containing keywords like:
+- 局限性 (limitations)
+- 缺点 (disadvantages)
+- 风险 (risks)
+- 注意事项 (precautions)
+
+## Configuration Options
+
+### QAGeneratorConfig
 
 ```typescript
-import { loadTerminologyDictionary } from '@/lib/geo';
-import terminologyData from '@/data/terminology.json';
-
-const manager = loadTerminologyDictionary(terminologyData);
-
-// Find a term
-const term = manager.findTerm('智能合约');
-console.log(term.canonicalName); // "Smart Contract"
-console.log(term.definition);
-
-// Get canonical name
-const canonical = manager.getCanonicalName('smart contract');
-
-// Check if using an alias
-const isAlias = manager.isAlias('SC'); // true if 'SC' is an alias
-
-// Validate content
-const conflicts = manager.validateTerminologyConsistency(content);
-if (conflicts.length > 0) {
-  console.log('Found terminology issues:', conflicts);
+interface QAGeneratorConfig {
+  maxQAPairs?: number;          // Maximum number of Q&A pairs (default: 10)
+  includeDefinition?: boolean;  // Include definition questions (default: true)
+  includeComparison?: boolean;  // Include comparison questions (default: true)
+  includeApplication?: boolean; // Include application questions (default: true)
+  includeLimitation?: boolean;  // Include limitation questions (default: true)
 }
-
-// Get related terms
-const related = manager.getRelatedTerms('智能合约');
 ```
 
-## Requirements Mapping
+## Complete Example
 
-This implementation addresses the following requirements from the GEO optimization spec:
+```typescript
+import { 
+  QAGenerator, 
+  ContentValidator, 
+  KnowledgeBlockParser 
+} from '@/lib/geo';
 
-- **Requirement 1.1**: Definition sentence structures - Extracted by `extractDefinitions()`
-- **Requirement 1.2**: Conclusion sentences - Extracted by `extractConclusions()`
-- **Requirement 1.3**: Enumeration structures - Detected in extractability scoring
-- **Requirement 5.5**: Knowledge block decomposition - Core functionality of the parser
-- **Requirement 8.1-8.5**: Terminology consistency - Managed by TerminologyManager
+// 1. Parse knowledge blocks
+const parser = new KnowledgeBlockParser();
+const knowledgeBlocks = parser.parse(articleContent);
+
+// 2. Generate Q&A pairs
+const qaGenerator = new QAGenerator({ maxQAPairs: 8 });
+const qaCoverage = qaGenerator.generateFromArticle({
+  id: article.id,
+  title: article.title,
+  content: article.content,
+  aiSummary: article.aiSummary,
+  knowledgeBlocks: knowledgeBlocks,
+  keywords: article.keywords,
+});
+
+// 3. Validate content quality
+const validator = new ContentValidator();
+const qualityReport = validator.validate({
+  id: article.id,
+  title: article.title,
+  content: article.content,
+  aiSummary: article.aiSummary,
+  qaCoverage: qaCoverage,
+});
+
+// 4. Use the results
+console.log('Generated Q&A pairs:', qaCoverage.qaPairs.length);
+console.log('Coverage:', qaCoverage.coverage);
+console.log('Quality score:', qualityReport.overallScore);
+console.log('Issues:', qualityReport.issues);
+```
 
 ## Testing
 
-Run the test suite:
+Run tests for the GEO library:
 
 ```bash
-npm test -- lib/geo/__tests__/
+npm test -- lib/geo/__tests__
 ```
 
-## Future Enhancements
+## Requirements Validation
 
-- AI Summary generation
-- Q&A pair extraction
-- Schema.org structured data generation
-- Content quality validation
-- Multilingual parity checking
+The Q&A Generator validates the following requirements from the GEO specification:
+
+- **Requirement 7.1**: Generates comparison questions ("X 和 Y 的区别")
+- **Requirement 7.2**: Generates application scenario questions ("X 适用于哪些场景")
+- **Requirement 7.3**: Generates limitation questions ("X 的局限性")
+- **Requirement 7.4**: Supports step-by-step implementation questions
+- **Requirement 7.5**: Supports best practices questions
+
+## Property-Based Testing
+
+The Q&A Generator will be validated using property-based tests to ensure:
+
+- **Property 23**: Comparison question coverage for articles with multiple concepts
+- **Property 24**: Application scenario coverage for technical articles
+- **Property 25**: Limitation discussion coverage for technical articles
+- **Property 26**: Implementation steps presence in how-to articles
+- **Property 27**: Best practices section in technical guides
+
+See `__tests__/properties/` for property-based test implementations.

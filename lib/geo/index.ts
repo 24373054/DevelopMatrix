@@ -20,6 +20,11 @@ export {
   validateContent,
 } from './contentValidator';
 
+export {
+  QAGenerator,
+  generateQA,
+} from './qaGenerator';
+
 export type {
   TerminologyDictionary,
   TerminologyEntry,
@@ -27,4 +32,11 @@ export type {
   KnowledgeBlock,
   ContentQualityReport,
   QualityIssue,
+  QAPair,
+  QuestionCoverageMatrix,
 } from '@/types/geo';
+
+export type {
+  ArticleInput,
+  QAGeneratorConfig,
+} from './qaGenerator';

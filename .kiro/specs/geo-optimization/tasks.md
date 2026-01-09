@@ -110,27 +110,27 @@
 
 ## Phase 3: Q&A 生成系统
 
-- [ ] 8. 实现 Q&A Generator
+- [x] 8. 实现 Q&A Generator
   - 创建 `lib/geo/qaGenerator.ts`
   - 实现从文章内容自动生成 Q&A 的逻辑
   - 实现问题分类（definition, comparison, application, limitation）
   - 生成"什么是 X"、"X 和 Y 的区别"、"X 适用于哪些场景"、"X 的局限性"等问题
   - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-- [ ] 9. 为现有文章生成 Q&A 内容
-  - 为 4 篇现有博客文章创建 Q&A 数据
-  - 添加到 `messages/zh.json` 和 `messages/en.json` 的文章数据中
-  - 确保覆盖定义、对比、应用、局限性等问题类型
+- [x] 9. 为现有文章生成 Q&A 内容
+  - ✅ 为 4 篇现有博客文章创建 Q&A 数据
+  - ✅ 添加到 `messages/zh.json` 和 `messages/en.json` 的文章数据中
+  - ✅ 确保覆盖定义、对比、应用、局限性等问题类型
   - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
 
-- [ ] 10. 创建 Q&A 组件
+- [x] 10. 创建 Q&A 组件
   - 创建 `components/Blog/QASection.tsx`
   - 实现可折叠的 Q&A 展示
   - 添加 Schema.org Question/Answer 标记
   - 实现搜索和过滤功能
   - _Requirements: 5.1, 7.1, 7.2, 7.3_
 
-- [ ]* 10.1 编写 Q&A 系统的属性测试
+- [x] 10.1 编写 Q&A 系统的属性测试
   - **Property 13: Q&A component presence**
   - **Property 23: Comparison question coverage**
   - **Property 24: Application scenario coverage**
@@ -139,7 +139,7 @@
   - **Property 27: Best practices section**
   - **Validates: Requirements 5.1, 7.1, 7.2, 7.3, 7.4, 7.5**
 
-- [ ] 11. 集成 Q&A 到博客文章页面
+- [x] 11. 集成 Q&A 到博客文章页面
   - 修改 `app/[locale]/blog/[slug]/page.tsx`
   - 在文章内容之后、作者信息之前添加 Q&A 组件
   - 确保 Q&A 正确渲染并支持交互
