@@ -7,26 +7,38 @@
     "build": "next build",
     "start": "next start -p 3108",
     "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:properties": "jest __tests__/properties",
     "seo:check": "echo '检查 SEO 配置...' && curl -I https://develop.matrixlab.work/sitemap.xml && curl -I https://develop.matrixlab.work/robots.txt",
     "seo:submit-baidu": "node scripts/submit-to-baidu.js",
     "geo:validate-terminology": "node scripts/validate-terminology.js"
   },
   "dependencies": {
-    "next": "14.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "framer-motion": "10.16.16",
     "lucide-react": "0.294.0",
+    "next": "14.0.4",
+    "next-intl": "3.4.0",
     "next-themes": "0.2.1",
-    "next-intl": "3.4.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "20.10.5",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.16",
+    "fast-check": "^4.5.3",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "postcss": "8.4.32",
     "tailwindcss": "3.3.6",
+    "ts-jest": "^29.4.6",
     "typescript": "5.3.3"
   }
 }

@@ -27,13 +27,13 @@
   - 添加 Web3、DeFi、区块链等核心概念的初始定义
   - _Requirements: 8.1, 8.2, 8.3, 8.5_
 
-- [ ]* 2.1 编写术语词典的属性测试
+- [x] 2.1 编写术语词典的属性测试
   - **Property 28: First-mention definition**
   - **Property 29: Terminology consistency**
   - **Property 30: Definition sentence format**
   - **Validates: Requirements 8.1, 8.2, 8.3, 8.5**
 
-- [ ] 3. 实现 Knowledge Block Parser
+- [x] 3. 实现 Knowledge Block Parser
   - 创建 `lib/geo/knowledgeBlockParser.ts`
   - 实现 HTML 内容解析功能
   - 实现定义句识别（"X 是什么"、"X 指的是"等模式）
@@ -42,14 +42,14 @@
   - 实现知识块分类（definition, explanation, comparison, example, conclusion）
   - _Requirements: 1.1, 1.2, 1.3, 5.5_
 
-- [ ]* 3.1 编写 Knowledge Block Parser 的属性测试
+- [x] 3.1 编写 Knowledge Block Parser 的属性测试
   - **Property 1: Definition sentence presence**
   - **Property 2: Conclusion marker presence**
   - **Property 3: List structure formatting**
   - **Property 17: Knowledge block decomposition**
   - **Validates: Requirements 1.1, 1.2, 1.3, 5.5**
 
-- [ ] 4. 实现内容质量验证器
+- [x] 4. 实现内容质量验证器
   - 创建 `lib/geo/contentValidator.ts`
   - 实现段落长度检查（不超过 300 字符）
   - 实现反问句检测
@@ -57,7 +57,7 @@
   - 实现夸张词汇检测（"颠覆"、"史无前例"）
   - _Requirements: 1.4, 2.1, 2.2, 4.2_
 
-- [ ]* 4.1 编写内容质量验证器的属性测试
+- [x] 4.1 编写内容质量验证器的属性测试
   - **Property 4: Paragraph length constraint**
   - **Property 5: Declarative sentence usage**
   - **Property 6: Vague term avoidance**
@@ -68,7 +68,7 @@
 
 ## Phase 2: AI Summary 系统
 
-- [ ] 5. 为现有博客文章创建 AI Summary 数据
+- [x] 5. 为现有博客文章创建 AI Summary 数据
   - 在 `messages/zh.json` 和 `messages/en.json` 中为每篇博客文章添加 `aiSummary` 字段
   - 为现有的 4 篇文章创建 AI Summary 内容：
     - web3-security-trends-2025
@@ -78,7 +78,7 @@
   - 确保包含 `whatIs`, `whyImportant`, `useCases`, `keyTakeaways` 字段
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 6. 实现 AI Summary 组件
+- [x] 6. 实现 AI Summary 组件
   - 创建 `components/Blog/AISummary.tsx`
   - 实现结构化的 AI Summary 展示
   - 添加 Schema.org DefinedTerm 标记
@@ -86,13 +86,13 @@
   - 添加优雅的降级处理（当 AI Summary 缺失时）
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ]* 6.1 编写 AI Summary 组件的单元测试
+- [x] 6.1 编写 AI Summary 组件的单元测试
   - 测试所有字段正确渲染
   - 测试缺失字段的降级处理
   - 测试响应式布局
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ]* 6.2 编写 AI Summary 的属性测试
+- [-] 6.2 编写 AI Summary 的属性测试
   - **Property 18: AI Summary component presence**
   - **Property 19: AI Summary whatIs field**
   - **Property 20: AI Summary whyImportant field**

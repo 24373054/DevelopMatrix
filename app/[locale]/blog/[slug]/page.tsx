@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ArticleContent from '@/components/Blog/ArticleContent';
+import AISummary from '@/components/Blog/AISummary';
 import { Metadata } from 'next';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
@@ -144,6 +145,11 @@ export default async function BlogArticlePage({
               {/* 底部渐变遮罩 */}
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent" />
             </div>
+          </div>
+
+          {/* AI Summary - Placed after Featured Image, before Article Content */}
+          <div className="max-w-4xl">
+            <AISummary summary={t.raw('aiSummary')} />
           </div>
 
           {/* Article Content with TOC - 移除宽度限制 */}

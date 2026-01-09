@@ -1,175 +1,128 @@
 # GEO Library
 
-This directory contains the implementation of the Generative Engine Optimization (GEO) system for the Ke Entropy Technology website.
+This library provides tools for Generative Engine Optimization (GEO) - optimizing content for Large Language Models (LLMs) like ChatGPT, Claude, and Perplexity.
 
-## Terminology Dictionary System
+## Components
 
-The terminology dictionary ensures consistent use of technical terms across all content, which is crucial for GEO optimization.
+### Knowledge Block Parser
 
-### Features
+The Knowledge Block Parser analyzes HTML content and extracts structured knowledge blocks that are optimized for LLM consumption.
 
-- **Term Lookup**: Find terms by canonical name or aliases
-- **Consistency Validation**: Check if content uses canonical names
-- **Conflict Detection**: Identify when definitions don't match the dictionary
-- **Category Filtering**: Get terms by category (web3, defi, security, blockchain)
-- **Related Terms**: Find related concepts for any term
+#### Features
 
-### Usage
+- **Definition Extraction**: Identifies clear definition sentences using patterns like "X 是指", "X 指的是", "X is defined as"
+- **Conclusion Extraction**: Finds conclusion markers like "因此", "结论是", "therefore", "in conclusion"
+- **Comparison Extraction**: Detects tables and comparison keywords
+- **Example Extraction**: Identifies code blocks and example markers
+- **Explanation Extraction**: Captures explanatory paragraphs
+- **Extractability Scoring**: Calculates how easily an LLM can extract and use each block (0-1 scale)
 
-#### Basic Usage
+#### Usage
 
 ```typescript
-import { getTerminologyDictionary } from '@/lib/geo/loadDictionary';
+import { KnowledgeBlockParser, parseKnowledgeBlocks } from '@/lib/geo';
 
-// Load the dictionary
-const dictionary = getTerminologyDictionary();
+// Using the class
+const parser = new KnowledgeBlockParser();
+const blocks = parser.parse(htmlContent);
 
-// Find a term
-const term = dictionary.findTerm('智能合约');
-console.log(term?.definition);
-// Output: "部署在区块链上的自动执行程序，当预设条件满足时自动执行合约条款"
+// Using the convenience function
+const blocks = parseKnowledgeBlocks(htmlContent);
 
-// Get canonical name (useful for normalizing aliases)
-const canonical = dictionary.getCanonicalName('Smart Contract');
-console.log(canonical);
-// Output: "智能合约"
-
-// Check if a term is an alias
-const isAlias = dictionary.isAlias('去中心化金融');
-console.log(isAlias);
-// Output: true (it's an alias for "DeFi")
+// Analyze the results
+blocks.forEach(block => {
+  console.log(`Type: ${block.type}`);
+  console.log(`Title: ${block.title}`);
+  console.log(`Extractability: ${block.extractability}`);
+});
 ```
 
-#### Validate Content Consistency
+#### Example
 
 ```typescript
-import { getTerminologyDictionary } from '@/lib/geo/loadDictionary';
-
-const dictionary = getTerminologyDictionary();
-const content = "在Web 3.0中，智能合约是核心技术...";
-
-// Check for terminology consistency issues
-const conflicts = dictionary.validateTerminologyConsistency(content);
-
-if (conflicts.length > 0) {
-  console.log('Found terminology issues:');
-  conflicts.forEach(conflict => {
-    console.log(`- Using "${conflict.term}" instead of canonical name`);
-  });
-}
-```
-
-#### Get Terms by Category
-
-```typescript
-import { getTerminologyDictionary } from '@/lib/geo/loadDictionary';
-
-const dictionary = getTerminologyDictionary();
-
-// Get all DeFi-related terms
-const defiTerms = dictionary.getTermsByCategory('defi');
-console.log(defiTerms.map(t => t.canonicalName));
-// Output: ["DeFi", "流动性池", "套利", "良性套利", ...]
-
-// Get all security-related terms
-const securityTerms = dictionary.getTermsByCategory('security');
-console.log(securityTerms.map(t => t.canonicalName));
-// Output: ["智能合约审计", "重入攻击", "私钥", "公钥", "风险管理"]
-```
-
-#### Find Related Terms
-
-```typescript
-import { getTerminologyDictionary } from '@/lib/geo/loadDictionary';
-
-const dictionary = getTerminologyDictionary();
-
-// Find terms related to "智能合约"
-const relatedTerms = dictionary.getRelatedTerms('智能合约');
-console.log(relatedTerms.map(t => t.canonicalName));
-// Output: ["区块链", "DeFi", "Solidity"]
-```
-
-#### Extract Terms from Content
-
-```typescript
-import { getTerminologyDictionary } from '@/lib/geo/loadDictionary';
-
-const dictionary = getTerminologyDictionary();
-const articleContent = `
-  智能合约是区块链上的自动执行程序。
-  在DeFi应用中，智能合约审计至关重要。
+const htmlContent = `
+  <div>
+    <p>智能合约是指运行在区块链上的自动执行程序。</p>
+    <p>智能合约可以自动执行预定义的规则和条件。</p>
+    <ul>
+      <li>自动执行</li>
+      <li>去中心化</li>
+    </ul>
+    <p>因此，智能合约是Web3技术的核心组件。</p>
+  </div>
 `;
 
-// Extract all dictionary terms found in the content
-const foundTerms = dictionary.extractTermsFromContent(articleContent);
-console.log(foundTerms.map(t => t.canonicalName));
-// Output: ["智能合约", "区块链", "DeFi", "智能合约审计"]
+const blocks = parseKnowledgeBlocks(htmlContent);
+
+// Results:
+// - 1 definition block: "智能合约是指..."
+// - 1 explanation block: "智能合约可以自动执行..."
+// - 1 conclusion block: "因此，智能合约是..."
 ```
 
-### Dictionary Structure
+### Terminology Manager
 
-The terminology dictionary is stored in `data/terminology.json` with the following structure:
+The Terminology Manager ensures consistent use of technical terms across all content.
 
-```json
-{
-  "version": "1.0.0",
-  "lastUpdated": "2026-01-09T00:00:00Z",
-  "entries": [
-    {
-      "term": "智能合约",
-      "canonicalName": "智能合约",
-      "aliases": ["Smart Contract", "自动执行合约"],
-      "definition": "部署在区块链上的自动执行程序...",
-      "context": "在以太坊和其他区块链平台上",
-      "relatedTerms": ["区块链", "DeFi", "Solidity"],
-      "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "blockchain"
-    }
-  ]
+#### Features
+
+- **Term Lookup**: Find canonical names for terms and their aliases
+- **Consistency Validation**: Check if content uses canonical names
+- **Definition Conflict Detection**: Identify conflicting definitions
+- **Category Filtering**: Get terms by category (web3, defi, security, blockchain)
+- **Related Terms**: Find related concepts
+
+#### Usage
+
+```typescript
+import { loadTerminologyDictionary } from '@/lib/geo';
+import terminologyData from '@/data/terminology.json';
+
+const manager = loadTerminologyDictionary(terminologyData);
+
+// Find a term
+const term = manager.findTerm('智能合约');
+console.log(term.canonicalName); // "Smart Contract"
+console.log(term.definition);
+
+// Get canonical name
+const canonical = manager.getCanonicalName('smart contract');
+
+// Check if using an alias
+const isAlias = manager.isAlias('SC'); // true if 'SC' is an alias
+
+// Validate content
+const conflicts = manager.validateTerminologyConsistency(content);
+if (conflicts.length > 0) {
+  console.log('Found terminology issues:', conflicts);
 }
+
+// Get related terms
+const related = manager.getRelatedTerms('智能合约');
 ```
 
-### Adding New Terms
+## Requirements Mapping
 
-To add new terms to the dictionary:
+This implementation addresses the following requirements from the GEO optimization spec:
 
-1. Edit `data/terminology.json`
-2. Add a new entry with all required fields:
-   - `term`: The term itself
-   - `canonicalName`: The standard name to use
-   - `aliases`: Alternative names (to be avoided)
-   - `definition`: Clear, authoritative definition
-   - `context`: Where this term is used
-   - `relatedTerms`: Related concepts
-   - `firstDefinedIn`: URL where first defined
-   - `category`: One of: web3, defi, security, blockchain, general
+- **Requirement 1.1**: Definition sentence structures - Extracted by `extractDefinitions()`
+- **Requirement 1.2**: Conclusion sentences - Extracted by `extractConclusions()`
+- **Requirement 1.3**: Enumeration structures - Detected in extractability scoring
+- **Requirement 5.5**: Knowledge block decomposition - Core functionality of the parser
+- **Requirement 8.1-8.5**: Terminology consistency - Managed by TerminologyManager
 
-3. Update the `version` and `lastUpdated` fields
+## Testing
 
-### Best Practices
+Run the test suite:
 
-1. **Always use canonical names** in content - avoid aliases
-2. **Define terms on first use** using the format: "在本文中，XXX 指的是..."
-3. **Keep definitions consistent** across all content
-4. **Add context** to help LLMs understand when to use each term
-5. **Link related terms** to help build concept networks
+```bash
+npm test -- lib/geo/__tests__/
+```
 
-### Requirements Satisfied
+## Future Enhancements
 
-This implementation satisfies the following requirements:
-
-- **Requirement 8.1**: First-mention definition support
-- **Requirement 8.2**: Terminology consistency across content
-- **Requirement 8.3**: Explicit definition sentence format
-- **Requirement 8.5**: Avoiding synonym confusion
-
-### Future Enhancements
-
-Planned enhancements for the terminology system:
-
-- Automatic term extraction from new articles
-- Suggestion system for related terms
-- Multi-language term mapping (Chinese ↔ English)
-- Integration with content authoring tools
-- Real-time validation in content editor
+- AI Summary generation
+- Q&A pair extraction
+- Schema.org structured data generation
+- Content quality validation
+- Multilingual parity checking
