@@ -92,7 +92,7 @@
   - 测试响应式布局
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [-] 6.2 编写 AI Summary 的属性测试
+- [x] 6.2 编写 AI Summary 的属性测试
   - **Property 18: AI Summary component presence**
   - **Property 19: AI Summary whatIs field**
   - **Property 20: AI Summary whyImportant field**
@@ -100,7 +100,7 @@
   - **Property 22: AI Summary structured format**
   - **Validates: Requirements 6.1, 6.2, 6.3, 6.4, 6.5**
 
-- [ ] 7. 集成 AI Summary 到博客文章页面
+- [x] 7. 集成 AI Summary 到博客文章页面
   - 修改 `app/[locale]/blog/[slug]/page.tsx`
   - 在文章顶部（Featured Image 之后）添加 AI Summary 组件
   - 确保 AI Summary 在目录（TOC）之前显示

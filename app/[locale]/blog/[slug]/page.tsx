@@ -148,8 +148,15 @@ export default async function BlogArticlePage({
           </div>
 
           {/* AI Summary - Placed after Featured Image, before Article Content */}
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mb-16">
             <AISummary summary={t.raw('aiSummary')} />
+            
+            {/* Visual separator */}
+            <div className="mt-12 flex items-center gap-4">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+              <span className="text-xs text-muted-foreground uppercase tracking-wider">Article Content</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+            </div>
           </div>
 
           {/* Article Content with TOC - 移除宽度限制 */}
