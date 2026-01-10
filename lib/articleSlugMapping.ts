@@ -101,6 +101,22 @@ export const articleSlugMapping: Record<string, { zh: string; en: string }> = {
     zh: '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击',
     en: 'hardware-wallet-supply-chain-attacks-exposed'
   },
+  'tornado-cash被制裁后链上黑钱现在都流向了哪里': {
+    zh: 'tornado-cash被制裁后链上黑钱现在都流向了哪里',
+    en: 'where-on-chain-black-money-flows-post-tornado-cash'
+  },
+  'where-on-chain-black-money-flows-post-tornado-cash': {
+    zh: 'tornado-cash被制裁后链上黑钱现在都流向了哪里',
+    en: 'where-on-chain-black-money-flows-post-tornado-cash'
+  },
+  '巨鲸的假动作链上数据是如何欺骗你的': {
+    zh: '巨鲸的假动作链上数据是如何欺骗你的',
+    en: 'how-on-chain-data-can-deceive-you'
+  },
+  'how-on-chain-data-can-deceive-you': {
+    zh: '巨鲸的假动作链上数据是如何欺骗你的',
+    en: 'how-on-chain-data-can-deceive-you'
+  },
 };
 
 /**

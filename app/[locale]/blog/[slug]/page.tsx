@@ -35,7 +35,9 @@ export async function generateStaticParams() {
     'rwa-s-dawn-why-on-chain-compliance-is-key-for-inst',  // English version of RWA 爆发前夜：为什么“链上合规”是机构入场的唯一门票？
     'is-usdt-safe-72-hour-crash-warning-signs',  // English version of USDT真的安全吗？揭秘稳定币崩盘前的72小时信号
     'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr',  // English version of 不仅是炒作：深扒AI介入链上交易的底层逻辑，这3个变化正在发生
-    'hardware-wallet-supply-chain-attacks-exposed'  // English version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
+    'hardware-wallet-supply-chain-attacks-exposed',  // English version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
+    'where-on-chain-black-money-flows-post-tornado-cash',  // English version of Tornado Cash被制裁后，链上“黑钱”现在都流向了哪里？
+    'how-on-chain-data-can-deceive-you'  // English version of 巨鲸的“假动作”：链上数据是如何欺骗你的？
   ];
   
   // Chinese-only articles
@@ -49,7 +51,9 @@ export async function generateStaticParams() {
     'rwa-爆发前夜为什么链上合规是机构入场的唯一门票',  // Chinese version of RWA 爆发前夜：为什么“链上合规”是机构入场的唯一门票？
     'usdt真的安全吗揭秘稳定币崩盘前的72小时信号',  // Chinese version of USDT真的安全吗？揭秘稳定币崩盘前的72小时信号
     '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生',  // Chinese version of 不仅是炒作：深扒AI介入链上交易的底层逻辑，这3个变化正在发生
-    '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击'  // Chinese version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
+    '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击',  // Chinese version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
+    'tornado-cash被制裁后链上黑钱现在都流向了哪里',  // Chinese version of Tornado Cash被制裁后，链上“黑钱”现在都流向了哪里？
+    '巨鲸的假动作链上数据是如何欺骗你的'  // Chinese version of 巨鲸的“假动作”：链上数据是如何欺骗你的？
   ];
 
   const params = [];

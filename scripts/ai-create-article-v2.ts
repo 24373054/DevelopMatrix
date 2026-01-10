@@ -403,6 +403,7 @@ Return ONLY the English title, nothing else.`;
       cleaned = cleaned.replace(/根本性/g, '重要');
       cleaned = cleaned.replace(/完美/g, '理想');
       cleaned = cleaned.replace(/最强/g, '较强');
+      cleaned = cleaned.replace(/终极/g, '最终');
     } else {
       // Remove vague terms
       cleaned = cleaned.replace(/\bmight\b/g, '');

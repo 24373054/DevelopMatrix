@@ -50,6 +50,10 @@ const ARTICLE_ID_MAPPING: Record<string, string> = {
   'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr': '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生',
   '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击': 'hardware-wallet-supply-chain-attacks-exposed',
   'hardware-wallet-supply-chain-attacks-exposed': '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击',
+  'tornado-cash被制裁后链上黑钱现在都流向了哪里': 'where-on-chain-black-money-flows-post-tornado-cash',
+  'where-on-chain-black-money-flows-post-tornado-cash': 'tornado-cash被制裁后链上黑钱现在都流向了哪里',
+  '巨鲸的假动作链上数据是如何欺骗你的': 'how-on-chain-data-can-deceive-you',
+  'how-on-chain-data-can-deceive-you': '巨鲸的假动作链上数据是如何欺骗你的',
 };
 
 interface CheckOptions {

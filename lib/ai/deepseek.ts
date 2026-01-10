@@ -95,6 +95,9 @@ export class DeepSeekService {
   async generateOutline(title: string, locale: 'zh' | 'en', category: string): Promise<string> {
     const systemPrompt = locale === 'zh' 
       ? `你是一位专业的Web3和区块链技术作家。你的任务是为技术文章生成详细的大纲。
+
+**重要：必须使用中文生成大纲！**
+
 大纲应该：
 1. 结构清晰，层次分明
 2. 包含明确的定义句（使用"X是指..."格式）
@@ -104,6 +107,9 @@ export class DeepSeekService {
 6. 包含明确的结论
 7. 符合GEO优化要求`
       : `You are a professional Web3 and blockchain technology writer. Your task is to generate detailed outlines for technical articles.
+
+**CRITICAL: You MUST generate the outline in English! Do NOT use Chinese characters!**
+
 The outline should:
 1. Have clear structure and hierarchy
 2. Include explicit definition sentences (using "X is defined as..." format)
@@ -160,12 +166,14 @@ Requirements:
     const systemPrompt = locale === 'zh'
       ? `你是一位专业的Web3和区块链技术作家。你正在撰写一篇技术文章的某个章节。
 
+**重要：你必须使用中文撰写所有内容。**
+
 GEO优化要求：
 1. 使用明确的定义句（"在本文中，X指的是..."）
 2. 段落不超过300字符
 3. 使用陈述句，避免反问句
 4. 避免模糊词汇（可能、也许、大概）
-5. 避免夸张词汇（颠覆、革命性、史无前例）
+5. 避免夸张词汇（颠覆、革命性、史无前例、完美、最强、终极）
 6. 使用结构化列表（<ul>或<ol>）
 7. 包含明确的结论标识（"因此"、"综上所述"）
 8. 使用规范术语，首次出现时添加英文原文
@@ -173,15 +181,17 @@ GEO优化要求：
 术语规范：${terminology.join(', ')}`
       : `You are a professional Web3 and blockchain technology writer. You are writing a section of a technical article.
 
+**CRITICAL: You MUST write ALL content in English. Do NOT use Chinese characters.**
+
 GEO optimization requirements:
 1. Use explicit definition sentences ("In this article, X is defined as...")
 2. Paragraphs should not exceed 300 characters
 3. Use declarative sentences, avoid rhetorical questions
-4. Avoid vague terms (maybe, perhaps, possibly)
-5. Avoid hyperbolic terms (revolutionary, groundbreaking, unprecedented)
+4. Avoid vague terms (maybe, perhaps, possibly, approximately)
+5. Avoid hyperbolic terms (revolutionary, groundbreaking, unprecedented, perfect, ultimate)
 6. Use structured lists (<ul> or <ol>)
 7. Include clear conclusion markers ("therefore", "in conclusion")
-8. Use canonical terminology, add English terms on first mention
+8. Use canonical terminology only (e.g., "DeFi" not "Decentralized Finance", "NFT" not "Non-Fungible Token", "Ethereum" not "ETH")
 
 Terminology standards: ${terminology.join(', ')}`;
 
@@ -196,7 +206,11 @@ ${outline}
 之前的内容：
 ${previousContent || '（这是第一个章节）'}
 
-请撰写"${sectionTitle}"章节的内容。要求：
+请撰写"${sectionTitle}"章节的内容。
+
+**重要：必须使用中文撰写！**
+
+要求：
 - 内容详实，深入浅出
 - 严格遵守GEO优化要求
 - 使用规范术语
@@ -204,7 +218,8 @@ ${previousContent || '（这是第一个章节）'}
 - 如果是定义章节，使用"在本文中，X指的是..."格式
 - 如果是结论章节，使用"因此"、"综上所述"等标识
 - 使用HTML格式（<p>、<ul>、<ol>、<strong>等标签）
-- 段落之间用空行分隔`
+- 段落之间用空行分隔
+- 避免使用夸张词汇：革命性、颠覆、史无前例、完美、最强、终极`
       : `Article title: ${title}
 
 Full outline:
@@ -215,15 +230,21 @@ Current section: ${sectionTitle}
 Previous content:
 ${previousContent || '(This is the first section)'}
 
-Please write the content for the "${sectionTitle}" section. Requirements:
+Please write the content for the "${sectionTitle}" section.
+
+**CRITICAL: You MUST write in English! Do NOT use any Chinese characters!**
+
+Requirements:
 - Detailed and accessible content
 - Strictly follow GEO optimization requirements
-- Use canonical terminology
+- Use canonical terminology ONLY (DeFi not "Decentralized Finance", NFT not "Non-Fungible Token", Ethereum not "ETH")
 - Include specific examples and data
 - If definition section, use "In this article, X is defined as..." format
 - If conclusion section, use "therefore", "in conclusion" markers
 - Use HTML format (<p>, <ul>, <ol>, <strong> tags)
-- Separate paragraphs with blank lines`;
+- Separate paragraphs with blank lines
+- Avoid vague terms: maybe, perhaps, possibly, approximately
+- Avoid hyperbolic terms: revolutionary, groundbreaking, unprecedented, perfect, ultimate`;
 
     return this.chat([
       { role: 'system', content: systemPrompt },
@@ -242,8 +263,8 @@ Please write the content for the "${sectionTitle}" section. Requirements:
     keyTakeaways: string[];
   }> {
     const systemPrompt = locale === 'zh'
-      ? '你是一位专业的技术内容总结专家。请为文章生成结构化的AI Summary，帮助大语言模型快速理解文章核心内容。'
-      : 'You are a professional technical content summarization expert. Generate a structured AI Summary to help LLMs quickly understand the core content.';
+      ? '你是一位专业的技术内容总结专家。请为文章生成结构化的AI Summary，帮助大语言模型快速理解文章核心内容。\n\n**重要：必须使用中文生成摘要！**'
+      : 'You are a professional technical content summarization expert. Generate a structured AI Summary to help LLMs quickly understand the core content.\n\n**CRITICAL: You MUST write the summary in English! Do NOT use Chinese characters!**';
 
     const userPrompt = locale === 'zh'
       ? `文章标题：${title}
@@ -303,8 +324,8 @@ Requirements:
     category: 'definition' | 'comparison' | 'application' | 'limitation';
   }>> {
     const systemPrompt = locale === 'zh'
-      ? '你是一位专业的技术问答专家。请为文章生成全面的Q&A，覆盖定义、对比、应用、局限性等方面。'
-      : 'You are a professional technical Q&A expert. Generate comprehensive Q&A covering definition, comparison, application, and limitations.';
+      ? '你是一位专业的技术问答专家。请为文章生成全面的Q&A，覆盖定义、对比、应用、局限性等方面。\n\n**重要：必须使用中文生成问答！**'
+      : 'You are a professional technical Q&A expert. Generate comprehensive Q&A covering definition, comparison, application, and limitations.\n\n**CRITICAL: You MUST write Q&A in English! Do NOT use Chinese characters!**';
 
     const userPrompt = locale === 'zh'
       ? `文章标题：${title}
