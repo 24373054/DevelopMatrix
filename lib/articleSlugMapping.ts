@@ -53,6 +53,22 @@ export const articleSlugMapping: Record<string, { zh: string; en: string }> = {
     zh: '隐私计算在区块链时代的真正意义与商业价值',
     en: 'privacy-computing-s-role-in-blockchain-era'
   },
+  '全球web3监管趋势与企业上链合规指南': {
+    zh: '全球web3监管趋势与企业上链合规指南',
+    en: 'global-web3-regulatory-trends-compliance-guide'
+  },
+  'global-web3-regulatory-trends-compliance-guide': {
+    zh: '全球web3监管趋势与企业上链合规指南',
+    en: 'global-web3-regulatory-trends-compliance-guide'
+  },
+  '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱': {
+    zh: '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱',
+    en: 'smart-contract-authorization-hidden-asset-risks'
+  },
+  'smart-contract-authorization-hidden-asset-risks': {
+    zh: '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱',
+    en: 'smart-contract-authorization-hidden-asset-risks'
+  },
 };
 
 /**

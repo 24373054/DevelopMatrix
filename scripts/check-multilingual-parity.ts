@@ -38,6 +38,10 @@ const ARTICLE_ID_MAPPING: Record<string, string> = {
   'dao-blockchain-s-communist-vision': '把dao打造成区块链的共产主义',
   '隐私计算在区块链时代的真正意义与商业价值': 'privacy-computing-s-role-in-blockchain-era',
   'privacy-computing-s-role-in-blockchain-era': '隐私计算在区块链时代的真正意义与商业价值',
+  '全球web3监管趋势与企业上链合规指南': 'global-web3-regulatory-trends-compliance-guide',
+  'global-web3-regulatory-trends-compliance-guide': '全球web3监管趋势与企业上链合规指南',
+  '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱': 'smart-contract-authorization-hidden-asset-risks',
+  'smart-contract-authorization-hidden-asset-risks': '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱',
 };
 
 interface CheckOptions {

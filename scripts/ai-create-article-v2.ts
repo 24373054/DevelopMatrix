@@ -712,6 +712,7 @@ Return ONLY the English title, nothing else.`;
 
   /**
    * Update static params in page.tsx (add English version to commonArticles)
+   * Uses robust array parsing to avoid comma placement issues
    */
   private async updateStaticParams(zhConfig: ArticleConfig, enConfig: ArticleConfig): Promise<void> {
     console.log('\n📄 Step 11: Updating Static Params\n');
@@ -725,36 +726,87 @@ Return ONLY the English title, nothing else.`;
     
     let pageContent = fs.readFileSync(pagePath, 'utf-8');
     
+    // Helper function to parse array entries (handles comments)
+    const parseArrayEntries = (arrayContent: string): string[] => {
+      const entries: string[] = [];
+      const lines = arrayContent.split('\n');
+      
+      for (const line of lines) {
+        const trimmed = line.trim();
+        // Match: 'slug', or 'slug'  // comment
+        const match = trimmed.match(/^'([^']+)'/);
+        if (match) {
+          entries.push(match[1]);
+        }
+      }
+      
+      return entries;
+    };
+    
+    // Helper function to rebuild array with proper formatting
+    const rebuildArray = (entries: string[], comments: Map<string, string>): string => {
+      const lines = entries.map((entry, index) => {
+        const comment = comments.get(entry) || '';
+        const comma = index < entries.length - 1 ? ',' : '';
+        return `    '${entry}'${comma}${comment}`;
+      });
+      return lines.join('\n');
+    };
+    
     // Add English version to commonArticles
     const commonPattern = /const commonArticles = \[([\s\S]*?)\];/;
-    const match = pageContent.match(commonPattern);
+    const commonMatch = pageContent.match(commonPattern);
     
-    if (match) {
-      let articles = match[1].trim();
+    if (commonMatch) {
+      const arrayContent = commonMatch[1];
+      const entries = parseArrayEntries(arrayContent);
       
-      // Remove trailing comma if exists, we'll add it back properly
-      articles = articles.replace(/,\s*$/, '');
+      // Extract comments
+      const comments = new Map<string, string>();
+      const lines = arrayContent.split('\n');
+      for (const line of lines) {
+        const match = line.match(/'([^']+)'[,\s]*(\/\/.*)$/);
+        if (match) {
+          comments.set(match[1], '  ' + match[2]);
+        }
+      }
       
-      const newArticles = articles 
-        ? `${articles},\n    '${enConfig.id}'  // English version of ${zhConfig.title}`
-        : `'${enConfig.id}'  // English version of ${zhConfig.title}`;
-      pageContent = pageContent.replace(commonPattern, `const commonArticles = [\n    ${newArticles}\n  ];`);
+      // Add new entry if not exists
+      if (!entries.includes(enConfig.id)) {
+        entries.push(enConfig.id);
+        comments.set(enConfig.id, `  // English version of ${zhConfig.title}`);
+      }
+      
+      const newArrayContent = rebuildArray(entries, comments);
+      pageContent = pageContent.replace(commonPattern, `const commonArticles = [\n${newArrayContent}\n  ];`);
     }
     
     // Add Chinese version to zhOnlyArticles
     const zhOnlyPattern = /const zhOnlyArticles = \[([\s\S]*?)\];/;
-    const zhMatch = pageContent.match(zhOnlyPattern);
+    const zhOnlyMatch = pageContent.match(zhOnlyPattern);
     
-    if (zhMatch) {
-      let zhArticles = zhMatch[1].trim();
+    if (zhOnlyMatch) {
+      const arrayContent = zhOnlyMatch[1];
+      const entries = parseArrayEntries(arrayContent);
       
-      // Remove trailing comma if exists, we'll add it back properly
-      zhArticles = zhArticles.replace(/,\s*$/, '');
+      // Extract comments
+      const comments = new Map<string, string>();
+      const lines = arrayContent.split('\n');
+      for (const line of lines) {
+        const match = line.match(/'([^']+)'[,\s]*(\/\/.*)$/);
+        if (match) {
+          comments.set(match[1], '  ' + match[2]);
+        }
+      }
       
-      const newZhArticles = zhArticles
-        ? `${zhArticles},\n    '${zhConfig.id}'  // Chinese version of ${zhConfig.title}`
-        : `'${zhConfig.id}'  // Chinese version of ${zhConfig.title}`;
-      pageContent = pageContent.replace(zhOnlyPattern, `const zhOnlyArticles = [\n    ${newZhArticles}\n  ];`);
+      // Add new entry if not exists
+      if (!entries.includes(zhConfig.id)) {
+        entries.push(zhConfig.id);
+        comments.set(zhConfig.id, `  // Chinese version of ${zhConfig.title}`);
+      }
+      
+      const newArrayContent = rebuildArray(entries, comments);
+      pageContent = pageContent.replace(zhOnlyPattern, `const zhOnlyArticles = [\n${newArrayContent}\n  ];`);
     }
     
     fs.writeFileSync(pagePath, pageContent, 'utf-8');

@@ -29,7 +29,9 @@ export async function generateStaticParams() {
     'otc-compliance-aml-imperative',  // English version of OTC article
     'did-the-id-for-ai-agents',  // English version of DID article
     'dao-blockchain-s-communist-vision',  // English version of DAO article
-    'privacy-computing-s-role-in-blockchain-era'  // English version of 隐私计算在区块链时代的真正意义与商业价值
+    'privacy-computing-s-role-in-blockchain-era',  // English version of 隐私计算在区块链时代的真正意义与商业价值
+    'global-web3-regulatory-trends-compliance-guide',  // English version of 全球Web3监管趋势与企业上链合规指南
+    'smart-contract-authorization-hidden-asset-risks'  // English version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
   ];
   
   // Chinese-only articles
@@ -37,7 +39,9 @@ export async function generateStaticParams() {
     'otc的尽头是合规化-反洗钱正成为行业亟须',  // Chinese version of OTC article
     'didai-agent的身份证',  // Chinese version of DID article
     '把dao打造成区块链的共产主义',  // Chinese version of DAO article
-    '隐私计算在区块链时代的真正意义与商业价值'  // Chinese version of 隐私计算在区块链时代的真正意义与商业价值
+    '隐私计算在区块链时代的真正意义与商业价值',  // Chinese version of 隐私计算在区块链时代的真正意义与商业价值
+    '全球web3监管趋势与企业上链合规指南',  // Chinese version of 全球Web3监管趋势与企业上链合规指南
+    '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱'  // Chinese version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
   ];
 
   const params = [];

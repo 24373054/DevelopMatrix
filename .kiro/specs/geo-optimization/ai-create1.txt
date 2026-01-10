@@ -1,0 +1,623 @@
+(base) ubuntu@VM-24-4-ubuntu:~/yz/Web3/刻熵科技官网$ npm run ai-create-article-v2
+
+> keentropy-tech-website@1.0.0 ai-create-article-v2
+> tsx scripts/ai-create-article-v2.ts
+
+[dotenv@17.2.3] injecting env (2) from .env.local -- tip: ⚙️  override existing env vars with { override: true }
+═══════════════════════════════════════════════════════════════
+     AI-Powered GEO Article Creation Workflow V2 (Optimized)   
+     Creates BOTH Chinese and English versions automatically    
+═══════════════════════════════════════════════════════════════
+
+📋 Step 1: Basic Information
+
+Article Title (Chinese): 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+Category (security/defi/web3/blockchain): security
+Keywords (comma-separated, can be mixed Chinese/English): 智能合约,盲签攻击,私钥,钱包安全
+Author [Seal Wax]: 
+
+✅ Chinese Article ID: 你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+🤖 Generating English title and content...
+
+🌍 Creating bilingual article configuration...
+
+✅ English Article ID: smart-contract-authorization-hidden-asset-risks
+   Chinese: 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+   English: Smart Contract Authorization: Hidden Asset Risks
+
+
+===============================================================
+   Generating ZH Version
+===============================================================
+
+📝 Step 2: Generating Outline
+
+🤖 AI is generating article outline...
+
+Generated Outline:
+─────────────────────────────────────────────────────────────
+好的，作为一名专业的Web3和区块链技术作家，我将为您生成一篇关于智能合约授权安全风险的文章大纲。
+
+# 文章大纲：你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+
+## 1. 概述与核心概念：理解“授权”这把双刃剑
+*   **1.1 问题的提出：资产“不翼而飞”的悖论**
+    *   描述一个常见场景：用户私钥保管完好，从未泄露，但钱包中的代币、NFT等资产却被未知地址转走。
+    *   引出核心矛盾：这违背了“私钥即所有权”的普遍认知，问题根源在于“智能合约授权”。
+*   **1.2 核心概念定义：什么是智能合约授权？**
+    *   **授权（Approval）是指**：用户（EOA）通过签署一笔交易，允许另一个智能合约（通常是DApp的合约）代表用户支配其特定代币（如ERC-20）或NFT（如ERC-721）的行为。这是以太坊等支持智能合约的区块链上实现自动化交互的基石。
+    *   **授权额度（Allowance）是指**：用户授权给某个合约可以支配其特定资产的**最大数量**。它可以是具体数字，也可以是“无限大”（UNLIMITED 或 MAX_UINT256）。
+*   **1.3 为什么需要授权？—— DeFi与NFT生态的运转核心**
+    *   解释授权机制的必要性：没有它，任何DApp（如Uniswap交易、Compound借贷、OpenSea挂单）都无法自动完成资产转移，用户体验将退回至石器时代。
+
+## 2. 授权机制的技术原理与流程拆解
+*   **2.1 标准接口：ERC-20的approve与transferFrom**
+    *   详解`approve(spender, amount)`函数：用户调用，设置授权。
+    *   详解`transferFrom(from, to, amount)`函数：被授权合约（spender）调用，执行划转。
+    *   通过一个简单的代码示例或流程图展示两者如何协同工作。
+*   **2.2 授权查询：如何查看你的现有授权？**
+    *   介绍`allowance(owner, spender)`视图函数。
+    *   提及用户常用的链上工具，如Etherscan的“Token Approvals”检查工具、Revoke.cash、Debank等。
+*   **2.3 无限授权（Unlimited Approval）的普遍性与风险**
+    *   解释为何许多DApp为了方便（避免用户频繁授权）会请求无限授权。
+    *   明确指出：这是最大的安全隐患之一，相当于将你保险箱的“一次性取款上限”设置为“全部”。
+
+## 3. “隐形陷阱”的主要类型与攻击手法
+*   **3.1 恶意合约与钓鱼攻击**
+    *   场景：用户签署了伪装成合法项目的恶意合约的授权交易。
+    *   后果：攻击者合约立即或伺机调用`transferFrom`清空用户资产。
+*   **3.2 合约漏洞与逻辑缺陷利用**
+    *   **重入攻击（Reentrancy）**：利用合约回调函数，在授权检查后、状态更新前，反复提取资产。
+    *   **授权逻辑缺陷**：某些合约的授权函数存在漏洞，允许非所有者修改他人的授权。
+*   **3.3 前端劫持与签名伪造**
+    *   场景：DApp官网被黑，或用户访问了钓鱼网站。
+    *   过程：前端页面将正常的交易参数篡改为指向攻击者合约的恶意授权请求，诱导用户签署。
+*   **3.4 权限过期的“僵尸授权”**
+    *   定义：用户早已不再使用的DApp，其授权仍然有效且未被撤销。
+    *   风险：如果该DApp合约后续出现漏洞或被攻击者接管，这些“僵尸授权”将成为现成的提款通道。
+
+## 4. 实际应用场景：陷阱是如何发生的？
+*   **4.1 场景一：参与“土狗”项目或空投**
+    *   用户连接钱包到一个新项目网站，为了购买代币或领取空投，签署了授权。该项目合约实为恶意合约。
+*   **4.2 场景二：交互热门DApp时的疏忽**
+    *   用户在使用一个主流DEX或借贷平台时，未仔细核对授权弹窗中的合约地址和授权数量，习惯性点击“确认”，授予了无限授权。
+*   **4.3 场景三：授权管理工具本身的风险**
+    *   用户使用第三方授权管理工具（浏览器插件或网站）来批量撤销授权，但该工具本身是恶意的，或在其执行撤销交易时夹带了新的恶意授权。
+
+## 5. 防御策略与最佳实践
+*   **5.1 授权前：保持警惕，仔细检查**
+    *   **核对合约地址**：使用区块链浏览器验证DApp合约地址是否官方。
+    *   **拒绝无限授权**：尽可能使用自定义数量，仅授权本次交易所需的额度。
+    *   **使用钱包的安全功能**：利用钱包（如MetaMask）的“权限管理”页面查看和撤销授权。
+*   **5.2 授权后：定期审计与清理**
+    *   **定期使用授权检查工具**：每月或每季度使用Etherscan、Revoke.cash等工具检查所有活跃授权。
+    *   **及时撤销不必要的授权**：对不再使用的DApp，立即将授权额度设置为0（即撤销）。
+*   **5.3 技术解决方案与行业改进**
+    *   **ERC-2612（许可签名）**：介绍一种无需事先授权即可进行代币转移的标准，可减少授权风险。
+    *   **钱包的改进**：呼吁钱包提供更清晰、更醒目的授权风险提示，以及更便捷的授权管理界面。
+    *   **DApp的改进**：鼓励DApp采用每次交易单独授权或使用临时授权（如EIP-3009）。
+
+## 6. 局限性与注意事项
+*   **6.1 用户教育的局限性**
+    *   安全实践高度依赖用户自身的警惕性和知识水平，对于海量新用户而言门槛过高。
+    *   “便利性”与“安全性”之间存在永恒的矛盾，用户往往选择便利。
+*   **6.2 工具与合约的不可完全信任**
+    *   授权检查工具本身需要连接钱包，存在被前端攻击的风险。
+    *   即使是经过审计的知名合约，也可能在将来发现漏洞。
+*   **6.3 跨链与多链环境下的复杂性**
+    *   用户在多条链（如以太坊、BSC、Polygon）上都有资产和授权，管理难度呈指数级增长。
+    *   不同链的生态和工具成熟度不一，安全实践难以统一。
+
+## 7. 结论：在可组合性的世界里做自己资产的清醒管家
+*   **重申核心观点**：智能合约授权是Web3世界的必要基础设施，但它并非无风险。资产安全的责任，从未完全脱离用户自身。
+*   **总结关键行动**：用户必须从“签完即忘”转变为“主动管理”，将**定期审计和清理授权**视为与保管私钥同等重要的安全习惯。
+*   **展望未来**：最终解决方案需要社区共同努力——通过更优的标准（如ERC-2612）、更智能的钱包和更负责任的DApp设计，在底层减少此类风险，构建一个既强大又安全的可组合性金融未来。在此之前，保持警惕是唯一的护身符。
+─────────────────────────────────────────────────────────────
+
+
+📄 Step 3: Generating Content
+
+Found 7 sections to generate
+
+
+[1/7] Generating: 1. 概述与核心概念：理解“授权”这把双刃剑
+🤖 AI is writing...
+✅ Section completed (410 characters)
+
+[2/7] Generating: 2. 授权机制的技术原理与流程拆解
+🤖 AI is writing...
+✅ Section completed (861 characters)
+
+[3/7] Generating: 3. “隐形陷阱”的主要类型与攻击手法
+🤖 AI is writing...
+✅ Section completed (840 characters)
+
+[4/7] Generating: 4. 实际应用场景：陷阱是如何发生的？
+🤖 AI is writing...
+✅ Section completed (735 characters)
+
+[5/7] Generating: 5. 防御策略与最佳实践
+🤖 AI is writing...
+✅ Section completed (1182 characters)
+
+[6/7] Generating: 6. 局限性与注意事项
+🤖 AI is writing...
+✅ Section completed (889 characters)
+
+[7/7] Generating: 7. 结论：在可组合性的世界里做自己资产的清醒管家
+🤖 AI is writing...
+✅ Section completed (976 characters)
+
+✅ All 7 sections generated!
+   Total content: 6109 characters
+
+   🔧 Removing duplicate headers...
+     ✓ Removed duplicate: 2. 授权机制的技术原理与流程拆解
+     ✓ Removed duplicate: 3. “隐形陷阱”的主要类型与攻击手法
+     ✓ Removed duplicate: 4. 实际应用场景：陷阱是如何发生的？
+     ✓ Removed duplicate: 5. 防御策略与最佳实践
+     ✓ Removed duplicate: 6. 局限性与注意事项
+     ✓ Removed duplicate: 7. 结论：在可组合性的世界里做自己资产的清醒管家
+   ✅ Duplicate headers removed
+
+   🧹 Cleaning content (removing vague/hyperbolic terms)...
+   ✅ Content cleaned
+
+   ✂️  Splitting long paragraphs...
+   ✅ Long paragraphs split
+
+
+🤖 Step 5: Generating AI Summary
+
+🤖 AI is creating structured summary...
+
+Generated AI Summary:
+─────────────────────────────────────────────────────────────
+What is it: 智能合约授权（Approval）是用户允许特定智能合约支配其代币或NFT的机制，这是DeFi和NFT生态自动化交互的基石，但也是资产安全的主要风险来源。
+Why important: 授权机制使得DApp能够自动转移用户资产，但若管理不当，即使私钥未泄露，资产也可能被恶意合约或漏洞利用转移，因此理解和管理授权对Web3资产安全至关重要。
+Use cases: 5
+Key takeaways: 5
+─────────────────────────────────────────────────────────────
+
+
+❓ Step 6: Generating Q&A Pairs
+
+🤖 AI is creating Q&A coverage...
+
+Generated 8 Q&A pairs:
+─────────────────────────────────────────────────────────────
+1. [definition] 什么是智能合约授权（Approval）？
+2. [comparison] 无限授权与有限授权有什么区别？
+3. [application] 智能合约授权适用于哪些实际场景？
+4. [limitation] 智能合约授权机制有哪些局限性？
+5. [definition] 什么是“僵尸授权”？
+6. [comparison] 前端劫持攻击与合约漏洞攻击有什么区别？
+7. [application] 如何查询和管理现有的智能合约授权？
+8. [limitation] 使用第三方授权管理工具有哪些潜在风险？
+─────────────────────────────────────────────────────────────
+
+   📚 Adding citations...
+   ✅ Citations added
+
+
+🔍 Step 7: Validation
+
+📊 Quality Score: 96/100
+
+✅ Quality check passed
+
+
+💾 Saving Article (${config.locale})...
+
+✅ Article saved to /home/ubuntu/yz/Web3/刻熵科技官网/messages/zh.json
+   Article ID: 你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+
+   ✅ Hero image created: 你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱-hero.png (zh)
+
+===============================================================
+   Generating EN Version
+===============================================================
+
+📝 Step 2: Generating Outline
+
+🤖 AI is generating article outline...
+
+Generated Outline:
+─────────────────────────────────────────────────────────────
+# Detailed Outline: Smart Contract Authorization: Hidden Asset Risks
+
+## 1. Overview and Core Concept Definitions
+This section introduces the fundamental premise of the article and defines the key technical concepts related to authorization within smart contracts.
+*   **1.1 The Central Problem: Authorization as a Security Keystone**
+    *   Smart contract authorization is defined as the set of rules and mechanisms that govern which entities (users, other contracts) can execute specific functions or access certain data within a decentralized application (dApp).
+    *   The article's thesis is established: flawed authorization logic is a primary, yet often overlooked, vector for catastrophic asset loss, distinct from simple coding bugs.
+*   **1.2 Deconstructing Key Authorization Mechanisms**
+    *   **Access Control Modifiers (e.g., `onlyOwner`, `hasRole`):** These are defined as code-level checks that restrict function execution based on the caller's identity or assigned role.
+    *   **Ownership Models:** Centralized ownership (single EOA/contract) is defined versus decentralized governance (multi-sig, DAO) models, highlighting how each impacts the authorization attack surface.
+    *   **Permission Granularity:** The concept is defined as the spectrum from all-or-nothing privileges to finely scoped permissions for specific functions or asset limits.
+
+## 2. Anatomy of Common Authorization Vulnerabilities
+This section categorizes and explains specific vulnerability patterns that stem from improper authorization logic.
+*   **2.1 Missing or Insufficient Access Controls**
+    *   Explanation of functions inadvertently left public, allowing any user to invoke critical operations (e.g., minting tokens, withdrawing funds).
+    *   Case study reference: Historical exploits where `onlyOwner` modifiers were omitted.
+*   **2.2 Improper Ownership or Privilege Management**
+    *   Discussion of risks from single points of failure (private key compromise) and flawed ownership transfer functions.
+    *   Analysis of "tx.origin" vs "msg.sender" confusion, defined as a vulnerability where using the transaction originator instead of the immediate caller can enable phishing-style attacks.
+*   **2.3 Cross-Function and Cross-Contract Authorization Flaws**
+    *   Explanation of how a function with proper controls can call another internal function that lacks them, creating an indirect exploit path.
+    *   Risks associated with authorizing untrusted or upgradeable external contracts.
+
+## 3. Comparative Analysis: Authorization vs. Other Smart Contract Risks
+This section positions authorization risks within the broader smart contract security landscape.
+*   **3.1 Contrast with "Pure" Code Logic Bugs**
+    *   Authorization flaws are compared to arithmetic overflows/underflows or reentrancy. The key difference is defined: authorization is a *design logic* flaw, often not caught by tools looking for code execution anomalies.
+*   **3.2 Relationship to Oracle and Dependency Risks**
+    *   Analysis of how authorization decisions can depend on external data (e.g., governance votes, price feeds), creating a hybrid risk category.
+    *   Discussion on why secure dependencies are meaningless if authorization to use them is broken.
+
+## 4. Practical Use Cases and Real-World Exploit Patterns
+This section illustrates the theoretical vulnerabilities with concrete examples from major dApp categories.
+*   **4.1 Decentralized Finance (DeFi) Protocols**
+    *   **Use Case: Liquidity Pool Withdrawal Functions.** Example of a flaw allowing unauthorized draining of pooled assets.
+    *   **Use Case: Governance and Privileged Functions.** Example where a proposal execution function lacked access control, allowing unauthorized upgrades.
+*   **4.2 Non-Fungible Token (NFT) Projects**
+    *   **Use Case: Minting and Airdrop Functions.** Example where a "whitelist mint" function had incorrect role assignment, allowing public minting.
+    *   **Use Case: Royalty and Fee Withdrawal.** Example of compromised owner keys leading to stolen accumulated royalties.
+*   **4.3 Blockchain Bridges and Cross-Chain Applications**
+    *   **Use Case: Validator/Multisig Authorization.** Analysis of how overly centralized or poorly implemented signer authorization for bridge transactions has led to massive losses.
+
+## 5. Security Best Practices for Robust Authorization
+This section provides actionable recommendations for developers to mitigate the outlined risks.
+*   **5.1 Adopting Standardized Libraries and Patterns**
+    *   Advocacy for using battle-tested libraries like OpenZeppelin's `AccessControl` and `Ownable`, which are defined as modular, audited implementations of role-based and ownership-based permissions.
+    *   Recommendation for the "Checks-Effects-Interactions" pattern to prevent authorization bypasses via reentrancy.
+*   **5.2 Implementing the Principle of Least Privilege**
+    *   Guidance on creating granular roles (e.g., `MINTER_ROLE`, `PAUSER_ROLE`, `UPGRADER_ROLE`) instead of relying solely on a monolithic `owner`.
+    *   Recommendation for time-locked or multi-step (e.g., propose-accept) processes for critical privilege changes.
+*   **5.3 Rigorous Testing and Auditing Focus**
+    *   Emphasis on writing specific unit and invariant tests that explicitly challenge authorization rules.
+    *   Advice for auditors and developers to map all privileged functions and their authorization paths as a primary audit step.
+
+## 6. Limitations and Considerations
+This section discusses the inherent challenges and trade-offs in implementing secure authorization.
+*   **6.1 The Usability-Security Trade-off**
+    *   Discussion of how overly complex authorization (e.g., multi-sig for every action) can degrade user experience and protocol agility.
+    *   The challenge of balancing decentralized ideals with practical security controls.
+*   **6.2 The Evolving Threat Landscape and Upgradeability**
+    *   Consideration of how upgradeable proxy patterns introduce authorization risks at the proxy admin level, a separate layer from the logic contract.
+    *   The limitation of static analysis tools in fully modeling dynamic authorization flows, especially across multiple contracts.
+*   **6.3 Irreversibility and the Cost of Failure**
+    *   Emphasis on the blockchain's immutable nature, which makes post-deployment fixes to authorization logic exceptionally difficult and high-stakes.
+    *   The consideration that insurance or decentralization does not fully absolve the need for correct foundational authorization design.
+
+## 7. Conclusion: Proactive Vigilance in Contract Design
+This section synthesizes the article's arguments and provides a forward-looking perspective.
+*   **7.1 Recapitulation of Core Argument**
+    *   Restatement that authorization is a foundational security layer; its failure often leads to direct, total asset loss regardless of other robust code.
+*   **7.2 The Path Forward for Developers and Auditors**
+    *   A call to action to treat authorization schema design with the same rigor as core business logic.
+    *   Final recommendation: Authorization should be the first item on the specification, audit checklist, and test plan, as it defines the security perimeter for all subsequent functionality.
+─────────────────────────────────────────────────────────────
+
+
+📄 Step 3: Generating Content
+
+Found 7 sections to generate
+
+
+[1/7] Generating: 1. Overview and Core Concept Definitions
+🤖 AI is writing...
+✅ Section completed (476 characters)
+
+[2/7] Generating: 2. Anatomy of Common Authorization Vulnerabilities
+🤖 AI is writing...
+✅ Section completed (932 characters)
+
+[3/7] Generating: 3. Comparative Analysis: Authorization vs. Other Smart Contract Risks
+🤖 AI is writing...
+✅ Section completed (680 characters)
+
+[4/7] Generating: 4. Practical Use Cases and Real-World Exploit Patterns
+🤖 AI is writing...
+✅ Section completed (769 characters)
+
+[5/7] Generating: 5. Security Best Practices for Robust Authorization
+🤖 AI is writing...
+✅ Section completed (981 characters)
+
+[6/7] Generating: 6. Limitations and Considerations
+🤖 AI is writing...
+✅ Section completed (874 characters)
+
+[7/7] Generating: 7. Conclusion: Proactive Vigilance in Contract Design
+🤖 AI is writing...
+✅ Section completed (1014 characters)
+
+✅ All 7 sections generated!
+   Total content: 6167 characters
+
+   🔧 Removing duplicate headers...
+     ✓ Removed duplicate: 2. Anatomy of Common Authorization Vulnerabilities
+     ✓ Removed duplicate: 3. Comparative Analysis: Authorization vs. Other Smart Contract Risks
+     ✓ Removed duplicate: 4. Practical Use Cases and Real-World Exploit Patterns
+     ✓ Removed duplicate: 5. Security Best Practices for Robust Authorization
+     ✓ Removed duplicate: 6. Limitations and Considerations
+     ✓ Removed duplicate: 7. Conclusion: Proactive Vigilance in Contract Design
+   ✅ Duplicate headers removed
+
+   🧹 Cleaning content (removing vague/hyperbolic terms)...
+   ✅ Content cleaned
+
+   ✂️  Splitting long paragraphs...
+   ✅ Long paragraphs split
+
+
+🤖 Step 5: Generating AI Summary
+
+🤖 AI is creating structured summary...
+
+Generated AI Summary:
+─────────────────────────────────────────────────────────────
+What is it: Smart contract authorization refers to the rules and mechanisms governing which entities (external or contract accounts) can execute specific functions or access specific data within decentralized applications. It defines the security boundaries of smart contracts through access control modifiers, ownership models, and permission granularity.
+Why important: Authorization logic flaws are a major and often overlooked vector for asset loss, distinct from simple code vulnerabilities. They represent design-level errors in business logic that directly enable asset theft or protocol manipulation when exploited.
+Use cases: 5
+Key takeaways: 5
+─────────────────────────────────────────────────────────────
+
+
+❓ Step 6: Generating Q&A Pairs
+
+🤖 AI is creating Q&A coverage...
+
+Generated 8 Q&A pairs:
+─────────────────────────────────────────────────────────────
+1. [definition] What is smart contract authorization?
+2. [comparison] What is the difference between authorization vulnerabilities and pure code logic vulnerabilities?
+3. [application] What are the common use cases where authorization vulnerabilities lead to asset loss in DeFi protocols?
+4. [limitation] What are the limitations of automated tools in detecting authorization vulnerabilities?
+5. [definition] What is the 'tx.origin' vs. 'msg.sender' confusion vulnerability?
+6. [comparison] What is the difference between centralized ownership and decentralized governance models in authorization?
+7. [application] How do authorization vulnerabilities manifest in NFT projects?
+8. [limitation] What are the limitations of permission granularity in smart contract authorization?
+─────────────────────────────────────────────────────────────
+
+   📚 Adding citations...
+   ✅ Citations added
+
+
+🔍 Step 7: Validation
+
+📊 Quality Score: 82/100
+
+✅ Quality check passed
+
+
+💾 Saving Article (${config.locale})...
+
+✅ Article saved to /home/ubuntu/yz/Web3/刻熵科技官网/messages/en.json
+   Article ID: smart-contract-authorization-hidden-asset-risks
+
+   ✅ Hero image created: smart-contract-authorization-hidden-asset-risks-hero.png (en)
+
+🔗 Step 10: Updating Slug Mapping
+
+✅ Slug mapping updated
+   ZH: 你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+   EN: smart-contract-authorization-hidden-asset-risks
+
+
+📄 Step 11: Updating Static Params
+
+✅ Added to commonArticles: smart-contract-authorization-hidden-asset-risks
+✅ Added to zhOnlyArticles: 你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+   (Both ZH and EN versions will be generated)
+
+
+🧪 Step 12: Updating GEO Test Config
+
+✅ GEO test config updated with article mapping
+
+
+🏗️  Step 13: Build and Publish
+
+Run npm run build to validate and publish? (y/n): y
+
+🔨 Running build process...
+
+1️⃣  Running pre-build validation...
+
+> keentropy-tech-website@1.0.0 validate:pre-build
+> tsx scripts/pre-build-validation.ts
+
+🚀 Starting Pre-Build Validation...
+
+═══════════════════════════════════════════════════════════════
+
+📋 Quality Gates:
+   ├─ AI Summary Coverage:      >= 90%
+   ├─ Average Quality Score:    >= 70/100
+   ├─ Multilingual Parity Rate: >= 90%
+   └─ Max Critical Issues:      <= 0
+
+
+📊 Step 1/2: Running GEO Quality Check...
+
+🔍 Starting GEO Quality Check...
+
+📚 Checking ZH articles...
+
+📚 Checking EN articles...
+
+   Results:
+   ├─ AI Summary Coverage:   100.0%
+   ├─ Average Quality Score: 89.9/100
+   ├─ Critical Issues:       0
+   └─ Total Articles:        20
+
+   ✅ AI Summary coverage gate PASSED
+   ✅ Average quality score gate PASSED
+   ✅ Critical issues gate PASSED
+
+
+🌍 Step 2/2: Running Multilingual Parity Check...
+
+🌍 Starting Multilingual Parity Check...
+
+📚 Found 10 common article(s)
+
+
+   Results:
+   ├─ Parity Rate:        100.0%
+   ├─ Total Issues:       0
+   ├─ Critical Issues:    0
+   └─ Total Articles:     10
+
+   ✅ Multilingual parity gate PASSED
+   ✅ Critical parity issues gate PASSED
+
+
+═══════════════════════════════════════════════════════════════
+✅ PRE-BUILD VALIDATION PASSED
+═══════════════════════════════════════════════════════════════
+
+All quality gates met. Build can proceed.
+
+✅ Pre-build validation passed
+
+2️⃣  Building application...
+
+> keentropy-tech-website@1.0.0 build:skip-validation
+> next build
+
+   ▲ Next.js 14.0.4
+   - Environments: .env.local
+
+ ✓ Creating an optimized production build    
+ ✓ Compiled successfully
+ ✓ Linting and checking validity of types    
+ ✓ Collecting page data    
+   Generating static pages (1/51)  [=   ] 
+ ⚠ Entire page /[locale]/blog deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog
+ ⚠ Entire page /[locale]/blog deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog
+ ⚠ Entire page /[locale]/developer deopted into client-side rendering. https://nex
+   Generating static pages (6/51)  [==  ] 
+ ⚠ Entire page /[locale]/developer deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/developer
+ ⚠ Entire page /[locale]/developers deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/developers
+ ⚠ Entire page /[locale]/developers deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/developers
+ ⚠ Entire page /[locale] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]
+ ⚠ Entire page /[locale] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]
+ ⚠ Entire page /[locale]/privacy deopted into client-side rendering. https://nextj
+   Generating static pages (13/51) [=== ] 
+ ⚠ Entire page /[locale]/privacy deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/privacy
+ ⚠ Entire page /[locale]/products/exchange deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/products/exchange
+ ⚠ Entire page /[locale]/products/exchange deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/products/exchange
+ ⚠ Entire page /[locale]/products/game deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/products/game
+ ⚠ Entire page /[locale]/products/game deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/products/game
+ ⚠ Entire page /[locale]/products/trace deopted into client-side rendering. https:
+   Generating static pages (18/51) [ ===] 
+ ⚠ Entire page /[locale]/products/trace deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/products/trace
+ ⚠ Entire page /[locale]/terms deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/terms
+ ⚠ Entire page /[locale]/terms deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/terms
+ ⚠ Entire page /[locale]/contact deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/contact
+ ⚠ Entire page /[locale]/contact deopted into client-side rendering. https://nextj
+   Generating static pages (25/51) [  ==] 
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://n
+   Generating static pages (28/51) [   =] 
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://n
+   Generating static pages (33/51) [    ] 
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://n
+   Generating static pages (39/51) [   =] 
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://n
+   Generating static pages (45/51) [  ==] 
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://nextjs.org/docs/messages/deopted-into-client-rendering /[locale]/blog/[slug]
+ ⚠ Entire page /[locale]/blog/[slug] deopted into client-side rendering. https://n
+ ✓ Generating static pages (51/51) 
+ ✓ Collecting build traces    
+ ✓ Finalizing page optimization    
+
+Route (app)                                Size     First Load JS
+┌ ○ /_not-found                            875 B          82.7 kB
+├ ● /[locale]                              10.4 kB         159 kB
+├   ├ /zh
+├   └ /en
+├ ● /[locale]/blog                         2.29 kB         151 kB
+├   ├ /zh/blog
+├   └ /en/blog
+├ ● /[locale]/blog/[slug]                  6.32 kB         155 kB
+├   ├ /zh/blog/web3-security-trends-2025
+├   ├ /zh/blog/smart-contract-audit-guide
+├   ├ /zh/blog/defi-risk-management
+├   └ [+23 more paths]
+├ ● /[locale]/contact                      1.51 kB         138 kB
+├   ├ /zh/contact
+├   └ /en/contact
+├ ● /[locale]/developer                    1.72 kB         144 kB
+├   ├ /zh/developer
+├   └ /en/developer
+├ ● /[locale]/developers                   2.66 kB         145 kB
+├   ├ /zh/developers
+├   └ /en/developers
+├ ● /[locale]/privacy                      1.17 kB         138 kB
+├   ├ /zh/privacy
+├   └ /en/privacy
+├ ● /[locale]/products/exchange            2.21 kB         145 kB
+├   ├ /zh/products/exchange
+├   └ /en/products/exchange
+├ ● /[locale]/products/game                2.74 kB         145 kB
+├   ├ /zh/products/game
+├   └ /en/products/game
+├ ● /[locale]/products/trace               2.34 kB         145 kB
+├   ├ /zh/products/trace
+├   └ /en/products/trace
+├ ● /[locale]/terms                        1.17 kB         138 kB
+├   ├ /zh/terms
+├   └ /en/terms
+├ ○ /robots.txt                            0 B                0 B
+└ ○ /sitemap.xml                           0 B                0 B
++ First Load JS shared by all              81.8 kB
+  ├ chunks/938-9837a2d079ecfc41.js         26.6 kB
+  ├ chunks/fd9d1056-14766259694fc46e.js    53.3 kB
+  ├ chunks/main-app-5482b02aa81c621d.js    220 B
+  └ chunks/webpack-4cd5016c20cba8b7.js     1.74 kB
+
+
+ƒ Middleware                               50.8 kB
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+
+✅ Build successful
+
+🎉 Articles published successfully!
+
+📱 View Chinese: http://localhost:3108/zh/blog/你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+📱 View English: http://localhost:3108/en/blog/你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱
+
+
+═══════════════════════════════════════════════════════════════
+    Both Language Versions Created Successfully! 🎉             
+    All automatic fixes applied!                                
+═══════════════════════════════════════════════════════════════
+
+(base) ubuntu@VM-24-4-ubuntu:~/yz/Web3/刻熵科技官网$ 
