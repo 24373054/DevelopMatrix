@@ -28,6 +28,18 @@ import type { KnowledgeBlock } from '../types/geo';
 // Types
 // ============================================================================
 
+// Article ID mapping for articles with different slugs in different languages
+const ARTICLE_ID_MAPPING: Record<string, string> = {
+  'otc的尽头是合规化-反洗钱正成为行业亟须': 'otc-compliance-aml-imperative',
+  'otc-compliance-aml-imperative': 'otc的尽头是合规化-反洗钱正成为行业亟须',
+  'didai-agent的身份证': 'did-the-id-for-ai-agents',
+  'did-the-id-for-ai-agents': 'didai-agent的身份证',
+  '把dao打造成区块链的共产主义': 'dao-blockchain-s-communist-vision',
+  'dao-blockchain-s-communist-vision': '把dao打造成区块链的共产主义',
+  '隐私计算在区块链时代的真正意义与商业价值': 'privacy-computing-s-role-in-blockchain-era',
+  'privacy-computing-s-role-in-blockchain-era': '隐私计算在区块链时代的真正意义与商业价值',
+};
+
 interface CheckOptions {
   article?: string;
   verbose?: boolean;
@@ -114,12 +126,25 @@ async function checkMultilingualParity(options: CheckOptions = {}): Promise<Pari
   const zhArticles = loadArticles('zh');
   const enArticles = loadArticles('en');
 
-  // Get common article IDs
+  // Get common article IDs (considering ID mappings)
   const zhArticleIds = new Set(Object.keys(zhArticles));
   const enArticleIds = new Set(Object.keys(enArticles));
-  const commonArticleIds = Array.from(zhArticleIds).filter(id => enArticleIds.has(id));
+  
+  // Find common articles, considering ID mappings
+  const commonArticlePairs: Array<{ zhId: string; enId: string }> = [];
+  
+  for (const zhId of Array.from(zhArticleIds)) {
+    // Check if there's a direct match
+    if (enArticleIds.has(zhId)) {
+      commonArticlePairs.push({ zhId, enId: zhId });
+    }
+    // Check if there's a mapped match
+    else if (ARTICLE_ID_MAPPING[zhId] && enArticleIds.has(ARTICLE_ID_MAPPING[zhId])) {
+      commonArticlePairs.push({ zhId, enId: ARTICLE_ID_MAPPING[zhId] });
+    }
+  }
 
-  if (commonArticleIds.length === 0) {
+  if (commonArticlePairs.length === 0) {
     console.warn('⚠️  No common articles found between zh and en locales.\n');
     return {
       summary: {
@@ -134,7 +159,7 @@ async function checkMultilingualParity(options: CheckOptions = {}): Promise<Pari
     };
   }
 
-  console.log(`📚 Found ${commonArticleIds.length} common article(s)\n`);
+  console.log(`📚 Found ${commonArticlePairs.length} common article(s)\n`);
 
   // Initialize parser for knowledge block analysis
   const parser = new KnowledgeBlockParser();
@@ -142,17 +167,17 @@ async function checkMultilingualParity(options: CheckOptions = {}): Promise<Pari
   // Check each article
   const articleReports: ArticleParityReport[] = [];
 
-  for (const articleId of commonArticleIds) {
+  for (const { zhId, enId } of commonArticlePairs) {
     // Skip if specific article requested and this isn't it
-    if (options.article && articleId !== options.article) {
+    if (options.article && zhId !== options.article && enId !== options.article) {
       continue;
     }
 
-    const zhArticle = zhArticles[articleId];
-    const enArticle = enArticles[articleId];
+    const zhArticle = zhArticles[zhId];
+    const enArticle = enArticles[enId];
 
     if (options.verbose) {
-      console.log(`  ├─ Checking: ${articleId}`);
+      console.log(`  ├─ Checking: ${zhId} <-> ${enId}`);
     }
 
     // Analyze both versions
@@ -160,12 +185,12 @@ async function checkMultilingualParity(options: CheckOptions = {}): Promise<Pari
     const enMetrics = analyzeArticle(enArticle, parser);
 
     // Compare and identify issues
-    const issues = compareArticles(articleId, zhMetrics, enMetrics);
+    const issues = compareArticles(zhId, zhMetrics, enMetrics);
 
     const hasParity = issues.length === 0;
 
     articleReports.push({
-      articleId,
+      articleId: zhId === enId ? zhId : `${zhId} / ${enId}`,
       zhTitle: zhArticle.title,
       enTitle: enArticle.title,
       hasParity,

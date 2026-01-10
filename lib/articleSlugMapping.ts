@@ -28,7 +28,31 @@ export const articleSlugMapping: Record<string, { zh: string; en: string }> = {
   'otc-compliance-aml-imperative': {
     zh: 'otc的尽头是合规化-反洗钱正成为行业亟须',
     en: 'otc-compliance-aml-imperative'
-  }
+  },
+  'didai-agent的身份证': {
+    zh: 'didai-agent的身份证',
+    en: 'did-the-id-for-ai-agents'
+  },
+  'did-the-id-for-ai-agents': {
+    zh: 'didai-agent的身份证',
+    en: 'did-the-id-for-ai-agents'
+  },
+  '把dao打造成区块链的共产主义': {
+    zh: '把dao打造成区块链的共产主义',
+    en: 'dao-blockchain-s-communist-vision'
+  },
+  'dao-blockchain-s-communist-vision': {
+    zh: '把dao打造成区块链的共产主义',
+    en: 'dao-blockchain-s-communist-vision'
+  },
+  '隐私计算在区块链时代的真正意义与商业价值': {
+    zh: '隐私计算在区块链时代的真正意义与商业价值',
+    en: 'privacy-computing-s-role-in-blockchain-era'
+  },
+  'privacy-computing-s-role-in-blockchain-era': {
+    zh: '隐私计算在区块链时代的真正意义与商业价值',
+    en: 'privacy-computing-s-role-in-blockchain-era'
+  },
 };
 
 /**

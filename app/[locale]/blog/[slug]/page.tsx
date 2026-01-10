@@ -26,12 +26,18 @@ export async function generateStaticParams() {
     'smart-contract-audit-guide',
     'defi-risk-management',
     'benign-arbitrage-theory',
-    'otc-compliance-aml-imperative'  // English version of OTC article
+    'otc-compliance-aml-imperative',  // English version of OTC article
+    'did-the-id-for-ai-agents',  // English version of DID article
+    'dao-blockchain-s-communist-vision',  // English version of DAO article
+    'privacy-computing-s-role-in-blockchain-era'  // English version of 隐私计算在区块链时代的真正意义与商业价值
   ];
   
   // Chinese-only articles
   const zhOnlyArticles = [
-    'otc的尽头是合规化-反洗钱正成为行业亟须'  // Chinese version of OTC article
+    'otc的尽头是合规化-反洗钱正成为行业亟须',  // Chinese version of OTC article
+    'didai-agent的身份证',  // Chinese version of DID article
+    '把dao打造成区块链的共产主义',  // Chinese version of DAO article
+    '隐私计算在区块链时代的真正意义与商业价值'  // Chinese version of 隐私计算在区块链时代的真正意义与商业价值
   ];
 
   const params = [];

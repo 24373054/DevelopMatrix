@@ -22,6 +22,7 @@
     "geo:check": "tsx scripts/geo-check.ts",
     "create-article": "tsx scripts/create-article.ts",
     "ai-create-article": "tsx scripts/ai-create-article.ts",
+    "ai-create-article-v2": "tsx scripts/ai-create-article-v2.ts",
     "validate:pre-build": "tsx scripts/pre-build-validation.ts",
     "validate:pre-build:strict": "tsx scripts/pre-build-validation.ts -- --strict",
     "validate:all": "npm run geo:check && npm run geo:check-multilingual-parity && npm run geo:validate-schema",
