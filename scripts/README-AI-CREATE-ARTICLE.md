@@ -390,7 +390,7 @@ Error: DeepSeek API key not found
 
 **Solution**: Ensure `.env.local` exists with:
 ```bash
-DEEPSEEK_API_KEY=sk-c23dd2d363044b2aad5788bf3003fc91
+DEEPSEEK_API_KEY=your....
 ```
 
 ### Issue: Build Fails
