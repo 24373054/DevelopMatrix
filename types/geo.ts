@@ -182,6 +182,35 @@ export interface GEOArticle {
 }
 
 /**
+ * Citation - Reference to external source
+ */
+export interface Citation {
+  /** Citation identifier */
+  id: string;
+  
+  /** Title of the cited work */
+  title: string;
+  
+  /** URL to the cited work */
+  url?: string;
+  
+  /** Author(s) of the cited work */
+  authors?: string[];
+  
+  /** Publication date */
+  publishedDate?: string;
+  
+  /** Publisher or source */
+  publisher?: string;
+  
+  /** Type of citation */
+  type: 'article' | 'paper' | 'documentation' | 'book' | 'website' | 'other';
+  
+  /** Additional notes about the citation */
+  notes?: string;
+}
+
+/**
  * Article Metadata - Standard metadata for articles
  */
 export interface ArticleMetadata {
@@ -202,6 +231,9 @@ export interface ArticleMetadata {
   
   /** Estimated reading time in minutes */
   readTime: number;
+  
+  /** Citations and references */
+  citations?: Citation[];
 }
 
 /**
@@ -320,6 +352,21 @@ export interface TerminologyEntry {
   
   /** Category of the term */
   category: 'web3' | 'defi' | 'security' | 'blockchain' | 'general';
+  
+  /** Translation information for multilingual consistency */
+  translation?: {
+    /** English term (for Chinese entries) or Chinese term (for English entries) */
+    en?: string;
+    
+    /** Chinese term */
+    zh?: string;
+    
+    /** English definition */
+    enDefinition?: string;
+    
+    /** Chinese definition */
+    zhDefinition?: string;
+  };
 }
 
 /**
@@ -402,6 +449,8 @@ export interface SchemaPerson {
   description?: string;
   jobTitle?: string;
   url?: string;
+  email?: string;
+  affiliation?: SchemaOrganization;
 }
 
 /**
@@ -519,6 +568,9 @@ export interface ContentQualityReport {
     
     /** Has Q&A coverage */
     hasQACoverage: boolean;
+    
+    /** Has citations or references */
+    hasCitations: boolean;
   };
   
   /** Issues found during assessment */

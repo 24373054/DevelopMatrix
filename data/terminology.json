@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2026-01-09T00:00:00Z",
+  "version": "1.1.0",
+  "lastUpdated": "2026-01-10T00:00:00Z",
   "entries": [
     {
       "term": "Web3",
@@ -10,7 +10,13 @@
       "context": "在区块链和去中心化应用开发中",
       "relatedTerms": ["区块链", "去中心化", "智能合约"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "web3"
+      "category": "web3",
+      "translation": {
+        "en": "Web3",
+        "zh": "Web3",
+        "enDefinition": "Decentralized internet based on blockchain technology where users own and control their data",
+        "zhDefinition": "基于区块链技术的去中心化互联网，用户拥有数据所有权和控制权"
+      }
     },
     {
       "term": "区块链",
@@ -20,7 +26,13 @@
       "context": "在加密货币和去中心化系统中",
       "relatedTerms": ["Web3", "智能合约", "共识机制"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Blockchain",
+        "zh": "区块链",
+        "enDefinition": "A distributed database technology that links data blocks in chronological order using cryptographic methods to form immutable data records",
+        "zhDefinition": "一种分布式数据库技术，通过密码学方法将数据区块按时间顺序链接，形成不可篡改的数据记录"
+      }
     },
     {
       "term": "智能合约",
@@ -30,7 +42,13 @@
       "context": "在以太坊和其他区块链平台上",
       "relatedTerms": ["区块链", "DeFi", "Solidity"],
       "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Smart Contract",
+        "zh": "智能合约",
+        "enDefinition": "Self-executing programs deployed on blockchain that automatically execute contract terms when preset conditions are met",
+        "zhDefinition": "部署在区块链上的自动执行程序，当预设条件满足时自动执行合约条款"
+      }
     },
     {
       "term": "DeFi",
@@ -40,7 +58,13 @@
       "context": "在区块链金融应用中",
       "relatedTerms": ["智能合约", "流动性池", "收益农场"],
       "firstDefinedIn": "/blog/defi-risk-management",
-      "category": "defi"
+      "category": "defi",
+      "translation": {
+        "en": "DeFi",
+        "zh": "去中心化金融",
+        "enDefinition": "Decentralized financial services based on blockchain technology that provide lending, trading, investment and other financial functions without traditional financial intermediaries",
+        "zhDefinition": "基于区块链技术的去中心化金融服务，无需传统金融中介即可提供借贷、交易、投资等金融功能"
+      }
     },
     {
       "term": "智能合约审计",
@@ -50,7 +74,13 @@
       "context": "在智能合约部署前的安全验证中",
       "relatedTerms": ["智能合约", "安全漏洞", "形式化验证"],
       "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "security"
+      "category": "security",
+      "translation": {
+        "en": "Smart Contract Audit",
+        "zh": "智能合约审计",
+        "enDefinition": "Professional service that conducts systematic security checks on smart contract code to identify potential vulnerabilities and security risks",
+        "zhDefinition": "对智能合约代码进行系统性安全检查，识别潜在漏洞和安全风险的专业服务"
+      }
     },
     {
       "term": "去中心化",
@@ -60,7 +90,13 @@
       "context": "在区块链和分布式系统设计中",
       "relatedTerms": ["Web3", "区块链", "共识机制"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "web3"
+      "category": "web3",
+      "translation": {
+        "en": "Decentralization",
+        "zh": "去中心化",
+        "enDefinition": "An architectural pattern where system control and data are distributed across multiple nodes rather than concentrated in a single central authority",
+        "zhDefinition": "系统控制权和数据分散在多个节点，而非集中在单一中心机构的架构模式"
+      }
     },
     {
       "term": "共识机制",
@@ -70,7 +106,13 @@
       "context": "在区块链网络运行中",
       "relatedTerms": ["区块链", "PoW", "PoS"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Consensus Mechanism",
+        "zh": "共识机制",
+        "enDefinition": "Protocols and algorithms by which multiple nodes in a blockchain network reach agreement on data state",
+        "zhDefinition": "区块链网络中多个节点就数据状态达成一致的协议和算法"
+      }
     },
     {
       "term": "流动性池",
@@ -80,7 +122,13 @@
       "context": "在去中心化交易所和 DeFi 协议中",
       "relatedTerms": ["DeFi", "AMM", "流动性挖矿"],
       "firstDefinedIn": "/blog/defi-risk-management",
-      "category": "defi"
+      "category": "defi",
+      "translation": {
+        "en": "Liquidity Pool",
+        "zh": "流动性池",
+        "enDefinition": "Smart contract fund pools in DeFi protocols that provide trading liquidity, where users can deposit tokens to earn transaction fees",
+        "zhDefinition": "DeFi 协议中用于提供交易流动性的智能合约资金池，用户可以存入代币以赚取交易手续费"
+      }
     },
     {
       "term": "Gas费",
@@ -90,7 +138,13 @@
       "context": "在以太坊交易和智能合约执行中",
       "relatedTerms": ["以太坊", "智能合约", "区块链"],
       "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Gas Fee",
+        "zh": "Gas费",
+        "enDefinition": "Computational resource fees required to execute transactions or smart contracts on blockchains like Ethereum",
+        "zhDefinition": "在以太坊等区块链上执行交易或智能合约所需支付的计算资源费用"
+      }
     },
     {
       "term": "重入攻击",
@@ -100,7 +154,13 @@
       "context": "在智能合约安全审计中",
       "relatedTerms": ["智能合约审计", "安全漏洞", "The DAO"],
       "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "security"
+      "category": "security",
+      "translation": {
+        "en": "Reentrancy Attack",
+        "zh": "重入攻击",
+        "enDefinition": "A smart contract security vulnerability where attackers repeatedly call contract functions before state updates, causing funds to be withdrawn multiple times",
+        "zhDefinition": "智能合约安全漏洞，攻击者在合约状态更新前重复调用合约函数，导致资金被多次提取"
+      }
     },
     {
       "term": "私钥",
@@ -110,7 +170,13 @@
       "context": "在加密货币钱包和区块链交易中",
       "relatedTerms": ["公钥", "钱包", "数字签名"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "security"
+      "category": "security",
+      "translation": {
+        "en": "Private Key",
+        "zh": "私钥",
+        "enDefinition": "Cryptographic key used to sign transactions and prove asset ownership, must be kept strictly confidential",
+        "zhDefinition": "用于签名交易和证明资产所有权的加密密钥，必须严格保密"
+      }
     },
     {
       "term": "公钥",
@@ -120,7 +186,13 @@
       "context": "在加密货币钱包和区块链交易中",
       "relatedTerms": ["私钥", "钱包地址", "数字签名"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "security"
+      "category": "security",
+      "translation": {
+        "en": "Public Key",
+        "zh": "公钥",
+        "enDefinition": "Cryptographic key derived from private key that can be publicly shared, used to receive assets and verify signatures",
+        "zhDefinition": "从私钥派生的加密密钥，可以公开分享，用于接收资产和验证签名"
+      }
     },
     {
       "term": "钱包",
@@ -130,7 +202,13 @@
       "context": "在加密货币资产管理中",
       "relatedTerms": ["私钥", "公钥", "助记词"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "web3"
+      "category": "web3",
+      "translation": {
+        "en": "Wallet",
+        "zh": "钱包",
+        "enDefinition": "Software or hardware tool for storing and managing cryptocurrency private keys",
+        "zhDefinition": "用于存储和管理加密货币私钥的软件或硬件工具"
+      }
     },
     {
       "term": "代币",
@@ -140,7 +218,13 @@
       "context": "在区块链和 DeFi 应用中",
       "relatedTerms": ["智能合约", "ERC-20", "NFT"],
       "firstDefinedIn": "/blog/defi-risk-management",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Token",
+        "zh": "代币",
+        "enDefinition": "Digital assets issued on blockchain that can represent currency, equity, utility or other value",
+        "zhDefinition": "在区块链上发行的数字资产，可以代表货币、权益、功能或其他价值"
+      }
     },
     {
       "term": "NFT",
@@ -150,7 +234,13 @@
       "context": "在数字艺术和收藏品市场中",
       "relatedTerms": ["代币", "智能合约", "ERC-721"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "web3"
+      "category": "web3",
+      "translation": {
+        "en": "NFT",
+        "zh": "非同质化代币",
+        "enDefinition": "Non-Fungible Token - unique and irreplaceable digital asset tokens commonly used for digital art and collectibles",
+        "zhDefinition": "具有唯一性和不可替代性的数字资产代币，常用于数字艺术品和收藏品"
+      }
     },
     {
       "term": "套利",
@@ -160,7 +250,13 @@
       "context": "在加密货币交易和 DeFi 中",
       "relatedTerms": ["DeFi", "交易所", "流动性"],
       "firstDefinedIn": "/blog/benign-arbitrage-theory",
-      "category": "defi"
+      "category": "defi",
+      "translation": {
+        "en": "Arbitrage",
+        "zh": "套利",
+        "enDefinition": "Trading strategy that exploits price differences between different markets or platforms to obtain risk-free profits",
+        "zhDefinition": "利用不同市场或平台之间的价格差异进行买卖以获取无风险利润的交易策略"
+      }
     },
     {
       "term": "良性套利",
@@ -170,7 +266,13 @@
       "context": "在 DeFi 市场效率优化中",
       "relatedTerms": ["套利", "DeFi", "市场效率"],
       "firstDefinedIn": "/blog/benign-arbitrage-theory",
-      "category": "defi"
+      "category": "defi",
+      "translation": {
+        "en": "Benign Arbitrage",
+        "zh": "良性套利",
+        "enDefinition": "Arbitrage strategies that promote market price discovery and liquidity improvement, having positive impact on market ecosystem",
+        "zhDefinition": "通过套利行为促进市场价格发现和流动性提升，对市场生态产生积极影响的套利策略"
+      }
     },
     {
       "term": "Solidity",
@@ -180,7 +282,13 @@
       "context": "在以太坊智能合约开发中",
       "relatedTerms": ["智能合约", "以太坊", "EVM"],
       "firstDefinedIn": "/blog/smart-contract-audit-guide",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Solidity",
+        "zh": "Solidity",
+        "enDefinition": "Primary programming language for Ethereum smart contracts with JavaScript-like syntax",
+        "zhDefinition": "以太坊智能合约的主要编程语言，语法类似 JavaScript"
+      }
     },
     {
       "term": "以太坊",
@@ -190,7 +298,13 @@
       "context": "在区块链和智能合约开发中",
       "relatedTerms": ["智能合约", "Solidity", "EVM"],
       "firstDefinedIn": "/blog/web3-security-trends-2025",
-      "category": "blockchain"
+      "category": "blockchain",
+      "translation": {
+        "en": "Ethereum",
+        "zh": "以太坊",
+        "enDefinition": "Open-source blockchain platform supporting smart contracts, serving as primary infrastructure for DeFi and Web3 applications",
+        "zhDefinition": "支持智能合约的开源区块链平台，是 DeFi 和 Web3 应用的主要基础设施"
+      }
     },
     {
       "term": "风险管理",
@@ -200,7 +314,13 @@
       "context": "在 DeFi 投资和智能合约安全中",
       "relatedTerms": ["DeFi", "智能合约审计", "安全"],
       "firstDefinedIn": "/blog/defi-risk-management",
-      "category": "security"
+      "category": "security",
+      "translation": {
+        "en": "Risk Management",
+        "zh": "风险管理",
+        "enDefinition": "Systematic process of identifying, assessing and controlling potential risks to minimize losses and protect assets",
+        "zhDefinition": "识别、评估和控制潜在风险的系统性过程，以最小化损失和保护资产"
+      }
     }
   ]
 }

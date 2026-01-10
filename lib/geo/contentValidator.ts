@@ -89,13 +89,15 @@ export class ContentValidator {
    * @param content - HTML content to validate
    * @param hasAISummary - Whether the article has an AI Summary
    * @param hasQACoverage - Whether the article has Q&A coverage
+   * @param hasCitations - Whether the article has citations/references
    * @returns Content quality report with issues and recommendations
    */
   validate(
     articleId: string,
     content: string,
     hasAISummary: boolean = false,
-    hasQACoverage: boolean = false
+    hasQACoverage: boolean = false,
+    hasCitations: boolean = false
   ): ContentQualityReport {
     const issues: QualityIssue[] = [];
 
@@ -115,6 +117,10 @@ export class ContentValidator {
     const hyperboleIssues = this.checkHyperbole(content);
     issues.push(...hyperboleIssues);
 
+    // Check for citations (if not explicitly provided)
+    const citationIssues = hasCitations ? [] : this.checkCitations(content);
+    issues.push(...citationIssues);
+
     // Calculate metrics
     const metrics = {
       hasDefinitions: this.hasDefinitionSentences(content),
@@ -126,6 +132,7 @@ export class ContentValidator {
       hasAuthorInfo: true, // Assumed to be checked elsewhere
       hasAISummary,
       hasQACoverage,
+      hasCitations: hasCitations || this.hasCitations(content),
     };
 
     // Calculate overall score
@@ -330,6 +337,58 @@ export class ContentValidator {
   }
 
   /**
+   * Check for citations and references
+   * Requirement 4.3: Provide citations and references for technical claims
+   * 
+   * @param content - HTML content to check
+   * @returns Array of issues found
+   */
+  checkCitations(content: string): QualityIssue[] {
+    const issues: QualityIssue[] = [];
+    
+    // Check if content has citations
+    if (!this.hasCitations(content)) {
+      issues.push({
+        severity: 'warning',
+        type: 'missing_citations',
+        message: 'No citations or references found. Technical articles should include citations to improve verifiability and credibility.',
+        location: 'Article content',
+      });
+    }
+
+    return issues;
+  }
+
+  /**
+   * Check if content has citations
+   * 
+   * @param content - HTML content to check
+   * @returns True if citations are present
+   */
+  hasCitations(content: string): boolean {
+    // Check for common citation patterns:
+    // 1. External links with rel="noopener" or target="_blank"
+    // 2. References section
+    // 3. Citation markers like [1], [2], etc.
+    // 4. Footnote markers
+    
+    const citationPatterns = [
+      // External links
+      /<a[^>]*href="https?:\/\/[^"]*"[^>]*(?:target="_blank"|rel="noopener")[^>]*>/i,
+      // References section
+      /<(?:section|div)[^>]*class="[^"]*(?:references|citations|bibliography)[^"]*"[^>]*>/i,
+      /<h[1-6][^>]*>.*?(?:References|Citations|Bibliography|参考文献|引用|来源).*?<\/h[1-6]>/i,
+      // Citation markers
+      /\[\d+\]/,
+      /\(\d{4}\)/, // Year in parentheses (common in academic citations)
+      // Footnote markers
+      /<sup[^>]*>\d+<\/sup>/,
+    ];
+
+    return citationPatterns.some(pattern => pattern.test(content));
+  }
+
+  /**
    * Check if content has definition sentences
    */
   private hasDefinitionSentences(content: string): boolean {
@@ -508,6 +567,10 @@ export class ContentValidator {
       recommendations.push('Replace hyperbolic terms (颠覆, 革命性, revolutionary) with measured, factual language');
     }
 
+    if (!metrics.hasCitations) {
+      recommendations.push('Add citations and references to external sources to improve verifiability and credibility');
+    }
+
     if (!metrics.hasAISummary) {
       recommendations.push('Add an AI Summary section with whatIs, whyImportant, useCases, and keyTakeaways');
     }
@@ -523,6 +586,10 @@ export class ContentValidator {
       recommendations.push('Convert rhetorical questions to declarative statements for better semantic certainty');
     }
 
+    if (issueTypes.has('missing_citations')) {
+      recommendations.push('Include external links, references section, or citation markers to support technical claims');
+    }
+
     return recommendations;
   }
 }
@@ -536,14 +603,16 @@ export class ContentValidator {
  * @param content - HTML content to validate
  * @param hasAISummary - Whether the article has an AI Summary
  * @param hasQACoverage - Whether the article has Q&A coverage
+ * @param hasCitations - Whether the article has citations/references
  * @returns Content quality report
  */
 export function validateContent(
   articleId: string,
   content: string,
   hasAISummary: boolean = false,
-  hasQACoverage: boolean = false
+  hasQACoverage: boolean = false,
+  hasCitations: boolean = false
 ): ContentQualityReport {
   const validator = new ContentValidator();
-  return validator.validate(articleId, content, hasAISummary, hasQACoverage);
+  return validator.validate(articleId, content, hasAISummary, hasQACoverage, hasCitations);
 }

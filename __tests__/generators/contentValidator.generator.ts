@@ -331,3 +331,47 @@ export function highQualityContentGenerator(): fc.Arbitrary<string> {
     { minLength: 2, maxLength: 5 }
   ).map(blocks => blocks.join('\n'));
 }
+
+/**
+ * Generate content with citations/references
+ * Property 12: Citation presence
+ */
+export function contentWithCitationsGenerator(): fc.Arbitrary<string> {
+  return fc.record({
+    mainContent: fc.array(shortParagraphGenerator(), { minLength: 2, maxLength: 4 }),
+    citations: fc.array(
+      fc.record({
+        text: safeTextGenerator(10, 50),
+        url: fc.webUrl(),
+      }),
+      { minLength: 1, maxLength: 5 }
+    ),
+  }).map(({ mainContent, citations }) => {
+    const citationLinks = citations.map(({ text, url }) => 
+      `<p><a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a></p>`
+    ).join('\n');
+    
+    const referencesSection = `
+      <section class="references">
+        <h2>References</h2>
+        ${citationLinks}
+      </section>
+    `;
+    
+    return mainContent.join('\n') + '\n' + referencesSection;
+  });
+}
+
+/**
+ * Generate content without citations/references
+ * Property 12: Citation presence
+ */
+export function contentWithoutCitationsGenerator(): fc.Arbitrary<string> {
+  return fc.array(
+    fc.oneof(
+      shortParagraphGenerator(),
+      declarativeSentenceGenerator()
+    ),
+    { minLength: 2, maxLength: 5 }
+  ).map(blocks => blocks.join('\n'));
+}

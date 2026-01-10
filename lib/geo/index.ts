@@ -25,6 +25,15 @@ export {
   generateQA,
 } from './qaGenerator';
 
+export {
+  generateEnhancedSchema,
+  extractCoreConcepts,
+  extractMentionedTechnologies,
+  determineArticleSeries,
+  generateSchemaJsonLd,
+  validateEnhancedSchema,
+} from './schemaGenerator';
+
 export type {
   TerminologyDictionary,
   TerminologyEntry,
@@ -40,3 +49,7 @@ export type {
   ArticleInput,
   QAGeneratorConfig,
 } from './qaGenerator';
+
+export type {
+  SchemaGeneratorOptions,
+} from './schemaGenerator';

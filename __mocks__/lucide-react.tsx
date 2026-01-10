@@ -47,3 +47,11 @@ export const Lightbulb = ({ size, className }: { size?: number; className?: stri
 export const CheckCircle2 = ({ size, className }: { size?: number; className?: string }) => (
   <svg data-testid="icon-check-circle-2" width={size} height={size} className={className} />
 );
+
+export const ExternalLink = ({ size, className }: { size?: number; className?: string }) => (
+  <svg data-testid="icon-external-link" width={size} height={size} className={className} />
+);
+
+export const MessageCircle = ({ size, className }: { size?: number; className?: string }) => (
+  <svg data-testid="icon-message-circle" width={size} height={size} className={className} />
+);

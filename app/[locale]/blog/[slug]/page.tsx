@@ -4,17 +4,65 @@ import Footer from '@/components/Footer';
 import ArticleContent from '@/components/Blog/ArticleContent';
 import AISummary from '@/components/Blog/AISummary';
 import QASection from '@/components/Blog/QASection';
+import Citations from '@/components/Blog/Citations';
 import { Metadata } from 'next';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  generateEnhancedSchema,
+  extractCoreConcepts,
+  extractMentionedTechnologies,
+  determineArticleSeries,
+} from '@/lib/geo/schemaGenerator';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
+import type { AISummary as AISummaryType, QAPair, Citation } from '@/types/geo';
+
+// Generate static params for all article pages
+export async function generateStaticParams() {
+  // Common articles available in both languages
+  const commonArticles = [
+    'web3-security-trends-2025',
+    'smart-contract-audit-guide',
+    'defi-risk-management',
+    'benign-arbitrage-theory',
+    'otc-compliance-aml-imperative'  // English version of OTC article
+  ];
+  
+  // Chinese-only articles
+  const zhOnlyArticles = [
+    'otc的尽头是合规化-反洗钱正成为行业亟须'  // Chinese version of OTC article
+  ];
+
+  const params = [];
+  
+  // Add common articles for both locales
+  for (const locale of ['zh', 'en']) {
+    for (const slug of commonArticles) {
+      params.push({ locale, slug });
+    }
+  }
+  
+  // Add Chinese-only articles
+  for (const slug of zhOnlyArticles) {
+    params.push({ locale: 'zh', slug });
+  }
+
+  return params;
+}
 
 export async function generateMetadata({ 
   params: { locale, slug } 
 }: { 
   params: { locale: string; slug: string } 
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: `blog.articles.${slug}` });
+  const { unstable_setRequestLocale } = await import('next-intl/server');
+  unstable_setRequestLocale(locale);
+  
+  // Decode the slug if it's URL encoded
+  const decodedSlug = decodeURIComponent(slug);
+  
+  const t = await getTranslations({ locale, namespace: `blog.articles.${decodedSlug}` });
   
   return {
     title: t('title'),
@@ -30,7 +78,8 @@ export async function generateMetadata({
       authors: [t('author')],
     },
     alternates: {
-      canonical: `/${locale}/blog/${slug}`,
+      canonical: generateCanonicalUrl(locale, `blog/${slug}`),
+      languages: generateHreflangAlternates({ path: `blog/${slug}` }),
     },
   };
 }
@@ -40,43 +89,66 @@ export default async function BlogArticlePage({
 }: { 
   params: { locale: string; slug: string } 
 }) {
-  const t = await getTranslations({ locale, namespace: `blog.articles.${slug}` });
+  const { unstable_setRequestLocale } = await import('next-intl/server');
+  unstable_setRequestLocale(locale);
+  
+  // Decode the slug if it's URL encoded
+  const decodedSlug = decodeURIComponent(slug);
+  
+  const t = await getTranslations({ locale, namespace: `blog.articles.${decodedSlug}` });
   const common = await getTranslations({ locale, namespace: 'blog' });
 
+  // Get article data
+  const aiSummary = t.raw('aiSummary') as AISummaryType | undefined;
+  const qaPairs = t.raw('qaPairs') as QAPair[] | undefined;
+  const citations = t.raw('citations') as Citation[] | undefined;
+  const keywords = t('keywords');
+  const category = t('category');
+  
+  // Get date and ensure ISO 8601 format
+  const rawDate = t('date');
+  const datePublished = rawDate.includes('T') ? rawDate : `${rawDate}T00:00:00Z`;
+  const dateModified = datePublished; // Use same date if no modification date available
+
+  // Extract GEO enhancements
+  const coreConcepts = extractCoreConcepts(aiSummary, keywords);
+  const mentionedTechnologies = extractMentionedTechnologies(keywords, aiSummary);
+  const seriesName = determineArticleSeries(category, locale as 'zh' | 'en');
+
+  // Generate enhanced Schema.org structured data
+  const enhancedSchema = generateEnhancedSchema({
+    slug: decodedSlug,
+    title: t('title'),
+    description: t('excerpt'),
+    category,
+    keywords,
+    author: t('author'),
+    authorBio: t('authorBio'),
+    datePublished,
+    dateModified,
+    locale: locale as 'zh' | 'en',
+    aiSummary,
+    qaPairs,
+    seriesName,
+    mentionedTechnologies,
+    coreConcepts,
+  });
+
+  // Add @context, @id, and mainEntityOfPage for complete JSON-LD
   const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": t('title'),
-    "description": t('excerpt'),
-    "image": `https://develop.matrixlab.work/og-blog-${slug}.jpg`,
-    "datePublished": t('date'),
-    "dateModified": t('date'),
-    "author": {
-      "@type": "Person",
-      "name": t('author'),
-      "url": t('author') === 'Seal Wax' ? 'https://yz.matrixlab.work' : undefined
+    '@context': 'https://schema.org',
+    '@id': `https://develop.matrixlab.work/${locale}/blog/${decodedSlug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://develop.matrixlab.work/${locale}/blog/${decodedSlug}`,
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "刻熵科技",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://develop.matrixlab.work/logo.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://develop.matrixlab.work/${locale}/blog/${slug}`
-    },
-    "keywords": t('keywords'),
-    "articleSection": t('category'),
-    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US'
+    ...enhancedSchema,
   };
 
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-emerald-500/30 transition-colors duration-300">
       {/* Preload hero image */}
-      <link rel="preload" as="image" href={`/blog-images/${slug}-hero.webp`} type="image/webp" />
+      <link rel="preload" as="image" href={`/blog-images/${decodedSlug}-hero.png`} type="image/png" />
       
       <script
         type="application/ld+json"
@@ -135,7 +207,7 @@ export default async function BlogArticlePage({
             {/* Featured Image */}
             <div className="relative h-96 rounded-2xl overflow-hidden mb-12 group bg-gradient-to-br from-blue-500/5 to-purple-500/5">
               <Image
-                src={`/blog-images/${slug}-hero.webp`}
+                src={`/blog-images/${decodedSlug}-hero.png`}
                 alt={t('title')}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -150,7 +222,9 @@ export default async function BlogArticlePage({
 
           {/* AI Summary - Placed after Featured Image, before Article Content */}
           <div className="max-w-4xl mb-16">
-            <AISummary summary={t.raw('aiSummary')} />
+            {aiSummary && (
+              <AISummary summary={aiSummary} />
+            )}
             
             {/* Visual separator */}
             <div className="mt-12 flex items-center gap-4">
@@ -164,12 +238,23 @@ export default async function BlogArticlePage({
           <ArticleContent content={t.raw('content')} />
 
           <div className="max-w-4xl">
-            {/* Q&A Section - Placed after Article Content, before Author Bio */}
-            <QASection 
-              qaPairs={t.raw('qaPairs')} 
-              title={locale === 'zh' ? '常见问题解答' : 'Frequently Asked Questions'}
-              subtitle={locale === 'zh' ? '深入解答核心问题' : 'In-depth answers to key questions'}
-            />
+            {/* Q&A Section - Placed after Article Content, before Citations */}
+            {qaPairs && Array.isArray(qaPairs) && qaPairs.length > 0 && (
+              <QASection 
+                qaPairs={qaPairs} 
+                title={locale === 'zh' ? '常见问题解答' : 'Frequently Asked Questions'}
+                subtitle={locale === 'zh' ? '深入解答核心问题' : 'In-depth answers to key questions'}
+              />
+            )}
+
+            {/* Citations Section - Placed after Q&A, before Author Bio */}
+            {citations && citations.length > 0 && (
+              <Citations 
+                citations={citations}
+                title={locale === 'zh' ? '参考文献与引用' : 'References & Citations'}
+                subtitle={locale === 'zh' ? '本文引用的外部资源和参考文献' : 'External resources and references cited in this article'}
+              />
+            )}
 
             {/* Author Bio */}
             <div className="mt-12 fusion-glass rounded-2xl p-8 border border-foreground/5 relative overflow-hidden">

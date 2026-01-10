@@ -22,9 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Local env files
+# Local env files - NEVER COMMIT THESE!
+# Contains sensitive API keys and secrets
 .env*.local
 .env
+.env.local
 
 # Vercel
 .vercel
@@ -47,3 +49,12 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# GEO Validation Reports
+geo-quality-report.json
+geo-quality-report.md
+multilingual-parity-report.json
+multilingual-parity-report.md
+
+# Local GEO validation config (optional - teams can customize)
+# .geo-validation.json

@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import TraceContent from '@/components/Products/TraceContent';
 import { Metadata } from 'next';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'trace.metadata' });
@@ -32,11 +33,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('description'),
     },
     alternates: {
-      canonical: `/${locale}/products/trace`,
-      languages: {
-        'en': '/en/products/trace',
-        'zh': '/zh/products/trace',
-      },
+      canonical: generateCanonicalUrl(locale, 'products/trace'),
+      languages: generateHreflangAlternates({ path: 'products/trace' }),
     },
   };
 }
@@ -48,6 +46,7 @@ export default function TracePage({ params: { locale } }: { params: { locale: st
     "name": "MatrixTrace",
     "applicationCategory": "SecurityApplication",
     "operatingSystem": "Web Browser",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "description": locale === 'zh'
       ? "AI驱动的区块链安全分析平台，提供资金追踪和欺诈检测服务"
       : "AI-powered blockchain security analysis platform for fund tracking and fraud detection",

@@ -1,0 +1,26 @@
+{
+  "qualityGates": {
+    "default": {
+      "aiSummaryCoverage": 90,
+      "averageQualityScore": 70,
+      "multilingualParityRate": 90,
+      "maxCriticalIssues": 0
+    },
+    "strict": {
+      "aiSummaryCoverage": 100,
+      "averageQualityScore": 80,
+      "multilingualParityRate": 100,
+      "maxCriticalIssues": 0
+    },
+    "development": {
+      "aiSummaryCoverage": 50,
+      "averageQualityScore": 60,
+      "multilingualParityRate": 50,
+      "maxCriticalIssues": 5
+    }
+  },
+  "enabled": true,
+  "mode": "default",
+  "skipMultilingual": false,
+  "failOnWarnings": false
+}

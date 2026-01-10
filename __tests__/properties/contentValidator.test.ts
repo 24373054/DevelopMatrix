@@ -24,6 +24,8 @@ import {
   qaContentGenerator,
   mixedQualityContentGenerator,
   highQualityContentGenerator,
+  contentWithCitationsGenerator,
+  contentWithoutCitationsGenerator,
 } from '../generators/contentValidator.generator';
 
 describe('Content Validator - Property-Based Tests', () => {
@@ -534,6 +536,150 @@ describe('Content Validator - Property-Based Tests', () => {
         ),
         { numRuns: 100 }
       );
+    });
+  });
+  
+  // ============================================================================
+  // Property 12: Citation presence
+  // ============================================================================
+  
+  describe('Property 12: Citation presence', () => {
+    /**
+     * Feature: geo-optimization, Property 12: Citation presence
+     * 
+     * For any article making technical claims, the content should include
+     * citations, references, or external links
+     * 
+     * Validates: Requirements 4.3
+     */
+    it('should detect presence of citations in content with references', () => {
+      fc.assert(
+        fc.property(
+          contentWithCitationsGenerator(),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            const report = validator.validate('test-article', htmlContent);
+            
+            // Should have hasCitations metric set to true
+            return report.metrics.hasCitations === true;
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should flag content without citations', () => {
+      fc.assert(
+        fc.property(
+          contentWithoutCitationsGenerator(),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            const report = validator.validate('test-article', htmlContent);
+            
+            // Should detect missing citations issue
+            const citationIssues = report.issues.filter(i => i.type === 'missing_citations');
+            return citationIssues.length > 0;
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should NOT flag content when citations are explicitly provided', () => {
+      fc.assert(
+        fc.property(
+          contentWithoutCitationsGenerator(),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            // Pass hasCitations=true to indicate citations are provided elsewhere
+            const report = validator.validate('test-article', htmlContent, false, false, true);
+            
+            // Should NOT detect missing citations issue
+            const citationIssues = report.issues.filter(i => i.type === 'missing_citations');
+            return citationIssues.length === 0;
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should set hasCitations metric correctly', () => {
+      fc.assert(
+        fc.property(
+          fc.oneof(contentWithCitationsGenerator(), contentWithoutCitationsGenerator()),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            const report = validator.validate('test-article', htmlContent);
+            
+            const citationIssues = report.issues.filter(i => i.type === 'missing_citations');
+            
+            // Metric should be true if no citation issues were found
+            return report.metrics.hasCitations === (citationIssues.length === 0);
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should include verifiability message in citation issue', () => {
+      fc.assert(
+        fc.property(
+          contentWithoutCitationsGenerator(),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            const report = validator.validate('test-article', htmlContent);
+            
+            const citationIssues = report.issues.filter(i => i.type === 'missing_citations');
+            
+            if (citationIssues.length === 0) return false;
+            
+            // Issue message should mention "citations" and "verifiability"
+            return citationIssues.every(issue => 
+              issue.message.toLowerCase().includes('citation') &&
+              issue.message.toLowerCase().includes('verifiability')
+            );
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should recommend adding citations when missing', () => {
+      fc.assert(
+        fc.property(
+          contentWithoutCitationsGenerator(),
+          (htmlContent) => {
+            const validator = new ContentValidator();
+            const report = validator.validate('test-article', htmlContent);
+            
+            // Should include recommendation about citations
+            return report.recommendations.some(rec => 
+              rec.toLowerCase().includes('citation') || 
+              rec.toLowerCase().includes('reference')
+            );
+          }
+        ),
+        { numRuns: 100 }
+      );
+    });
+    
+    it('should recognize various citation formats', () => {
+      // Test different citation patterns
+      const citationFormats = [
+        '<a href="https://example.com" target="_blank">Reference</a>',
+        '<section class="references"><h2>References</h2><p>Source 1</p></section>',
+        '<h2>参考文献</h2><p>来源 1</p>',
+        '<p>According to research [1], this is true.</p>',
+        '<p>Smith (2020) found that...</p>',
+        '<p>This is a fact<sup>1</sup></p>',
+      ];
+      
+      citationFormats.forEach(format => {
+        const validator = new ContentValidator();
+        const report = validator.validate('test-article', format);
+        
+        expect(report.metrics.hasCitations).toBe(true);
+      });
     });
   });
   

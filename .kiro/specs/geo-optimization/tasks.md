@@ -149,7 +149,7 @@
 
 ## Phase 4: 结构化数据增强
 
-- [ ] 12. 增强 Schema.org 结构化数据
+- [x] 12. 增强 Schema.org 结构化数据
   - 创建 `lib/geo/schemaGenerator.ts`
   - 扩展现有的 BlogPosting schema（当前在 `app/[locale]/blog/[slug]/page.tsx`）
   - 添加 `about` 字段（DefinedTerm 数组）
@@ -159,7 +159,7 @@
   - 添加 `mainEntity` 字段（Q&A 结构）
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
 
-- [ ]* 12.1 编写结构化数据的属性测试
+- [x] 12.1 编写结构化数据的属性测试
   - **Property 31: Schema.org JSON-LD presence**
   - **Property 32: BlogPosting type usage**
   - **Property 33: Author structured data completeness**
@@ -167,7 +167,7 @@
   - **Property 35: Date fields presence**
   - **Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.5**
 
-- [ ] 13. 更新博客文章页面的结构化数据
+- [x] 13. 更新博客文章页面的结构化数据
   - 修改 `app/[locale]/blog/[slug]/page.tsx` 中的 JSON-LD 生成
   - 集成增强的 Schema.org 数据
   - 添加 Q&A 结构到 mainEntity
@@ -175,7 +175,7 @@
   - 确保日期格式符合 ISO 8601
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
 
-- [ ] 14. 实现 Schema.org 验证工具
+- [x] 14. 实现 Schema.org 验证工具
   - 创建 `scripts/validate-schema.ts`
   - 实现 JSON-LD 格式验证
   - 实现必需字段检查
@@ -186,7 +186,7 @@
 
 ## Phase 5: 权威信号和可验证性
 
-- [ ] 15. 增强作者信息系统
+- [x] 15. 增强作者信息系统
   - 扩展 `messages/zh.json` 和 `messages/en.json` 中的作者信息
   - 添加 `expertise` 字段（专业领域数组）
   - 添加 `credentials` 字段（学术/专业资质）
@@ -194,7 +194,7 @@
   - 为 Seal Wax 和其他作者完善信息
   - _Requirements: 3.1, 3.3, 3.4_
 
-- [ ]* 15.1 编写权威信号的属性测试
+- [x] 15.1 编写权威信号的属性测试
   - **Property 7: Author information completeness**
   - **Property 8: Context specification**
   - **Property 9: Quantified experience evidence**
@@ -208,21 +208,21 @@
   - 添加 Schema.org DefinedTerm 标记
   - _Requirements: 8.1, 8.3_
 
-- [ ] 17. 添加引用和参考来源支持
+- [x] 17. 添加引用和参考来源支持
   - 在文章数据结构中添加 `citations` 字段
   - 创建 `components/Blog/Citations.tsx` 组件
   - 实现引用列表展示
   - 添加外部链接和参考文献
   - _Requirements: 4.3_
 
-- [ ]* 17.1 编写可验证性的属性测试
+- [x] 17.1 编写可验证性的属性测试
   - **Property 12: Citation presence**
   - **Validates: Requirements 4.3**
 
 
 ## Phase 6: 内容结构优化
 
-- [ ] 18. 重构现有博客文章内容
+- [x] 18. 重构现有博客文章内容
   - 优化 4 篇文章的结构（web3-security-trends-2025, smart-contract-audit-guide, defi-risk-management, benign-arbitrage-theory）
   - 添加明确的定义句（"在本文中，XXX 指的是……"）
   - 添加明确的结论句（使用"因此"、"结论是"）
@@ -230,7 +230,7 @@
   - 将长段落拆分为结构化的知识块
   - _Requirements: 1.1, 1.2, 1.4_
 
-- [ ] 19. 优化列表和表格结构
+- [x] 19. 优化列表和表格结构
   - 检查所有文章的列表格式
   - 确保使用 `<ul>` 或 `<ol>` 标签
   - 为对比内容添加表格结构
@@ -243,13 +243,13 @@
   - **Property 16: Bullet-point summary presence**
   - **Validates: Requirements 5.2, 5.3, 5.4**
 
-- [ ] 20. 添加使用场景和上下文标注
+- [x] 20. 添加使用场景和上下文标注
   - 在技术文章中添加"在 Web3 智能合约审计中"等场景描述
   - 在概念首次出现时添加上下文说明
   - 确保每个技术术语都有明确的使用场景
   - _Requirements: 3.2_
 
-- [ ] 21. 实现步骤说明和最佳实践部分
+- [x] 21. 实现步骤说明和最佳实践部分
   - 为 how-to 类文章添加有序步骤列表
   - 为技术指南添加"最佳实践"部分
   - 使用清晰的标题和子标题
@@ -258,7 +258,7 @@
 
 ## Phase 7: 多语言 GEO 优化
 
-- [ ] 22. 确保中英文版本的 GEO 特性对等
+- [x] 22. 确保中英文版本的 GEO 特性对等
   - 检查所有中文文章是否有对应的英文版本
   - 确保两个版本都有 AI Summary
   - 确保两个版本都有 Q&A
@@ -269,7 +269,7 @@
   - **Property 36: Feature parity across languages**
   - **Validates: Requirements 11.1**
 
-- [ ] 23. 增强语言元数据
+- [x] 23. 增强语言元数据
   - 确保所有页面有正确的 `lang` 属性（当前在 `app/[locale]/layout.tsx`）
   - 在结构化数据中添加 `inLanguage` 字段
   - 验证语言代码符合 BCP 47 标准
@@ -279,7 +279,7 @@
   - **Property 37: Language metadata presence**
   - **Validates: Requirements 11.2**
 
-- [ ] 24. 实现术语翻译一致性
+- [x] 24. 实现术语翻译一致性
   - 创建中英文术语对照表
   - 确保概念定义在两种语言中语义等价
   - 在中文文章中首次出现专业术语时添加英文原文
@@ -291,7 +291,7 @@
   - **Property 40: English term preservation in Chinese**
   - **Validates: Requirements 11.3, 11.5**
 
-- [ ] 25. 优化 hreflang 标记
+- [x] 25. 优化 hreflang 标记
   - 检查所有页面的 hreflang 链接（当前在 metadata 中）
   - 确保中英文版本互相链接
   - 添加 x-default 标记
@@ -305,7 +305,7 @@
 
 ## Phase 8: 构建时验证和工具
 
-- [ ] 26. 实现 GEO 质量检查工具
+- [x] 26. 实现 GEO 质量检查工具
   - 创建 `scripts/geo-check.ts`
   - 检查所有文章是否有 AI Summary
   - 检查术语使用的一致性
@@ -314,7 +314,7 @@
   - 生成质量报告
   - _Requirements: 所有需求_
 
-- [ ] 27. 实现多语言对等性检查工具
+- [x] 27. 实现多语言对等性检查工具
   - 创建 `scripts/check-multilingual-parity.ts`
   - 比较中英文版本的 GEO 特性
   - 检查 AI Summary 是否都存在
@@ -322,13 +322,13 @@
   - 生成差异报告
   - _Requirements: 11.1_
 
-- [ ] 28. 集成验证到构建流程
+- [x] 28. 集成验证到构建流程
   - 修改 `package.json` 添加验证脚本
   - 在 `npm run build` 前运行 GEO 检查
   - 设置质量门槛（如 AI Summary 覆盖率 > 90%）
   - _Requirements: 所有需求_
 
-- [ ] 29. 创建内容创作辅助工具
+- [x] 29. 创建内容创作辅助工具
   - 创建 `scripts/create-article.ts` 脚本
   - 提供文章模板生成
   - 自动生成基础的 AI Summary 结构

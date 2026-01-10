@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ExchangeContent from '@/components/Products/ExchangeContent';
 import { Metadata } from 'next';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'exchange.metadata' });
@@ -32,11 +33,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('description'),
     },
     alternates: {
-      canonical: `/${locale}/products/exchange`,
-      languages: {
-        'en': '/en/products/exchange',
-        'zh': '/zh/products/exchange',
-      },
+      canonical: generateCanonicalUrl(locale, 'products/exchange'),
+      languages: generateHreflangAlternates({ path: 'products/exchange' }),
     },
   };
 }
@@ -48,6 +46,7 @@ export default function ExchangePage({ params: { locale } }: { params: { locale:
     "name": "MATRIXLAB EXCHANGE",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web Browser",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "description": locale === 'zh'
       ? "去中心化金融交易平台，提供安全、高效的数字资产交易服务"
       : "Decentralized financial exchange platform for secure digital asset trading",

@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { startTransition } from './PageTransition';
+import { getMappedSlug } from '@/lib/articleSlugMapping';
 
 export default function Navigation() {
   const t = useTranslations('nav');
@@ -32,13 +33,23 @@ export default function Navigation() {
   const toggleLocale = () => {
     startTransition(); // 触发语言切换时的过渡
     const newLocale = currentLocale === 'zh' ? 'en' : 'zh';
-    // 如果当前不是首页，切换语言时最好保持在当前页面，或者回首页？
-    // 简单处理：直接替换 locale 前缀
-    const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
     
-    setTimeout(() => {
-      router.push(newPath);
-    }, 300);
+    // Check if we're on a blog article page
+    const blogArticleMatch = pathname.match(/\/blog\/([^/]+)$/);
+    if (blogArticleMatch) {
+      const currentSlug = decodeURIComponent(blogArticleMatch[1]);
+      const mappedSlug = getMappedSlug(currentSlug, newLocale);
+      const newPath = `/${newLocale}/blog/${mappedSlug}`;
+      setTimeout(() => {
+        router.push(newPath);
+      }, 300);
+    } else {
+      // For other pages, simply replace locale prefix
+      const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
+      setTimeout(() => {
+        router.push(newPath);
+      }, 300);
+    }
   };
 
   const handleLogoClick = () => {

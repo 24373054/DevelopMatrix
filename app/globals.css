@@ -231,6 +231,44 @@
   @apply p-3 border border-foreground/10;
 }
 
+/* 对比表格特殊样式 */
+.article-content .comparison-table {
+  @apply w-full my-8 border-collapse shadow-lg rounded-lg overflow-hidden;
+}
+
+.article-content .comparison-table thead {
+  @apply bg-blue-500/10;
+}
+
+.article-content .comparison-table th {
+  @apply bg-blue-500/10 font-bold text-foreground p-4 border border-foreground/10 text-center;
+}
+
+.article-content .comparison-table td {
+  @apply p-4 border border-foreground/10 text-foreground/80;
+}
+
+.article-content .comparison-table tbody tr {
+  @apply transition-colors hover:bg-foreground/5;
+}
+
+.article-content .comparison-table tbody tr:nth-child(even) {
+  @apply bg-foreground/[0.02];
+}
+
+/* 深色模式下的对比表格 */
+.dark .article-content .comparison-table thead {
+  @apply bg-blue-500/20;
+}
+
+.dark .article-content .comparison-table th {
+  @apply bg-blue-500/20;
+}
+
+.dark .article-content .comparison-table tbody tr:hover {
+  @apply bg-foreground/10;
+}
+
 /* 文章元信息样式 */
 .article-meta {
   @apply text-sm text-muted-foreground space-y-1 mb-6 p-4 rounded-lg bg-foreground/5 border border-foreground/10;

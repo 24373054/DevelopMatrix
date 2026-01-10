@@ -315,7 +315,7 @@ export default function QASection({
                       </p>
                       
                       {/* Related Concepts */}
-                      {qa.relatedConcepts && qa.relatedConcepts.length > 0 && (
+                      {qa.relatedConcepts && Array.isArray(qa.relatedConcepts) && qa.relatedConcepts.length > 0 && (
                         <div className="mt-4 pl-4">
                           <p className="text-xs text-muted-foreground mb-2">Related concepts:</p>
                           <div className="flex flex-wrap gap-2">

@@ -3,12 +3,17 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import GameContent from '@/components/Products/GameContent';
 import { Metadata } from 'next';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'game.metadata' });
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: generateCanonicalUrl(locale, 'products/game'),
+      languages: generateHreflangAlternates({ path: 'products/game' }),
+    },
   };
 }
 
@@ -19,6 +24,7 @@ export default function GamePage({ params: { locale } }: { params: { locale: str
     "name": locale === 'zh' ? "瀛州纪" : "Immortal Ledger",
     "applicationCategory": "GameApplication",
     "operatingSystem": "Web Browser",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "description": locale === 'zh'
       ? "基于区块链的元宇宙游戏，融合传统文化与Web3技术"
       : "Blockchain-based metaverse game combining traditional culture with Web3 technology",

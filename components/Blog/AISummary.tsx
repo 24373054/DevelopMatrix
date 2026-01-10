@@ -98,7 +98,7 @@ export default function AISummary({ summary }: AISummaryProps) {
         )}
 
         {/* Use Cases */}
-        {summary.useCases && summary.useCases.length > 0 && (
+        {summary.useCases && Array.isArray(summary.useCases) && summary.useCases.length > 0 && (
           <div className="summary-section">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 mt-1">
@@ -125,7 +125,7 @@ export default function AISummary({ summary }: AISummaryProps) {
         )}
 
         {/* Key Takeaways */}
-        {summary.keyTakeaways && summary.keyTakeaways.length > 0 && (
+        {summary.keyTakeaways && Array.isArray(summary.keyTakeaways) && summary.keyTakeaways.length > 0 && (
           <div className="summary-section">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 mt-1">

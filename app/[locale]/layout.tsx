@@ -7,8 +7,14 @@ import CookieConsent from '@/components/CookieConsent';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import '@/app/globals.css';
 import { Metadata } from 'next';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
 
 const inter = Inter({ subsets: ['latin'] });
+
+// Generate static params for all locales
+export function generateStaticParams() {
+  return [{ locale: 'zh' }, { locale: 'en' }];
+}
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' });
@@ -63,11 +69,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     },
     metadataBase: new URL('https://develop.matrixlab.work'),
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        'en': '/en',
-        'zh': '/zh',
-      },
+      canonical: generateCanonicalUrl(locale, ''),
+      languages: generateHreflangAlternates({ path: '' }),
     },
     verification: {
       google: 'your-google-verification-code',
@@ -86,6 +89,10 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  // Enable static rendering for next-intl
+  const { unstable_setRequestLocale } = await import('next-intl/server');
+  unstable_setRequestLocale(locale);
+  
   const messages = await getMessages();
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -100,6 +107,7 @@ export default async function LocaleLayout({
       ? "刻熵科技是一家致力于构建全景式 Web3 生态的综合性科技企业，涵盖 Matrix Lab 实验室、MATRIXLAB EXCHANGE 金融平台、MatrixTrace 区块链安全分析平台及《瀛州纪》元宇宙游戏。"
       : "Ke Entropy Technology is a comprehensive Web3 enterprise, encompassing Matrix Lab, MATRIXLAB EXCHANGE, MatrixTrace blockchain security platform, and Immortal Ledger metaverse game.",
     "foundingDate": "2024",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "北四环中路辅路238号柏彦大厦12F",
@@ -175,6 +183,7 @@ export default async function LocaleLayout({
   const breadcrumbList = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -191,6 +200,7 @@ export default async function LocaleLayout({
     "name": "刻熵科技",
     "alternateName": "Ke Entropy Technology",
     "url": "https://develop.matrixlab.work",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -198,12 +208,14 @@ export default async function LocaleLayout({
         "urlTemplate": "https://develop.matrixlab.work/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
-    },
-    "inLanguage": [locale === 'zh' ? "zh-CN" : "en-US"]
+    }
   };
 
+  // Convert locale to BCP 47 compliant language code
+  const langCode = locale === 'zh' ? 'zh-CN' : 'en-US';
+
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={langCode} suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" sizes="any" />

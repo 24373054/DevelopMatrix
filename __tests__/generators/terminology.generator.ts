@@ -52,7 +52,16 @@ export function terminologyEntryGenerator(): fc.Arbitrary<TerminologyEntry> {
 export function terminologyDictionaryGenerator(): fc.Arbitrary<TerminologyDictionary> {
   return fc.record({
     version: fc.constant('1.0.0'),
-    lastUpdated: fc.date().map(d => d.toISOString()),
+    lastUpdated: fc.date({ 
+      min: new Date('2020-01-01'), 
+      max: new Date('2024-12-31') 
+    }).map(d => {
+      try {
+        return d.toISOString();
+      } catch {
+        return new Date('2023-01-01').toISOString();
+      }
+    }),
     entries: fc.array(terminologyEntryGenerator(), { minLength: 1, maxLength: 10 }),
   });
 }

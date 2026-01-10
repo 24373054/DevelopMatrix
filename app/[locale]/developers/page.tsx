@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import DeveloperContent from '@/components/Developers/DeveloperContent';
 import { Metadata } from 'next';
+import { generateHreflangAlternates, generateCanonicalUrl } from '@/lib/geo/hreflang';
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'developers.metadata' });
@@ -24,11 +25,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('description'),
     },
     alternates: {
-      canonical: `/${locale}/developers`,
-      languages: {
-        'en': '/en/developers',
-        'zh': '/zh/developers',
-      },
+      canonical: generateCanonicalUrl(locale, 'developers'),
+      languages: generateHreflangAlternates({ path: 'developers' }),
     },
   };
 }
@@ -38,6 +36,7 @@ export default function DevelopersPage({ params: { locale } }: { params: { local
     "@context": "https://schema.org",
     "@type": "ResearchProject",
     "name": "Matrix Lab",
+    "inLanguage": locale === 'zh' ? 'zh-CN' : 'en-US',
     "description": locale === 'zh'
       ? "专注于区块链技术研究与开发的实验室，致力于推动 Web3 技术创新"
       : "Research lab focused on blockchain technology and Web3 innovation",

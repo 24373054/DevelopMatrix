@@ -5,38 +5,60 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useMemo } from 'react';
 
 export default function BlogList() {
   const t = useTranslations('blog');
   const locale = useLocale();
 
-  // 示例文章数据
-  const articles = [
-    {
-      id: 'benign-arbitrage-theory',
-      category: 'research',
-      readTime: 15,
-      date: '2026-01-04',
-    },
-    {
-      id: 'web3-security-trends-2025',
-      category: 'security',
-      readTime: 8,
-      date: '2024-12-30',
-    },
-    {
-      id: 'smart-contract-audit-guide',
-      category: 'tutorial',
-      readTime: 12,
-      date: '2024-12-28',
-    },
-    {
-      id: 'defi-risk-management',
-      category: 'analysis',
-      readTime: 10,
-      date: '2024-12-25',
-    },
-  ];
+  // 分类映射：中文 -> 英文 key
+  const categoryMap: Record<string, string> = {
+    '安全': 'security',
+    '教程': 'tutorial',
+    '研究': 'research',
+    '分析': 'analysis',
+    'Security': 'security',
+    'Tutorial': 'tutorial',
+    'Research': 'research',
+    'Analysis': 'analysis',
+  };
+
+  // 动态读取所有文章
+  const articles = useMemo(() => {
+    try {
+      const articlesData = t.raw('articles');
+      if (!articlesData || typeof articlesData !== 'object') {
+        return [];
+      }
+
+      const articlesList = Object.keys(articlesData)
+        .map((id) => {
+          const article = articlesData[id];
+          if (!article || typeof article !== 'object') {
+            return null;
+          }
+          // 将中文分类转换为英文 key
+          const rawCategory = article.category || 'analysis';
+          const categoryKey = categoryMap[rawCategory] || rawCategory.toLowerCase();
+          
+          return {
+            id,
+            category: categoryKey,
+            readTime: article.readTime || 10,
+            date: article.datePublished || article.date || '2024-01-01',
+          };
+        })
+        .filter((article): article is NonNullable<typeof article> => article !== null);
+
+      return articlesList.sort((a, b) => {
+        // 按日期降序排序（最新的在前）
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+    } catch (error) {
+      console.error('Error loading articles:', error);
+      return [];
+    }
+  }, [t]);
 
   const categories = [
     { key: 'all', color: 'bg-blue-500' },
