@@ -401,6 +401,8 @@ Return ONLY the English title, nothing else.`;
       cleaned = cleaned.replace(/颠覆/g, '改变');
       cleaned = cleaned.replace(/史无前例/g, '新型');
       cleaned = cleaned.replace(/根本性/g, '重要');
+      cleaned = cleaned.replace(/完美/g, '理想');
+      cleaned = cleaned.replace(/最强/g, '较强');
     } else {
       // Remove vague terms
       cleaned = cleaned.replace(/\bmight\b/g, '');

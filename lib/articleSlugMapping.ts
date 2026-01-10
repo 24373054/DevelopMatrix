@@ -69,6 +69,38 @@ export const articleSlugMapping: Record<string, { zh: string; en: string }> = {
     zh: '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱',
     en: 'smart-contract-authorization-hidden-asset-risks'
   },
+  'rwa-爆发前夜为什么链上合规是机构入场的唯一门票': {
+    zh: 'rwa-爆发前夜为什么链上合规是机构入场的唯一门票',
+    en: 'rwa-s-dawn-why-on-chain-compliance-is-key-for-inst'
+  },
+  'rwa-s-dawn-why-on-chain-compliance-is-key-for-inst': {
+    zh: 'rwa-爆发前夜为什么链上合规是机构入场的唯一门票',
+    en: 'rwa-s-dawn-why-on-chain-compliance-is-key-for-inst'
+  },
+  'usdt真的安全吗揭秘稳定币崩盘前的72小时信号': {
+    zh: 'usdt真的安全吗揭秘稳定币崩盘前的72小时信号',
+    en: 'is-usdt-safe-72-hour-crash-warning-signs'
+  },
+  'is-usdt-safe-72-hour-crash-warning-signs': {
+    zh: 'usdt真的安全吗揭秘稳定币崩盘前的72小时信号',
+    en: 'is-usdt-safe-72-hour-crash-warning-signs'
+  },
+  '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生': {
+    zh: '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生',
+    en: 'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr'
+  },
+  'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr': {
+    zh: '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生',
+    en: 'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr'
+  },
+  '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击': {
+    zh: '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击',
+    en: 'hardware-wallet-supply-chain-attacks-exposed'
+  },
+  'hardware-wallet-supply-chain-attacks-exposed': {
+    zh: '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击',
+    en: 'hardware-wallet-supply-chain-attacks-exposed'
+  },
 };
 
 /**

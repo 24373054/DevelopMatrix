@@ -31,7 +31,11 @@ export async function generateStaticParams() {
     'dao-blockchain-s-communist-vision',  // English version of DAO article
     'privacy-computing-s-role-in-blockchain-era',  // English version of 隐私计算在区块链时代的真正意义与商业价值
     'global-web3-regulatory-trends-compliance-guide',  // English version of 全球Web3监管趋势与企业上链合规指南
-    'smart-contract-authorization-hidden-asset-risks'  // English version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+    'smart-contract-authorization-hidden-asset-risks',  // English version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+    'rwa-s-dawn-why-on-chain-compliance-is-key-for-inst',  // English version of RWA 爆发前夜：为什么“链上合规”是机构入场的唯一门票？
+    'is-usdt-safe-72-hour-crash-warning-signs',  // English version of USDT真的安全吗？揭秘稳定币崩盘前的72小时信号
+    'beyond-hype-3-key-shifts-in-ai-powered-on-chain-tr',  // English version of 不仅是炒作：深扒AI介入链上交易的底层逻辑，这3个变化正在发生
+    'hardware-wallet-supply-chain-attacks-exposed'  // English version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
   ];
   
   // Chinese-only articles
@@ -41,7 +45,11 @@ export async function generateStaticParams() {
     '把dao打造成区块链的共产主义',  // Chinese version of DAO article
     '隐私计算在区块链时代的真正意义与商业价值',  // Chinese version of 隐私计算在区块链时代的真正意义与商业价值
     '全球web3监管趋势与企业上链合规指南',  // Chinese version of 全球Web3监管趋势与企业上链合规指南
-    '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱'  // Chinese version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+    '你的私钥没丢资产却没了深挖智能合约授权的隐形陷阱',  // Chinese version of 你的私钥没丢，资产却没了？深挖智能合约授权的“隐形陷阱”
+    'rwa-爆发前夜为什么链上合规是机构入场的唯一门票',  // Chinese version of RWA 爆发前夜：为什么“链上合规”是机构入场的唯一门票？
+    'usdt真的安全吗揭秘稳定币崩盘前的72小时信号',  // Chinese version of USDT真的安全吗？揭秘稳定币崩盘前的72小时信号
+    '不仅是炒作深扒ai介入链上交易的底层逻辑这3个变化正在发生',  // Chinese version of 不仅是炒作：深扒AI介入链上交易的底层逻辑，这3个变化正在发生
+    '你的冷钱包可能并不冷揭秘硬件钱包背后的供应链攻击'  // Chinese version of 你的冷钱包可能并不“冷”：揭秘硬件钱包背后的供应链攻击
   ];
 
   const params = [];
