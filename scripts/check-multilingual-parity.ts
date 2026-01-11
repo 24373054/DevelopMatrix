@@ -54,6 +54,8 @@ const ARTICLE_ID_MAPPING: Record<string, string> = {
   'where-on-chain-black-money-flows-post-tornado-cash': 'tornado-cash被制裁后链上黑钱现在都流向了哪里',
   '巨鲸的假动作链上数据是如何欺骗你的': 'how-on-chain-data-can-deceive-you',
   'how-on-chain-data-can-deceive-you': '巨鲸的假动作链上数据是如何欺骗你的',
+  '当ai-agent掌握私钥谁来为它的错误交易负责': 'ai-agent-private-keys-who-bears-fault-for-errors',
+  'ai-agent-private-keys-who-bears-fault-for-errors': '当ai-agent掌握私钥谁来为它的错误交易负责',
 };
 
 interface CheckOptions {

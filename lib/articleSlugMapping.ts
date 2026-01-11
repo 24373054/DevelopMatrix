@@ -117,6 +117,14 @@ export const articleSlugMapping: Record<string, { zh: string; en: string }> = {
     zh: '巨鲸的假动作链上数据是如何欺骗你的',
     en: 'how-on-chain-data-can-deceive-you'
   },
+  '当ai-agent掌握私钥谁来为它的错误交易负责': {
+    zh: '当ai-agent掌握私钥谁来为它的错误交易负责',
+    en: 'ai-agent-private-keys-who-bears-fault-for-errors'
+  },
+  'ai-agent-private-keys-who-bears-fault-for-errors': {
+    zh: '当ai-agent掌握私钥谁来为它的错误交易负责',
+    en: 'ai-agent-private-keys-who-bears-fault-for-errors'
+  },
 };
 
 /**
