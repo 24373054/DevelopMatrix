@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Wallet, Gamepad2, Users, FlaskConical, Search, BookOpen } from 'lucide-react';
+import { ExternalLink, Wallet, Gamepad2, Users, FlaskConical, Search, BookOpen, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Business() {
@@ -30,6 +30,12 @@ export default function Business() {
       key: 'trace',
       icon: Search,
       url: `/${locale}/products/trace`,
+      internal: true
+    },
+    {
+      key: 'agent',
+      icon: ShieldCheck,
+      url: `/${locale}/products/agent`,
       internal: true
     },
     {

@@ -37,6 +37,10 @@
       "title": "MatrixTrace",
       "description": "AI-powered blockchain security analysis platform for on-chain fund tracking and risk detection"
     },
+    "agent": {
+      "title": "MatrixAgent",
+      "description": "On-chain firewall - Pre-screening risk control system designed for OTC merchants"
+    },
     "blog": {
       "title": "Tech Blog",
       "description": "Deep insights into Web3 & blockchain security, sharing practical experience and industry trends"
@@ -419,6 +423,39 @@
         "title": "Graphical Visualization",
         "desc": "Transform complex on-chain hashes into intuitive transaction graphs. Clearly display fund chains through node connection diagrams, enabling investigators to quickly understand transaction relationship networks."
       }
+    }
+  },
+  "agent": {
+    "metadata": {
+      "title": "MatrixAgent | On-Chain Firewall - OTC Risk Control System",
+      "description": "On-chain risk control system designed for small and medium OTC merchants. Pre-screening to block tainted USDT, deep TRC20 cleansing, traffic light mechanism for instant risk identification. Say goodbye to frozen accounts, compliance for the long run."
+    },
+    "hero": {
+      "badge": "On-Chain Firewall",
+      "title": "Say Goodbye to Frozen Accounts",
+      "subtitle": "MatrixAgent",
+      "description": "On-chain risk control system designed for small and medium OTC teams and individuals. Identify tainted USDT, mixers, and illicit funds in seconds before receiving payments. Pre-screening blocks risks. Deep data cleansing for TRC20 USDT, replacing complex reports with a traffic light mechanism to help you see risks and make decisions.",
+      "cta_start": "Apply for Beta",
+      "cta_demo": "Watch Demo"
+    },
+    "features": {
+      "prescreening": {
+        "title": "Pre-Screening",
+        "desc": "Don't wait until you receive tainted USDT to remedy. Identify addresses associated with mixers, illicit funds, and underground economy tags in seconds before clicking transfer or receive. Block risks at the source, not after the fact."
+      },
+      "ai": {
+        "title": "TRC20 Deep Cleansing",
+        "desc": "Specialized data cleansing for Tron USDT chains with the highest liquidity and risk. Use AI algorithms to analyze fund flows, identify money laundering paths and high-risk addresses."
+      },
+      "traffic": {
+        "title": "Traffic Light Mechanism",
+        "desc": "Abandon complex compliance reports, only provide decision results: ✅ Safe / ⚠️ High Risk / 🚫 Do Not Interact. We don't make decisions for you, but we empower you to see risks."
+      }
+    },
+    "demo": {
+      "title": "Product Demo",
+      "description": "Watch how MatrixAgent helps OTC merchants identify and block risky transactions",
+      "play": "Play Demo"
     }
   },
   "game": {
