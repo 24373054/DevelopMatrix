@@ -18,10 +18,9 @@ export default function LegalPage({ translationNamespace }: LegalPageProps) {
   const t = useTranslations(translationNamespace);
   const locale = useLocale();
   
-  // 获取 sections 数组
-  // 注意：next-intl 的 useTranslations 在处理数组时需要特殊技巧，或者我们直接遍历预定义的索引
-  // 这里简化处理，假设我们知道有4个章节
-  const sections = [0, 1, 2, 3].map(i => ({
+  // 固定11个章节（隐私政策和服务条款都是11条）
+  const sectionIndices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const sections: LegalSection[] = sectionIndices.map(i => ({
     title: t(`sections.${i}.title`),
     content: t(`sections.${i}.content`)
   }));

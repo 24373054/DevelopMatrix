@@ -634,47 +634,103 @@
   "legal": {
     "privacy": {
       "title": "Privacy Policy",
-      "lastUpdated": "Last Updated: November 29, 2024",
-      "intro": "Ke Entropy Technology ('we', 'us', or 'our') respects your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.",
+      "lastUpdated": "Last Updated: January 12, 2026",
+      "intro": "Beijing Ke Entropy Technology Co., Ltd. (hereinafter referred to as \"Ke Entropy Technology\", \"we\", \"us\", or \"our company\") understands the importance of your personal information and is committed to protecting it. We adhere to the following principles: accountability, purpose limitation, consent, data minimization, security, participation, and transparency. This Privacy Policy applies to all products and services provided by Ke Entropy Technology, including but not limited to Matrix Lab Exchange, MatrixTrace, MatrixAgent, developer tools, and related website services.",
       "sections": [
         {
-          "title": "1. Information Collection",
-          "content": "We collect information you provide directly to us (such as email in contact forms) and automatically collected device information and usage data via Cookies."
+          "title": "1. Scope of Application",
+          "content": "This Privacy Policy applies to all products and services provided by Ke Entropy Technology through websites (including keentropy.com, matrixlab.work and their subdomains), mobile applications, API interfaces, and other means. Please note that this policy does not apply to services provided by third parties, which are subject to their own privacy policies."
         },
         {
-          "title": "2. Use of Information",
-          "content": "We use the collected information to provide and improve our services, process your requests, send important notifications, and conduct data analysis to optimize user experience."
+          "title": "2. Information Collection",
+          "content": "We collect the following information: (1) Information you provide: username, email, phone number during registration; identity verification information; communication content when contacting us. (2) Automatically collected information: device information (model, OS, unique identifiers); log information (IP address, access time, pages viewed, search queries); location information (approximate location based on IP). (3) Third-party information: information shared by authorized third-party platforms; publicly available blockchain data."
         },
         {
-          "title": "3. Data Security",
-          "content": "We implement reasonable security measures to protect your personal information from unauthorized access, disclosure, or destruction. However, please note that no method of transmission over the Internet is 100% secure."
+          "title": "3. Use of Information",
+          "content": "We use collected information to: (1) Provide, maintain, and improve our products and services; (2) Process your transaction requests and account management; (3) Perform identity verification and security protection; (4) Send service notifications, security alerts, and technical updates; (5) Conduct data analysis to optimize user experience; (6) Comply with legal and regulatory requirements; (7) Prevent fraud, money laundering, and other illegal activities."
         },
         {
-          "title": "4. Contact Us",
-          "content": "If you have any questions about this Privacy Policy, please contact us at 24373054@buaa.edu.cn."
+          "title": "4. Information Sharing and Disclosure",
+          "content": "We do not sell your personal information to third parties. We only share information in the following circumstances: (1) With your explicit consent; (2) With affiliates to provide services; (3) With authorized service providers (such as cloud services, payment processing) bound by strict confidentiality obligations; (4) As required by law or government authorities; (5) When necessary to protect the rights, property, or safety of Ke Entropy Technology, users, or the public; (6) In the event of a merger, acquisition, or asset sale, we will require the new holder to continue to comply with this Privacy Policy."
+        },
+        {
+          "title": "5. Data Security",
+          "content": "We employ industry-standard security measures to protect your information, including: (1) Data transmission encryption (TLS/SSL); (2) Data storage encryption; (3) Strict access control and permission management; (4) Regular security audits and vulnerability scanning; (5) Employee security training and confidentiality agreements. Despite our reasonable measures, please understand that the internet environment is not absolutely secure, and we strongly recommend that you safeguard your account credentials."
+        },
+        {
+          "title": "6. Data Storage and Cross-Border Transfer",
+          "content": "Your personal information will be stored on servers within the People's Republic of China. If cross-border transfer is required, we will comply with relevant laws and regulations, take necessary measures to ensure data security, and obtain your separate consent before transfer. Data retention period is the minimum time necessary to achieve service purposes, unless otherwise required by law."
+        },
+        {
+          "title": "7. Your Rights",
+          "content": "Under applicable law, you have the following rights: (1) Right of access: to view your personal information we hold; (2) Right of rectification: to correct inaccurate or incomplete information; (3) Right of erasure: to request deletion of your information in certain circumstances; (4) Right to restrict processing: to limit how we process your information; (5) Right to data portability: to obtain a copy of your information; (6) Right to withdraw consent: to withdraw previously given consent. To exercise these rights, please contact us using the contact information at the end of this policy."
+        },
+        {
+          "title": "8. Cookies and Similar Technologies",
+          "content": "We use cookies and similar technologies to: (1) Remember your login status and preferences; (2) Analyze website traffic and usage patterns; (3) Provide personalized content and services. You can manage cookies through your browser settings, but disabling certain cookies may affect service functionality."
+        },
+        {
+          "title": "9. Protection of Minors",
+          "content": "Our services are primarily intended for adults. If you are under 18 years of age, please read this policy with the guidance of a guardian and use our services only with guardian consent. We do not intentionally collect personal information from minors, and if we discover such collection, we will delete it immediately."
+        },
+        {
+          "title": "10. Policy Updates",
+          "content": "We may update this Privacy Policy from time to time. Significant changes will be notified through website announcements, email, or in-app notifications. The updated policy takes effect upon publication. If you continue to use our services after the policy update, you accept the updated policy."
+        },
+        {
+          "title": "11. Contact Us",
+          "content": "If you have any questions, comments, or suggestions about this Privacy Policy, or need to exercise your data rights, please contact us: Company Name: Beijing Ke Entropy Technology Co., Ltd.; Email: 24373054@buaa.edu.cn; Office Address: 12F, Boyan Building, No. 238 Beisihuan Zhonglu Auxiliary Road, Haidian District, Beijing. We will respond within 15 business days of receiving your request."
         }
       ]
     },
     "terms": {
       "title": "Terms of Service",
-      "lastUpdated": "Last Updated: November 29, 2024",
-      "intro": "Welcome to Ke Entropy Technology. By accessing this website, you agree to be bound by these Terms and Conditions.",
+      "lastUpdated": "Last Updated: January 12, 2026",
+      "intro": "Welcome to the products and services provided by Beijing Ke Entropy Technology Co., Ltd. (hereinafter referred to as \"Ke Entropy Technology\", \"we\", \"us\", or \"our company\"). These Terms of Service (hereinafter referred to as \"Terms\") constitute a legal agreement between you and Ke Entropy Technology regarding the use of our products and services. Please read and fully understand all contents of these Terms before use, especially the disclaimer, limitation of liability, and dispute resolution clauses. If you do not agree to any content of these Terms, please stop using our services immediately.",
       "sections": [
         {
-          "title": "1. Acceptance of Terms",
-          "content": "By accessing or using this website, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service."
+          "title": "1. Service Description",
+          "content": "Services provided by Ke Entropy Technology include but are not limited to: (1) Matrix Lab Exchange - Web3 innovative trading platform; (2) MatrixTrace - AI-driven blockchain security analysis platform; (3) MatrixAgent - On-chain firewall and OTC risk control system; (4) Developer tools - SDK, API, and technical documentation; (5) Technical blog and related information services. We reserve the right to modify, suspend, or terminate part or all services at any time without prior notice."
         },
         {
-          "title": "2. Intellectual Property",
-          "content": "The Service and its original content, features, and functionality are and will remain the exclusive property of Ke Entropy Technology and its licensors."
+          "title": "2. User Eligibility and Account",
+          "content": "To use our services, you must confirm that: (1) You are at least 18 years old or have reached the legal age of majority in your jurisdiction; (2) You have full civil capacity; (3) You are not on any trade sanctions list and are not prohibited from using our services by any applicable law. You are responsible for maintaining account security and all activities under your account. If you discover unauthorized use, please notify us immediately."
         },
         {
-          "title": "3. Disclaimer",
-          "content": "The website is provided on an 'AS IS' basis. We make no warranties, expressed or implied, to the fullest extent permitted by law."
+          "title": "3. User Conduct",
+          "content": "When using our services, you agree not to: (1) Violate any applicable laws and regulations; (2) Infringe on the intellectual property, privacy, or other legal rights of others; (3) Spread malware, viruses, or harmful code; (4) Engage in fraud, money laundering, terrorist financing, or other illegal activities; (5) Interfere with or disrupt the normal operation of services; (6) Access our systems or data without authorization; (7) Use automated tools to scrape data in bulk; (8) Resell or commercially exploit our services (unless authorized in writing)."
         },
         {
-          "title": "4. Changes",
-          "content": "We reserve the right to modify these terms at any time. That is why we ask you to check this page periodically."
+          "title": "4. Intellectual Property",
+          "content": "Ke Entropy Technology and its licensors own all intellectual property rights in the services, including but not limited to: software, code, text, graphics, logos, images, audio, video, data compilation, and user interface design. Without our written permission, you may not copy, modify, distribute, sell, or otherwise exploit the above content. For content you submit while using the services, you retain ownership but grant us a non-exclusive, royalty-free, worldwide license to operate and improve the services."
+        },
+        {
+          "title": "5. Disclaimer",
+          "content": "Services are provided on an \"AS IS\" and \"AS AVAILABLE\" basis without any express or implied warranties, including but not limited to: (1) Services will be uninterrupted, timely, secure, or error-free; (2) Service results will be accurate and reliable; (3) Services will meet your specific needs; (4) Any errors will be corrected. The blockchain and cryptocurrency field carries inherent risks, including but not limited to price volatility, technical failures, regulatory changes, and cyberattacks. You should evaluate and assume the risks of using the services yourself."
+        },
+        {
+          "title": "6. Limitation of Liability",
+          "content": "To the maximum extent permitted by applicable law: (1) Ke Entropy Technology shall not be liable for any indirect, incidental, special, punitive, or consequential damages, including but not limited to loss of profits, data loss, goodwill damage, or business interruption; (2) Ke Entropy Technology's total liability shall not exceed the total fees you paid to us in the 12 months prior to the claim or RMB 1,000 (whichever is higher); (3) The above limitations apply to any theory of liability, whether or not we have been advised of the possibility of such damages."
+        },
+        {
+          "title": "7. Indemnification",
+          "content": "You agree to indemnify, defend, and hold harmless Ke Entropy Technology and its directors, officers, employees, agents, and affiliates from any claims, losses, damages, liabilities, costs, and expenses (including reasonable attorney fees) arising from: (1) Your violation of these Terms; (2) Your violation of any applicable law or third-party rights; (3) Your use of the services; (4) Any content you submit."
+        },
+        {
+          "title": "8. Service Termination",
+          "content": "We may suspend or terminate your access to services in the following circumstances: (1) You violate these Terms; (2) Required by law; (3) We believe your actions may cause harm to us, other users, or third parties; (4) Services cease operation. After termination, the provisions of these Terms regarding intellectual property, disclaimer, limitation of liability, indemnification, and dispute resolution shall continue to be effective."
+        },
+        {
+          "title": "9. Dispute Resolution",
+          "content": "These Terms are governed by the laws of the People's Republic of China (excluding conflict of law rules). Any dispute arising from these Terms or services shall first be resolved through friendly negotiation. If negotiation fails, either party may submit the dispute to the Beijing Arbitration Commission for arbitration in accordance with its then-effective arbitration rules. The place of arbitration is Beijing, and the language of arbitration is Chinese. The arbitration award is final and binding on both parties."
+        },
+        {
+          "title": "10. General Provisions",
+          "content": "(1) Entire Agreement: These Terms constitute the entire agreement between you and Ke Entropy Technology regarding the use of services; (2) Severability: If any provision of these Terms is found invalid, the remaining provisions shall remain effective; (3) Waiver: Our failure to enforce any right under these Terms does not constitute a waiver of that right; (4) Assignment: You may not assign your rights or obligations under these Terms without our written consent; (5) Notices: We may send notices to you through website announcements, email, or in-app messages; (6) Language: These Terms are based on the Chinese version, and other language versions are for reference only."
+        },
+        {
+          "title": "11. Contact Information",
+          "content": "If you have any questions about these Terms of Service, please contact us: Company Name: Beijing Ke Entropy Technology Co., Ltd.; Email: 24373054@buaa.edu.cn; Office Address: 12F, Boyan Building, No. 238 Beisihuan Zhonglu Auxiliary Road, Haidian District, Beijing."
         }
       ]
     }
