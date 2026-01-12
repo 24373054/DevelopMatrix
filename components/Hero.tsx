@@ -1,13 +1,16 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import ChristmasDecoration from './ChristmasDecoration';
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const tFeatured = useTranslations('featuredProduct');
+  const locale = useLocale();
+  const productUrl = `https://develop.matrixlab.work/${locale}/products/agent`;
 
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -58,14 +61,14 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* 圣诞节标题装饰 - 简化动画 */}
+          {/* 新年标题装饰 - 简化动画 */}
           <div className="mb-4 text-4xl md:text-5xl animate-pulse">
-            🎄✨
+            🎆✨
           </div>
           
-          <div className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-red-500/15 to-green-500/15 border border-red-500/30 dark:border-red-500/20 backdrop-blur-sm">
-            <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-red-600 to-green-600 dark:from-red-400 dark:to-green-400 bg-clip-text text-transparent">
-              🎅 Merry Christmas 2025 🎁
+          <div className="inline-block mb-6 px-6 py-2 rounded-full bg-gradient-to-r from-red-500/15 to-yellow-500/15 border border-red-500/30 dark:border-red-500/20 backdrop-blur-sm">
+            <span className="text-sm md:text-base font-semibold bg-gradient-to-r from-red-600 to-yellow-600 dark:from-red-400 dark:to-yellow-400 bg-clip-text text-transparent">
+              🎉 Happy New Year 2026 🧧
             </span>
           </div>
 
@@ -90,6 +93,28 @@ export default function Hero() {
               </svg>
             </span>
           </button>
+
+          {/* 最新产品推荐 */}
+          <motion.a
+            href={productUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group/featured"
+          >
+            <motion.span
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-red-500"
+            >
+              <Sparkles size={14} />
+            </motion.span>
+            <span>{tFeatured('badge')}</span>
+            <span className="text-foreground font-medium">{tFeatured('productName')}</span>
+            <ArrowRight size={14} className="group-hover/featured:translate-x-1 transition-transform" />
+          </motion.a>
         </motion.div>
       </div>
 

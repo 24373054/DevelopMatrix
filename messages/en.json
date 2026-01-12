@@ -4,6 +4,18 @@
     "description": "Ke Entropy Technology provides professional blockchain security audits, smart contract code audits, on-chain fund tracking and risk control services. Matrix Lab, MATRIXLAB EXCHANGE, MatrixTrace help enterprises safely enter the Web3 era. Contact: 24373054@buaa.edu.cn",
     "keywords": "Web3, Blockchain, Ke Entropy, Matrix Lab, Crypto Exchange, Metaverse, Immortal Ledger, GameFi, Decentralized Finance, Smart Contract Audit, Blockchain Security, On-chain Tracking, DeFi, NFT"
   },
+  "featuredProduct": {
+    "badge": "🔥 New Product",
+    "title": "On-Chain Firewall",
+    "subtitle": "Pre-screening risk control system designed for OTC merchants, say goodbye to frozen accounts",
+    "productName": "MatrixAgent",
+    "productTag": "On-Chain Firewall · OTC Risk Control",
+    "description": "Identify tainted USDT, mixers, and illicit funds in seconds before receiving payments. Pre-screening blocks risks. Deep data cleansing for TRC20 USDT, replacing complex reports with a traffic light mechanism to help you see risks and make decisions.",
+    "feature1": "Pre-Screening",
+    "feature2": "Instant Detection",
+    "feature3": "Traffic Light System",
+    "cta": "Learn More"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -68,7 +80,7 @@
       "contact": "Please feel free to contact me by email (zhangqnp@gmail.com or zhangqn@buaa.edu.cn), if you are interested in my research."
     },
     "founder": {
-      "name": "Seal Wax",
+      "name": "SealWax",
       "title": "Founder & Chief Architect",
       "desc": "Founder of Ke Entropy Technology, undergraduate student in Software Engineering at Beihang University, specializing in Web3 security, smart contract development, and AI Agent applications. With 2 years of full-stack development experience, possesses complete product delivery capabilities from architecture design to deployment and filing. Served as technical backbone at Beijing Advanced Innovation Center for Future Blockchain and Privacy Computing, leading the development of multiple blockchain security products. Expert in applying LLM technology to on-chain risk control, participated in writing the CCF Blockchain Academic White Paper (2025).",
       "education": "Software Engineering | Beihang University (Undergraduate)",
@@ -159,6 +171,126 @@
       "skills": "Teamwork, Team Organization",
       "skillsLabel": "Skills",
       "contact": "zhumeirupai31415@qq.com",
+      "contactLabel": "Contact"
+    },
+    "zhanghuan": {
+      "name": "Zhang Huan",
+      "title": "Ph.D. Candidate",
+      "about": "A Ph.D. candidate at Beihang University, primarily interested in the mechanisms of hallucination generation and propagation in multimodal large models. Current research focuses on hallucination suppression and joint modeling in distributed multimodal large models.",
+      "aboutLabel": "About Me",
+      "skills": "Artificial Intelligence, Multimodal Large Models",
+      "skillsLabel": "Research",
+      "contact": "zhanghuan1@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "liuzhanbo": {
+      "name": "Liu Zhanbo",
+      "title": "Undergraduate",
+      "about": "Undergraduate student majoring in Information Security at the School of Cyberspace Science and Technology, Beihang University. Current research focuses on the identification of illicit transactions in blockchain and the construction of malicious account profiles.",
+      "aboutLabel": "About Me",
+      "skills": "Blockchain Security",
+      "skillsLabel": "Research",
+      "contact": "liuzhanbo@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "liusiyu": {
+      "name": "Liu Siyu",
+      "title": "Master's Student",
+      "about": "Master's student in Artificial Intelligence at School of Artificial Intelligence, Beihang University",
+      "aboutLabel": "About Me",
+      "skills": "Ubiquitous Trustworthy Intelligence",
+      "skillsLabel": "Research",
+      "contact": "18644900007@163.com",
+      "contactLabel": "Contact"
+    },
+    "irpoun": {
+      "name": "Irpoun",
+      "title": "Undergraduate",
+      "about": "School of Mathematical Sciences, Beihang University. Specializes in stablecoin stabilization mechanisms and on-chain security governance.",
+      "aboutLabel": "About Me",
+      "skills": "Stablecoin Risk Control, Blockchain Security",
+      "skillsLabel": "Research",
+      "contact": "Irpoun@163.com",
+      "contactLabel": "Contact"
+    },
+    "lindaozhou": {
+      "name": "Lin Daozhou",
+      "title": "Undergraduate",
+      "about": "School of Mathematical Sciences, Beihang University. Majoring in mathematics with a solid foundation in mathematical principles.",
+      "aboutLabel": "About Me",
+      "skills": "Stablecoins",
+      "skillsLabel": "Research",
+      "contact": "23377188@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "denghanyue": {
+      "name": "Deng Hanyue",
+      "title": "Undergraduate",
+      "about": "Specializing in Information Security at the School of Mathematical Sciences, Beihang University.",
+      "aboutLabel": "About Me",
+      "skills": "Stablecoin",
+      "skillsLabel": "Research",
+      "contact": "23377142@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "wenxin": {
+      "name": "Wen Xin",
+      "title": "Direct-entry Ph.D.",
+      "about": "Direct-entry Ph.D. candidate of the 2025 cohort at Beihang University",
+      "aboutLabel": "About Me",
+      "skills": "Blockchain",
+      "skillsLabel": "Research",
+      "contact": "21373175@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "wangyuhua": {
+      "name": "Yuhua Wang",
+      "title": "Graduate Student",
+      "about": "School of Artificial Intelligence, Beihang University",
+      "aboutLabel": "About Me",
+      "skills": "Artificial Intelligence Security",
+      "skillsLabel": "Research",
+      "contact": "yuhuawang@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "yanghaofu": {
+      "name": "Yang Haofu",
+      "title": "Graduate Student",
+      "about": "School of Artificial Intelligence, Beihang University. Emancipate the mind, seek truth from facts, and continue to strive forward.",
+      "aboutLabel": "About Me",
+      "skills": "Natural Language Processing",
+      "skillsLabel": "Research",
+      "contact": "Yang2003@buaa.edu.cn",
+      "contactLabel": "Contact"
+    },
+    "yangyi": {
+      "name": "Yang Yi",
+      "title": "Master's Student",
+      "about": "Currently pursuing a Master's degree at the School of Artificial Intelligence, Beihang University, dedicated to contributing to the field with passion and collaborative spirit.",
+      "aboutLabel": "About Me",
+      "skills": "Natural Language Processing",
+      "skillsLabel": "Research",
+      "contact": "allblacky@163.com",
+      "contactLabel": "Contact"
+    },
+    "duanjunkun": {
+      "name": "Duan Junkun",
+      "title": "Graduate Student",
+      "about": "Department of Computer Science, Beijing Jiaotong University. An optimistic and conscientious individual with demonstrated capability in integrating algorithmic theories with engineering practices. Proficient in implementing cutting-edge models and methodologies to address complex real-world scenarios.",
+      "aboutLabel": "About Me",
+      "skills": "Artificial Intelligence",
+      "skillsLabel": "Research",
+      "contact": "2452719653@qq.com",
+      "contactLabel": "Contact"
+    },
+    "yueyue": {
+      "name": "Yue Yue",
+      "title": "Graduate Student",
+      "about": "School of Computer Science, Beijing Jiaotong University. Specialized in multimodal retrieval.",
+      "aboutLabel": "About Me",
+      "skills": "Artificial Intelligence",
+      "skillsLabel": "Research",
+      "contact": "2575167085@qq.com",
       "contactLabel": "Contact"
     }
   },
@@ -294,8 +426,14 @@
   },
   "announcements": {
     "title": "Announcements",
-    "itemsCount": "3",
+    "itemsCount": "4",
     "items": [
+      {
+        "date": "2026.01.12",
+        "title": "Ke Entropy Strategic Ecosystem Adjustment",
+        "summary": "Ke Entropy announces strategic upgrade, evolving from 'One Core, Two Wings' to 'One Core, Multi-Product' matrix. With Matrix Lab as the technological core, we build a complete Web3 ecosystem covering developer tools, trading platform, security analysis, OTC risk control, tech blog, and on-chain gaming.",
+        "content": "Ke Entropy Technology officially announces its strategic ecosystem adjustment, upgrading from the original 'One Core, Two Wings' strategy to a 'One Core, Multi-Product' matrix, marking the company's entry into a new phase of comprehensive product-oriented operations.\n\n1. Strategic Core: Matrix Lab Developer Center\nAs the technological engine of the ecosystem, the Developer Center provides open documentation, SDKs, and APIs to help developers build Web3 applications. We continue to focus on next-generation blockchain consensus algorithms, cross-chain interoperability protocols, and Zero-Knowledge Proof (ZK) privacy solutions, providing high-performance, high-security infrastructure support for the entire ecosystem.\n\n2. Financial Infrastructure: MATRIXLAB EXCHANGE\nA revolutionary Web3 innovation platform integrating wallet, trading, quantitative analysis, and risk control. We deeply integrate institutional-grade risk control systems with AI-driven quantitative analysis tools to provide users with a secure, transparent, and intelligent digital asset management experience.\n\n3. Security Product Matrix\n• MatrixTrace: AI-powered blockchain security analysis platform providing on-chain fund tracking and risk detection capabilities, serving security researchers, regulators, and compliance teams.\n• MatrixAgent: On-chain firewall, a pre-screening risk control system designed for OTC merchants. Through a traffic light mechanism, it identifies tainted USDT, mixers, and illicit funds in seconds, helping merchants say goodbye to frozen account fears.\n\n4. Content Ecosystem: Tech Blog\nA deep insight platform for Web3 and blockchain security, sharing practical experience and industry trends, continuously outputting high-quality technical content to establish industry influence.\n\n5. Entertainment Ecosystem: Immortal Ledger\nThe last chronicle of on-chain civilization. Using dynamic NFT technology and Autonomous World concepts, we build an on-chain civilization evolved by players, realizing true Play to Own.\n\nKey Strategic Adjustments\nThe core of this strategic adjustment lies in: evolving from a single product to a product matrix, transforming from technical R&D to product-oriented operations. We will use security products (MatrixTrace, MatrixAgent) as breakthrough points to quickly establish market recognition, while continuously improving developer tools and trading platforms, ultimately forming a complete ecosystem loop integrating technology, products, content, and entertainment.\n\nKe Entropy will continue to uphold the principle of 'Technology for Good, Compliance First,' connecting the real world with the digital future through technological innovation, and contributing to the healthy development of the Web3 industry."
+      },
       {
         "date": "2025.12.19",
         "title": "Team Wins Second Prize at 4th National Blockchain Competition",
